@@ -14,6 +14,11 @@ $themes: (
         background-color: #171717,
         brand-color: royalblue,
     ),
+    "brand": (
+        text-color: white,
+        background-color: royalblue,
+        brand-color: teal,
+    ),
 );
 
 @include themes.constructor($themes);

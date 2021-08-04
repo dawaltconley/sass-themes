@@ -1,7 +1,8 @@
 @use "sass:color";
 @use "sass:list";
-@use "sass:math";
 @use "sass:map";
+@use "sass:math";
+@use "sass:meta";
 @use "sass:selector";
 @use "sass:string";
 @use "color-helpers" as ch;
@@ -9,12 +10,29 @@
 $theme-depth: 1 !default; // controls the depth (in a series nested themes) at which an element still inherits the styles of its immediate ancestor theme. stylesheets get much larger and more complex as this number increases, so it should be set as low as possible.
 $theme-classes: ();
 
-@mixin themeify { // doesn't nest themes the way the constructor does, for the purposes of handling themes within themes
-    @each $theme-class, $theme in $theme-classes {
+@function nest($theme, $depth: $theme-depth, $themes: $theme-classes) {
+    $selectors: $theme;
+    @each $other-theme in map.keys($themes) {
+        @if $other-theme != $theme {
+            $ancestry: ();
+            @for $d from 0 to $theme-depth {
+                $new-nest: selector.nest($other-theme, $theme);
+                $ancestry: list.append($ancestry, $new-nest, "space");
+                $selectors: list.append($selectors, $ancestry, "comma");
+            }
+        }
+    }
+    @return #{$selectors};
+}
+
+@mixin themeify($themes: $theme-classes, $depth: $theme-depth) { // doesn't nest themes the way the constructor does, for the purposes of handling themes within themes
+    // @if $themes
+    @each $class, $theme in $theme-classes {
         $group: ();
+        $class: nest($class, $themes: $themes, $depth: $depth);
         @each $selector in & {
-            $group: list.append($group, selector.nest($theme-class, $selector), "comma");
-            $group: list.append($group, selector.unify($theme-class, $selector), "comma");
+            $group: list.append($group, selector.nest($class, $selector), "comma");
+            $group: list.append($group, selector.unify($class, $selector), "comma");
         }
         @at-root #{$group} {
             @content($theme);
@@ -49,85 +67,79 @@ $theme-classes: ();
     @return math.div(math.abs(color.lightness($color1) - color.lightness($color2)), 100%);
 }
 
-@mixin theme($background-color, $text-color, $brand-color: null) {
-    $light-text: null; $light-theme: null; $ld-tx-bg: null; $ld-br-tx: null; $ld-br-bg: null;
+@mixin theme($class: &, $settings: null, $bg: null, $text: null, $brand: null, $depth: $theme-depth) {
+    $class: list.nth($class, list.length($class));
+    $class: list.nth($class, list.length($class));
+    $class: classify($class);
 
-    $name: &;
-    $name: list.nth($name, list.length($name));
-    $name: list.nth($name, list.length($name));
-
-    $light-theme: color.lightness($text-color) < color.lightness($background-color);
-    $ld-tx-bg: ld($text-color, $background-color);
-    @if $brand-color {
-        $ld-br-tx: ld($brand-color, $text-color);
-        $ld-br-bg: ld($brand-color, $background-color);
+    @if not map.has-key($theme-classes, $class) {
+        @include register($class, $settings, $bg, $text, $brand);
     }
 
-    $light-text: color.mix($text-color, $background-color, if($light-theme, 58%, 86%));
+    @at-root #{nest($class, $depth: $depth)} {
+        $theme: map.get($theme-classes, $class);
+        background-color: map.get($theme, bg);
+        color: map.get($theme, text);
+        border-color: map.get($theme, text);
+    }
+}
 
-    // Basic Styles
+@function classify($str) {
+    $look-for: '.' '#' '*' ',' '>' '+' '~' '[' ':';
+    @each $char in $look-for {
+        @if string.index($str, $char) {
+            @return $str;
+        }
+    }
+    @return '.#{$str}';
+}
 
-    background-color: $background-color;
-    color: $text-color;
-    border-color: $text-color;
+@mixin register($name, $settings: null, $bg: null, $text: null, $brand: null, $accessibility: null) {
+    $bg: $bg or map.get($settings, background-color) or map.get($settings, background) or map.get($settings, bg);
+    $text: $text or map.get($settings, color) or map.get($settings, text-color) or map.get($settings, text);
+    $brand: $brand or map.get($settings, brand-color) or map.get($settings, brand);
 
-    // Buttons
+    @if not ($bg and $text) {
+        @error 'Invalid theme #{$name}; themes require at least a background and text color.'
+    }
 
-    $button-color: if($brand-color, $brand-color, $text-color);
-    $button-text: if($brand-color and not $light-theme, $text-color, $background-color);
+    $light-theme: color.lightness($text) < color.lightness($bg);
+    // $ld-tx-bg: ld($text, $bg);
+    // $ld-br-tx: $brand and ld($brand, $text);
+    // $ld-br-bg: $brand and ld($brand, $bg);
 
-    $theme-classes: map.merge($theme-classes, $name, (
+    $text-light: color.mix($text, $bg, if($light-theme, 58%, 86%));
+    $button-color: $brand or $text;
+    $button-text: if($brand and not $light-theme, $text, $bg);
+
+    $accessibility: $accessibility or map.get($settings, accessibility) or "AA";
+    @include accessibility(
+        $name: $name,
+        $background-color: $bg,
+        $text-color: $text,
+        $brand-color: $brand,
+        $accessibility: $accessibility,
+    );
+
+    $theme-classes: map.merge($theme-classes, classify($name), (
         light: $light-theme,
         dark: not $light-theme,
-        text: $text-color,
-        text-light: $light-text,
-        bg: $background-color,
-        brand: $brand-color,
+        text: $text,
+        text-light: $text-light,
+        bg: $bg,
+        brand: $brand,
         button: (
             bg: $button-color,
             text: $button-text
         ),
     )) !global;
-
-    @debug $theme-classes;
 }
 
-@mixin constructor($themes, $default: null) {
+@mixin constructor($themes, $depth: $theme-depth) {
     @each $theme, $settings in $themes {
-        $selectors: ".#{$theme}";
-
-        @if $default and $default == $theme { // optionally apply default theme to body
-            $selectors: list.append("body", $selectors, "comma");
-        }
-
-        @each $other-theme in map.keys($themes) { // set theme depth
-            @if $other-theme != $theme {
-                $ancestry: ();
-                $new-ancestry: ();
-                @for $d from 0 to $theme-depth {
-                    $new-ancestry: list.append($new-ancestry, ".#{$other-theme} .#{$theme}", "space");
-                    $ancestry: list.append($ancestry, $new-ancestry, "comma");
-                }
-                $selectors: list.append($selectors, $ancestry, "comma");
-            }
-        }
-
-        #{$selectors} { // assign theme styles to resulting selector list
-            @include theme(
-                $background-color: map.get($settings, background-color),
-                $text-color: map.get($settings, text-color),
-                $brand-color: map.get($settings, brand-color),
-            );
-        }
-
-        $accessibility: map.get($settings, accessibility) or "AA";
-
-        @include accessibility(
-            $name: $theme,
-            $background-color: map.get($settings, background-color),
-            $text-color: map.get($settings, text-color),
-            $brand-color: map.get($settings, brand-color),
-            $accessibility: $accessibility,
-        );
+        @include register($theme, $settings);
+    }
+    @each $theme, $settings in $themes {
+        @include theme($theme, $settings);
     }
 }
