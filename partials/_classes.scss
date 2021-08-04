@@ -79,6 +79,23 @@ input[type="text"], textarea {
     }
 }
 
+// Borders
+
+.border {
+    @include themeify using ($theme) {
+        $text: _m($theme,'text');
+        $bg: _m($theme,'bg');
+
+        &-light {
+            border-color: color.mix($text, $bg, 10%);
+        }
+
+        &-x-light {
+            border-color: color.mix($text, $bg, 5%);
+        }
+    }
+}
+
 // Links
 
 a, .theme-link {
