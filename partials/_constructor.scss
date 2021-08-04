@@ -1,0 +1,16 @@
+$themes: (
+    "light": (
+        text-color: #171717,
+        background-color: white,
+        brand-color: royalblue,
+    ),
+    "dark": (
+        text-color: white,
+        background-color: #171717,
+        brand-color: royalblue,
+    ),
+) !default;
+$theme-depth: 1 !default;
+
+@use "themes" with ($theme-depth: $theme-depth);
+@include themes.constructor($themes);
