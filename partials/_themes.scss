@@ -10,6 +10,24 @@
 $theme-depth: 1 !default; // controls the depth (in a series nested themes) at which an element still inherits the styles of its immediate ancestor theme. stylesheets get much larger and more complex as this number increases, so it should be set as low as possible.
 $theme-classes: ();
 
+/*
+ * Utility Functions
+ */
+
+@function classify($str) {
+    $look-for: '.' '#' '*' ',' '>' '+' '~' '[' ':';
+    @each $char in $look-for {
+        @if string.index($str, $char) {
+            @return $str;
+        }
+    }
+    @return '.#{$str}';
+}
+
+@function ld($color1, $color2) {
+    @return math.div(math.abs(color.lightness($color1) - color.lightness($color2)), 100%);
+}
+
 @function nest($theme, $depth: $theme-depth, $themes: $theme-classes) {
     $selectors: $theme;
     @each $other-theme in map.keys($themes) {
@@ -25,20 +43,9 @@ $theme-classes: ();
     @return #{$selectors};
 }
 
-@mixin themeify($themes: $theme-classes, $depth: $theme-depth) { // doesn't nest themes the way the constructor does, for the purposes of handling themes within themes
-    // @if $themes
-    @each $class, $theme in $theme-classes {
-        $group: ();
-        $class: nest($class, $themes: $themes, $depth: $depth);
-        @each $selector in & {
-            $group: list.append($group, selector.nest($class, $selector), "comma");
-            $group: list.append($group, selector.unify($class, $selector), "comma");
-        }
-        @at-root #{$group} {
-            @content($theme);
-        }
-    }
-}
+/*
+ * Utility Mixins
+ */
 
 @mixin accessibility($name, $background-color, $text-color, $brand-color: null, $accessibility: "AA") {
     $aa: string.to-upper-case($accessibility) == "AA";
@@ -61,37 +68,6 @@ $theme-classes: ();
             @warn "The contrast ratio of the '#{$name}' theme's link (#{$brand-color}) and background (#{$background-color}) colors is #{$ct-br-bg}, which does not meet WCAG 2.0 #{if($aaa, "AAA standard (7)", "AA standard (4.5)")}.";
         }
     }
-}
-
-@function ld($color1, $color2) {
-    @return math.div(math.abs(color.lightness($color1) - color.lightness($color2)), 100%);
-}
-
-@mixin theme($class: &, $settings: null, $bg: null, $text: null, $brand: null, $depth: $theme-depth) {
-    $class: list.nth($class, list.length($class));
-    $class: list.nth($class, list.length($class));
-    $class: classify($class);
-
-    @if not map.has-key($theme-classes, $class) {
-        @include register($class, $settings, $bg, $text, $brand);
-    }
-
-    @at-root #{nest($class, $depth: $depth)} {
-        $theme: map.get($theme-classes, $class);
-        background-color: map.get($theme, bg);
-        color: map.get($theme, text);
-        border-color: map.get($theme, text);
-    }
-}
-
-@function classify($str) {
-    $look-for: '.' '#' '*' ',' '>' '+' '~' '[' ':';
-    @each $char in $look-for {
-        @if string.index($str, $char) {
-            @return $str;
-        }
-    }
-    @return '.#{$str}';
 }
 
 @mixin register($name, $settings: null, $bg: null, $text: null, $brand: null, $accessibility: null) {
@@ -135,11 +111,47 @@ $theme-classes: ();
     )) !global;
 }
 
+/*
+ * Primary Exports
+ */
+
+@mixin theme($class: &, $settings: null, $bg: null, $text: null, $brand: null, $depth: $theme-depth) {
+    $class: list.nth($class, list.length($class));
+    $class: list.nth($class, list.length($class));
+    $class: classify($class);
+
+    @if not map.has-key($theme-classes, $class) {
+        @include register($class, $settings, $bg, $text, $brand);
+    }
+
+    @at-root #{nest($class, $depth: $depth)} {
+        $theme: map.get($theme-classes, $class);
+        background-color: map.get($theme, bg);
+        color: map.get($theme, text);
+        border-color: map.get($theme, text);
+    }
+}
+
 @mixin constructor($themes, $depth: $theme-depth) {
     @each $theme, $settings in $themes {
         @include register($theme, $settings);
     }
     @each $theme, $settings in $themes {
         @include theme($theme, $settings);
+    }
+}
+
+@mixin themeify($themes: $theme-classes, $depth: $theme-depth) {
+    // @if $themes
+    @each $class, $theme in $theme-classes {
+        $group: ();
+        $class: nest($class, $themes: $themes, $depth: $depth);
+        @each $selector in & {
+            $group: list.append($group, selector.nest($class, $selector), "comma");
+            $group: list.append($group, selector.unify($class, $selector), "comma");
+        }
+        @at-root #{$group} {
+            @content($theme);
+        }
     }
 }
