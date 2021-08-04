@@ -1,0 +1,134 @@
+@use "sass:color";
+@use "sass:list";
+@use "sass:math";
+@use "sass:map";
+@use "sass:selector";
+@use "sass:string";
+@use "color-helpers" as ch;
+
+$theme-depth: 1 !default; // controls the depth (in a series nested themes) at which an element still inherits the styles of its immediate ancestor theme. stylesheets get much larger and more complex as this number increases, so it should be set as low as possible.
+$theme-classes: ();
+
+@mixin themeify { // doesn't nest themes the way the constructor does, for the purposes of handling themes within themes
+    @each $theme-class, $theme in $theme-classes {
+        $group: ();
+        @each $selector in & {
+            $group: list.append($group, selector.nest($theme-class, $selector), "comma");
+            $group: list.append($group, selector.unify($theme-class, $selector), "comma");
+        }
+        @at-root #{$group} {
+            @content($theme);
+        }
+    }
+}
+
+@mixin accessibility($name, $background-color, $text-color, $brand-color: null, $accessibility: "AA") {
+    $aa: string.to-upper-case($accessibility) == "AA";
+    $aaa: string.to-upper-case($accessibility) == "AAA";
+
+    $ct-tx-bg: ch.ch-color-contrast($background-color, $text-color);
+
+    @if ($ct-tx-bg < 4.5 and $aa) or ($ct-tx-bg < 7 and $aaa) {
+        @warn "The contrast ratio of the '#{$name}' theme's text (#{$text-color}) and background (#{$background-color}) colors is #{$ct-tx-bg}, which does not meet WCAG 2.0 #{if($aaa, "AAA standard (7)", "AA standard (4.5)")}.";
+    }
+
+    @if $brand-color {
+        $ct-br-tx: ch.ch-color-contrast($brand-color, $text-color);
+        $ct-br-bg: ch.ch-color-contrast($brand-color, $background-color);
+
+        @if $ct-br-tx < 3 and $aa {
+            @warn "The contrast ratio of the '#{$name}' theme's link (#{$brand-color}) and text (#{$text-color}) colors is #{$ct-br-tx}, which does not meet WCAG 2.0 AA standard (3).";
+        }
+        @if ($ct-br-bg < 4.5 and $aa) or ($ct-br-bg < 7 and $aaa) {
+            @warn "The contrast ratio of the '#{$name}' theme's link (#{$brand-color}) and background (#{$background-color}) colors is #{$ct-br-bg}, which does not meet WCAG 2.0 #{if($aaa, "AAA standard (7)", "AA standard (4.5)")}.";
+        }
+    }
+}
+
+@function ld($color1, $color2) {
+    @return math.div(math.abs(color.lightness($color1) - color.lightness($color2)), 100%);
+}
+
+@mixin theme($background-color, $text-color, $brand-color: null) {
+    $light-text: null; $light-theme: null; $ld-tx-bg: null; $ld-br-tx: null; $ld-br-bg: null;
+
+    $name: &;
+    $name: list.nth($name, list.length($name));
+    $name: list.nth($name, list.length($name));
+
+    $light-theme: color.lightness($text-color) < color.lightness($background-color);
+    $ld-tx-bg: ld($text-color, $background-color);
+    @if $brand-color {
+        $ld-br-tx: ld($brand-color, $text-color);
+        $ld-br-bg: ld($brand-color, $background-color);
+    }
+
+    $light-text: color.mix($text-color, $background-color, if($light-theme, 58%, 86%));
+
+    // Basic Styles
+
+    background-color: $background-color;
+    color: $text-color;
+    border-color: $text-color;
+
+    // Buttons
+
+    $button-color: if($brand-color, $brand-color, $text-color);
+    $button-text: if($brand-color and not $light-theme, $text-color, $background-color);
+
+    $theme-classes: map.merge($theme-classes, $name, (
+        light: $light-theme,
+        dark: not $light-theme,
+        text: $text-color,
+        text-light: $light-text,
+        bg: $background-color,
+        brand: $brand-color,
+        border: $text-color,
+        button: (
+            bg: $button-color,
+            text: $button-text
+        ),
+    )) !global;
+
+    @debug $theme-classes;
+}
+
+@mixin constructor($themes, $default: null) {
+    @each $theme, $settings in $themes {
+        $selectors: ".#{$theme}";
+
+        @if $default and $default == $theme { // optionally apply default theme to body
+            $selectors: list.append("body", $selectors, "comma");
+        }
+
+        @each $other-theme in map.keys($themes) { // set theme depth
+            @if $other-theme != $theme {
+                $ancestry: ();
+                $new-ancestry: ();
+                @for $d from 0 to $theme-depth {
+                    $new-ancestry: list.append($new-ancestry, ".#{$other-theme} .#{$theme}", "space");
+                    $ancestry: list.append($ancestry, $new-ancestry, "comma");
+                }
+                $selectors: list.append($selectors, $ancestry, "comma");
+            }
+        }
+
+        #{$selectors} { // assign theme styles to resulting selector list
+            @include theme(
+                $background-color: map.get($settings, background-color),
+                $text-color: map.get($settings, text-color),
+                $brand-color: map.get($settings, brand-color),
+            );
+        }
+
+        $accessibility: map.get($settings, accessibility) or "AA";
+
+        @include accessibility(
+            $name: $theme,
+            $background-color: map.get($settings, background-color),
+            $text-color: map.get($settings, text-color),
+            $brand-color: map.get($settings, brand-color),
+            $accessibility: $accessibility,
+        );
+    }
+}
