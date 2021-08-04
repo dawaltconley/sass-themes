@@ -71,9 +71,9 @@ $theme-classes: ();
 }
 
 @mixin register($name, $settings: null, $bg: null, $text: null, $brand: null, $accessibility: null) {
-    $bg: $bg or map.get($settings, background-color) or map.get($settings, background) or map.get($settings, bg);
-    $text: $text or map.get($settings, color) or map.get($settings, text-color) or map.get($settings, text);
-    $brand: $brand or map.get($settings, brand-color) or map.get($settings, brand);
+    $bg: $bg or $settings and map.get($settings, background-color) or map.get($settings, background) or map.get($settings, bg);
+    $text: $text or $settings and map.get($settings, color) or map.get($settings, text-color) or map.get($settings, text);
+    $brand: $brand or $settings and map.get($settings, brand-color) or map.get($settings, brand);
 
     @if not ($bg and $text) {
         @error 'Invalid theme #{$name}; themes require at least a background and text color.'
@@ -88,7 +88,7 @@ $theme-classes: ();
     $button-color: $brand or $text;
     $button-text: if($brand and not $light-theme, $text, $bg);
 
-    $accessibility: $accessibility or map.get($settings, accessibility) or "AA";
+    $accessibility: $accessibility or $settings and map.get($settings, accessibility) or "AA";
     @include accessibility(
         $name: $name,
         $background-color: $bg,
