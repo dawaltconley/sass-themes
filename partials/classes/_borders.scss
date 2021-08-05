@@ -1,11 +1,11 @@
 @use "sass:color";
 @use "sass:map";
-@use "../themes" as *;
+@use "../themes" as t;
 
 // Borders
 
 .border {
-    @include themeify using ($theme) {
+    @include t.themeify using ($theme) {
         $text: map.get($theme,'text');
         $bg: map.get($theme,'bg');
 

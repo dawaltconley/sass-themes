@@ -1,10 +1,10 @@
 @use "sass:map";
-@use "../themes" as *;
+@use "../themes" as t;
 
 // SVG
 
 .fill-color-theme {
-    @include themeify using ($theme) {
+    @include t.themeify using ($theme) {
         &-text {
             fill: map.get($theme,'text');
         }
@@ -18,7 +18,7 @@
 }
 
 .stroke-color-theme {
-    @include themeify using ($theme) {
+    @include t.themeify using ($theme) {
         &-text {
             stroke: map.get($theme,'text');
         }

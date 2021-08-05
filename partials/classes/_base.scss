@@ -1,6 +1,6 @@
 @use "sass:color";
 @use "sass:map";
-@use "../themes" as *;
+@use "../themes" as t;
 
 @function _m($args...) {
     @return map.get($args...);
@@ -9,7 +9,7 @@
 // Base
 
 blockquote {
-    @include themeify using ($theme) {
+    @include t.themeify using ($theme) {
         $text: _m($theme, text-light);
         $bg: _m($theme, bg);
         color: $text;
@@ -18,11 +18,11 @@ blockquote {
 }
 
 pre, code {
-    @include themeify using ($t) {
+    @include t.themeify using ($t) {
         $text: _m($t,'text');
         $bg: _m($t,'bg');
 
-        $ld-tx-bg: ld($text, $bg);
+        $ld-tx-bg: t.ld($text, $bg);
         $box-color: color.adjust($bg, $lightness: $ld-tx-bg * if(_m($t,'light'), -15%, 15%));
         $box-color: color.adjust($box-color, $saturation: -(color.saturation($box-color) * 0.5) );
         color: color.mix($text, $box-color, 80%);
@@ -32,7 +32,7 @@ pre, code {
 }
 
 input[type="text"], textarea {
-    @include themeify using ($t) {
+    @include t.themeify using ($t) {
         $text: _m($t,'text');
         $bg: _m($t,'bg');
 
@@ -48,11 +48,11 @@ input[type="text"], textarea {
 }
 
 a, .theme-link {
-    @include themeify using ($t) {
+    @include t.themeify using ($t) {
         $brand: _m($t,'brand');
         @if $brand {
-            $ld-br-tx: ld($brand, _m($t,'text'));
-            $ld-br-bg: ld($brand, _m($t,'bg'));
+            $ld-br-tx: t.ld($brand, _m($t,'text'));
+            $ld-br-bg: t.ld($brand, _m($t,'bg'));
 
             color: $brand;
 
@@ -63,7 +63,7 @@ a, .theme-link {
 }
 
 .subtle-link {
-    @include themeify using ($theme) {
+    @include t.themeify using ($theme) {
         &, &:hover, &:visited {
             color: _m($theme,'text');
         }

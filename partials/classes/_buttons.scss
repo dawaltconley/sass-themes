@@ -1,60 +1,57 @@
 @use "sass:color";
 @use "sass:map";
-@use "../themes" as *;
+@use "../themes" as t;
 
 // Buttons
 
 .button {
-    @include themeify using ($t) {
-        $bg: map.get($t,'button','bg');
-        $text: map.get($t,'button','text');
-        background-color: $bg;
+    @include t.themeify using ($t) {
+        $button-bg: map.get($t,'button','bg');
+        $button-text: map.get($t,'button','text');
+        $text-color: map.get($t,'text');
 
-        &, &:hover, &:visited {
-            color: $text;
-        }
+        & {
+            background-color: $button-bg;
 
-        &:hover {
-            background-color: color.mix($bg, $text, 80%);
-        }
-
-        &.subtle-button {
-            color: $bg;
-            background-color: $text;
+            &, &:hover, &:visited {
+                color: $button-text;
+            }
 
             &:hover {
-                background-color: color.mix($text, $bg, 80%);
+                background-color: color.mix($button-bg, $button-text, 80%);
+            }
+
+            &.subtle-button {
+                color: $button-bg;
+                background-color: $button-text;
+
+                &:hover {
+                    background-color: color.mix($button-text, $button-bg, 80%);
+                }
             }
         }
-    }
-}
 
-.button-o {
-    @include themeify using ($t) {
-        $text-color: map.get($t,'text');
-        $button-color: map.get($t,'button','bg');
-        $button-text: map.get($t,'button','text'); 
-
-        background-color: map.get($t,'bg');
-        border-color: $button-color;
-
-        &, &:visited {
-            color: $button-color;
-        }
-
-        &:hover {
-            color: $button-text;
-            background-color: $button-color;
-            border-color: $button-color;
-        }
-
-        &.subtle-button:not(:hover) {
-            border-color: $text-color;
+        &-o {
+            background-color: map.get($t,'bg');
+            border-color: $button-bg;
 
             &, &:visited {
-                color: $text-color;
+                color: $button-bg;
+            }
+
+            &:hover {
+                color: $button-text;
+                background-color: $button-bg;
+                border-color: $button-bg;
+            }
+
+            &.subtle-button:not(:hover) {
+                border-color: $text-color;
+
+                &, &:visited {
+                    color: $text-color;
+                }
             }
         }
     }
 }
-

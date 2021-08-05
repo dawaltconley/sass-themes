@@ -1,14 +1,14 @@
 @use "sass:map";
-@use "../themes" as *;
+@use "../themes" as t;
 
 .text-light {
-    @include themeify using ($theme) {
+    @include t.themeify using ($theme) {
         color: map.get($theme,'text-light');
     }
 }
 
 .text-brand {
-    @include themeify using ($theme) {
+    @include t.themeify using ($theme) {
         color: map.get($theme,'brand');
     }
 }
