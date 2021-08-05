@@ -2,7 +2,8 @@
 @use "sass:map";
 @use "../themes" as t;
 
-// Borders
+$light: 10% !default;
+$x-light: 5% !default;
 
 .border {
     @include t.themeify using ($theme) {
@@ -10,11 +11,11 @@
         $bg: map.get($theme,'bg');
 
         &-light {
-            border-color: color.mix($text, $bg, 10%);
+            border-color: color.mix($text, $bg, $light);
         }
 
         &-x-light {
-            border-color: color.mix($text, $bg, 5%);
+            border-color: color.mix($text, $bg, $x-light);
         }
     }
 }

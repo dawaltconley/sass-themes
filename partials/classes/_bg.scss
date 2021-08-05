@@ -1,7 +1,8 @@
 @use "sass:map";
 @use "../themes" as t;
 
-// Background
+$overlay: 0.5 !default;
+$heavy-overlay: 0.75 !default;
 
 .theme-bg {
     @include t.themeify using ($theme) {
@@ -11,13 +12,13 @@
 
 .overlay {
     @include t.themeify using ($theme) {
-        background-color: rgba(map.get($theme,'bg'), 0.5);
+        background-color: rgba(map.get($theme,'bg'), $overlay);
     }
 }
 
 .heavy-overlay {
     @include t.themeify using ($theme) {
-        background-color: rgba(map.get($theme,'bg'), 0.75);
+        background-color: rgba(map.get($theme,'bg'), $heavy-overlay);
     }
 }
 

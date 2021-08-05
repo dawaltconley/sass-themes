@@ -2,7 +2,7 @@
 @use "sass:map";
 @use "../themes" as t;
 
-// Buttons
+$hover-mix: 80% !default;
 
 .button {
     @include t.themeify using ($t) {
@@ -19,7 +19,7 @@
             }
 
             &:hover {
-                background-color: color.mix($button-bg, $button-text, 80%);
+                background-color: color.mix($button-bg, $button-text, $hover-mix);
             }
 
             &.subtle-button {
@@ -27,7 +27,7 @@
                 background-color: $button-text;
 
                 &:hover {
-                    background-color: color.mix($button-text, $button-bg, 80%);
+                    background-color: color.mix($button-text, $button-bg, $hover-mix);
                 }
             }
         }

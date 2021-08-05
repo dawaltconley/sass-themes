@@ -6,8 +6,6 @@
     @return map.get($args...);
 }
 
-// Base
-
 blockquote {
     @include t.themeify using ($theme) {
         $text: _m($theme, text-light);

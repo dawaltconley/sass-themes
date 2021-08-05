@@ -1,8 +1,6 @@
 @use "sass:map";
 @use "../themes" as t;
 
-// SVG
-
 .fill-color-theme {
     @include t.themeify using ($theme) {
         &-text {
