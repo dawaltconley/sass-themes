@@ -1,0 +1,851 @@
+/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
+/* Document
+   ========================================================================== */
+/**
+ * 1. Correct the line height in all browsers.
+ * 2. Prevent adjustments of font size after orientation changes in iOS.
+ */
+html {
+  line-height: 1.15;
+  /* 1 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+}
+
+/* Sections
+   ========================================================================== */
+/**
+ * Remove the margin in all browsers.
+ */
+body {
+  margin: 0;
+}
+
+/**
+ * Render the `main` element consistently in IE.
+ */
+main {
+  display: block;
+}
+
+/**
+ * Correct the font size and margin on `h1` elements within `section` and
+ * `article` contexts in Chrome, Firefox, and Safari.
+ */
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+/* Grouping content
+   ========================================================================== */
+/**
+ * 1. Add the correct box sizing in Firefox.
+ * 2. Show the overflow in Edge and IE.
+ */
+hr {
+  box-sizing: content-box;
+  /* 1 */
+  height: 0;
+  /* 1 */
+  overflow: visible;
+  /* 2 */
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+pre {
+  font-family: monospace, monospace;
+  /* 1 */
+  font-size: 1em;
+  /* 2 */
+}
+
+/* Text-level semantics
+   ========================================================================== */
+/**
+ * Remove the gray background on active links in IE 10.
+ */
+a {
+  background-color: transparent;
+}
+
+/**
+ * 1. Remove the bottom border in Chrome 57-
+ * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ */
+abbr[title] {
+  border-bottom: none;
+  /* 1 */
+  text-decoration: underline;
+  /* 2 */
+  text-decoration: underline dotted;
+  /* 2 */
+}
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+b,
+strong {
+  font-weight: bolder;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+code,
+kbd,
+samp {
+  font-family: monospace, monospace;
+  /* 1 */
+  font-size: 1em;
+  /* 2 */
+}
+
+/**
+ * Add the correct font size in all browsers.
+ */
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` elements from affecting the line height in
+ * all browsers.
+ */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/* Embedded content
+   ========================================================================== */
+/**
+ * Remove the border on images inside links in IE 10.
+ */
+img {
+  border-style: none;
+}
+
+/* Forms
+   ========================================================================== */
+/**
+ * 1. Change the font styles in all browsers.
+ * 2. Remove the margin in Firefox and Safari.
+ */
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  /* 1 */
+  font-size: 100%;
+  /* 1 */
+  line-height: 1.15;
+  /* 1 */
+  margin: 0;
+  /* 2 */
+}
+
+/**
+ * Show the overflow in IE.
+ * 1. Show the overflow in Edge.
+ */
+button,
+input {
+  /* 1 */
+  overflow: visible;
+}
+
+/**
+ * Remove the inheritance of text transform in Edge, Firefox, and IE.
+ * 1. Remove the inheritance of text transform in Firefox.
+ */
+button,
+select {
+  /* 1 */
+  text-transform: none;
+}
+
+/**
+ * Correct the inability to style clickable types in iOS and Safari.
+ */
+button,
+[type=button],
+[type=reset],
+[type=submit] {
+  -webkit-appearance: button;
+}
+
+/**
+ * Remove the inner border and padding in Firefox.
+ */
+button::-moz-focus-inner,
+[type=button]::-moz-focus-inner,
+[type=reset]::-moz-focus-inner,
+[type=submit]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+/**
+ * Restore the focus styles unset by the previous rule.
+ */
+button:-moz-focusring,
+[type=button]:-moz-focusring,
+[type=reset]:-moz-focusring,
+[type=submit]:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+/**
+ * Correct the padding in Firefox.
+ */
+fieldset {
+  padding: 0.35em 0.75em 0.625em;
+}
+
+/**
+ * 1. Correct the text wrapping in Edge and IE.
+ * 2. Correct the color inheritance from `fieldset` elements in IE.
+ * 3. Remove the padding so developers are not caught out when they zero out
+ *    `fieldset` elements in all browsers.
+ */
+legend {
+  box-sizing: border-box;
+  /* 1 */
+  color: inherit;
+  /* 2 */
+  display: table;
+  /* 1 */
+  max-width: 100%;
+  /* 1 */
+  padding: 0;
+  /* 3 */
+  white-space: normal;
+  /* 1 */
+}
+
+/**
+ * Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ */
+progress {
+  vertical-align: baseline;
+}
+
+/**
+ * Remove the default vertical scrollbar in IE 10+.
+ */
+textarea {
+  overflow: auto;
+}
+
+/**
+ * 1. Add the correct box sizing in IE 10.
+ * 2. Remove the padding in IE 10.
+ */
+[type=checkbox],
+[type=radio] {
+  box-sizing: border-box;
+  /* 1 */
+  padding: 0;
+  /* 2 */
+}
+
+/**
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+ */
+[type=number]::-webkit-inner-spin-button,
+[type=number]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * 1. Correct the odd appearance in Chrome and Safari.
+ * 2. Correct the outline style in Safari.
+ */
+[type=search] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  outline-offset: -2px;
+  /* 2 */
+}
+
+/**
+ * Remove the inner padding in Chrome and Safari on macOS.
+ */
+[type=search]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Change font properties to `inherit` in Safari.
+ */
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  /* 1 */
+  font: inherit;
+  /* 2 */
+}
+
+/* Interactive
+   ========================================================================== */
+/*
+ * Add the correct display in Edge, IE 10+, and Firefox.
+ */
+details {
+  display: block;
+}
+
+/*
+ * Add the correct display in all browsers.
+ */
+summary {
+  display: list-item;
+}
+
+/* Misc
+   ========================================================================== */
+/**
+ * Add the correct display in IE 10+.
+ */
+template {
+  display: none;
+}
+
+/**
+ * Add the correct display in IE 10.
+ */
+[hidden] {
+  display: none;
+}
+
+/*
+ * Style
+ */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.3rem;
+  font-size: 4vmin;
+  font-weight: 400;
+  line-height: 1.2;
+  background-color: red;
+  text-align: center;
+}
+
+h1, h2 {
+  font-weight: 600;
+}
+
+strong {
+  font-weight: 500;
+}
+
+a {
+  color: #ffaaaa;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+a:visited {
+  color: #ffc9c9;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  position: relative;
+  padding: 60px;
+}
+.content p {
+  max-width: 36em;
+}
+
+.base-layer {
+  position: relative;
+  color: #222222;
+  background-color: #EEEEEE;
+  z-index: 1;
+}
+
+.parallax-group {
+  color: #EEEEEE;
+  text-shadow: 1px 1px 4px #222222;
+}
+
+footer {
+  color: #EEEEEE;
+  background-color: #222222;
+  padding: 15px;
+  line-height: 1.4;
+  font-size: 16px;
+}
+footer p {
+  margin: 0;
+}
+
+@media (min-width: 800px) {
+  .footer-table {
+    display: table;
+    margin: 0 auto;
+    border-collapse: collapse;
+    table-layout: fixed;
+    line-height: 30px;
+  }
+  .footer-table p {
+    display: table-cell;
+    padding: 0 1em;
+    width: 50%;
+  }
+  .footer-table p:first-child {
+    text-align: right;
+    border-right: 1px solid #363636;
+  }
+}
+
+.screen-height {
+  min-height: 100vh;
+}
+
+.bg-1, .bg-2, .bg-3 {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.bg-1 {
+  background-image: url(/images/sand.jpeg);
+}
+
+.bg-2 {
+  background-image: url(/images/pavement.jpeg);
+}
+
+.bg-3 {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), url(/images/clouds.jpeg);
+}
+
+.arrows:before, .arrows:after {
+  content: "";
+  position: absolute;
+  display: block;
+  left: calc(50% - 30px);
+  border-top: 0 solid #b3b3b3;
+  border-bottom: 0 solid #b3b3b3;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+}
+.arrows:before {
+  top: 10px;
+  border-bottom-width: 30px;
+}
+.arrows:after {
+  bottom: 10px;
+  border-top-width: 30px;
+}
+.arrows.parallax-bg-shallow:before, .arrows.parallax-bg-shallow:after {
+  left: calc(50% - 26px);
+  border-top-color: #8f8f8f;
+  border-bottom-color: #8f8f8f;
+  border-left-width: 26px;
+  border-right-width: 26px;
+}
+.arrows.parallax-bg-shallow:before {
+  top: 60px;
+  border-bottom-width: 26px;
+}
+.arrows.parallax-bg-shallow:after {
+  bottom: 60px;
+  border-top-width: 26px;
+}
+.arrows.parallax-bg-middle:before, .arrows.parallax-bg-middle:after {
+  left: calc(50% - 22px);
+  border-top-color: #6c6c6c;
+  border-bottom-color: #6c6c6c;
+  border-left-width: 22px;
+  border-right-width: 22px;
+}
+.arrows.parallax-bg-middle:before {
+  top: 60px;
+  border-bottom-width: 22px;
+}
+.arrows.parallax-bg-middle:after {
+  bottom: 60px;
+  border-top-width: 22px;
+}
+.arrows.parallax-bg-deep:before, .arrows.parallax-bg-deep:after {
+  left: calc(50% - 18px);
+  border-top-color: #484848;
+  border-bottom-color: #484848;
+  border-left-width: 18px;
+  border-right-width: 18px;
+}
+.arrows.parallax-bg-deep:before {
+  top: 60px;
+  border-bottom-width: 18px;
+}
+.arrows.parallax-bg-deep:after {
+  bottom: 60px;
+  border-top-width: 18px;
+}
+
+.hide-arrows .arrows:before, .hide-arrows .arrows:after {
+  display: none;
+}
+
+#options {
+  position: fixed;
+  top: 30px;
+  left: 30px;
+  font-family: sans-serif;
+  font-size: 1.2rem;
+  z-index: 100;
+  text-align: left;
+  line-height: 1.5;
+  color: #222222;
+  background-color: rgba(238, 238, 238, 0.8);
+  padding: 8px;
+  border-radius: 5px;
+}
+#options input {
+  vertical-align: middle;
+  position: relative;
+  bottom: 0.15em;
+  margin-right: 0.3em;
+}
+
+/*
+ * Utility Functions
+ */
+/*
+ * Utility Mixins
+ */
+/*
+ * Primary Exports
+ */
+.light, .dark .light {
+  background-color: white;
+  color: #171717;
+  border-color: #171717;
+}
+
+.dark, .light .dark {
+  background-color: #171717;
+  color: white;
+  border-color: white;
+}
+
+.no-bg {
+  background-color: transparent !important;
+}
+
+/*
+ * Utility Functions
+ */
+/*
+ * Utility Mixins
+ */
+/*
+ * Primary Exports
+ */
+.light blockquote, .dark .light blockquote, blockquote.light, .dark blockquote.light {
+  color: #787878;
+  border-left-color: #dddddd;
+}
+
+.dark blockquote, .light .dark blockquote, blockquote.dark, .light blockquote.dark {
+  color: #dfdfdf;
+  border-left-color: #494949;
+}
+
+.light pre, .dark .light pre, pre.light, .dark pre.light, .light code, .dark .light code, code.light, .dark code.light {
+  color: #3e3e3e;
+  border-color: #a2a2a2;
+  background-color: gainsboro;
+}
+
+.dark pre, .light .dark pre, pre.dark, .light pre.dark, .dark code, .light .dark code, code.dark, .light code.dark {
+  color: #d8d8d8;
+  border-color: #232323;
+  background-color: #3a3a3a;
+}
+
+.light input[type=text], .dark .light input[type=text], input.light[type=text], .dark input.light[type=text], .light textarea, .dark .light textarea, textarea.light, .dark textarea.light {
+  color: #171717;
+  background: white;
+  border-color: #c5c5c5;
+}
+
+.light input[type=text]::placeholder, .dark .light input[type=text]::placeholder, input.light[type=text]::placeholder, .dark input.light[type=text]::placeholder, .light textarea::placeholder, .dark .light textarea::placeholder, textarea.light::placeholder, .dark textarea.light::placeholder {
+  color: #787878;
+  opacity: 1;
+}
+
+.dark input[type=text], .light .dark input[type=text], input.dark[type=text], .light input.dark[type=text], .dark textarea, .light .dark textarea, textarea.dark, .light textarea.dark {
+  color: white;
+  background: #232323;
+  border-color: #515151;
+}
+
+.dark input[type=text]::placeholder, .light .dark input[type=text]::placeholder, input.dark[type=text]::placeholder, .light input.dark[type=text]::placeholder, .dark textarea::placeholder, .light .dark textarea::placeholder, textarea.dark::placeholder, .light textarea.dark::placeholder {
+  color: #dfdfdf;
+  opacity: 1;
+}
+
+.light a, .dark .light a, a.light, .dark a.light, .light .theme-link, .dark .light .theme-link, .light.theme-link, .dark .light.theme-link {
+  color: royalblue;
+}
+
+.light a:visited, .dark .light a:visited, a.light:visited, .dark a.light:visited, .light .theme-link:visited, .dark .light .theme-link:visited, .light.theme-link:visited, .dark .light.theme-link:visited {
+  color: #849eec;
+}
+
+.light a:hover, .dark .light a:hover, a.light:hover, .dark a.light:hover, .light .theme-link:hover, .dark .light .theme-link:hover, .light.theme-link:hover, .dark .light.theme-link:hover {
+  color: #19399c;
+}
+
+.dark a, .light .dark a, a.dark, .light a.dark, .dark .theme-link, .light .dark .theme-link, .dark.theme-link, .light .dark.theme-link {
+  color: royalblue;
+}
+
+.dark a:visited, .light .dark a:visited, a.dark:visited, .light a.dark:visited, .dark .theme-link:visited, .light .dark .theme-link:visited, .dark.theme-link:visited, .light .dark.theme-link:visited {
+  color: #849eec;
+}
+
+.dark a:hover, .light .dark a:hover, a.dark:hover, .light a.dark:hover, .dark .theme-link:hover, .light .dark .theme-link:hover, .dark.theme-link:hover, .light .dark.theme-link:hover {
+  color: #19399c;
+}
+
+.light .subtle-link, .light .subtle-link:hover, .light .subtle-link:visited, .dark .light .subtle-link, .dark .light .subtle-link:hover, .dark .light .subtle-link:visited, .light.subtle-link, .light.subtle-link:hover, .light.subtle-link:visited, .dark .light.subtle-link, .dark .light.subtle-link:hover, .dark .light.subtle-link:visited {
+  color: #171717;
+}
+
+.dark .subtle-link, .dark .subtle-link:hover, .dark .subtle-link:visited, .light .dark .subtle-link, .light .dark .subtle-link:hover, .light .dark .subtle-link:visited, .dark.subtle-link, .dark.subtle-link:hover, .dark.subtle-link:visited, .light .dark.subtle-link, .light .dark.subtle-link:hover, .light .dark.subtle-link:visited {
+  color: white;
+}
+
+.light .text-light, .dark .light .text-light, .light.text-light, .dark .light.text-light {
+  color: #787878;
+}
+
+.dark .text-light, .light .dark .text-light, .dark.text-light, .light .dark.text-light {
+  color: #dfdfdf;
+}
+
+.light .text-brand, .dark .light .text-brand, .light.text-brand, .dark .light.text-brand {
+  color: royalblue;
+}
+
+.dark .text-brand, .light .dark .text-brand, .dark.text-brand, .light .dark.text-brand {
+  color: royalblue;
+}
+
+.light .theme-bg, .dark .light .theme-bg, .light.theme-bg, .dark .light.theme-bg {
+  background-color: white;
+}
+
+.dark .theme-bg, .light .dark .theme-bg, .dark.theme-bg, .light .dark.theme-bg {
+  background-color: #171717;
+}
+
+.light .overlay, .dark .light .overlay, .light.overlay, .dark .light.overlay {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.dark .overlay, .light .dark .overlay, .dark.overlay, .light .dark.overlay {
+  background-color: rgba(23, 23, 23, 0.5);
+}
+
+.light .heavy-overlay, .dark .light .heavy-overlay, .light.heavy-overlay, .dark .light.heavy-overlay {
+  background-color: rgba(255, 255, 255, 0.75);
+}
+
+.dark .heavy-overlay, .light .dark .heavy-overlay, .dark.heavy-overlay, .light .dark.heavy-overlay {
+  background-color: rgba(23, 23, 23, 0.75);
+}
+
+.light .border-light, .dark .light .border-light, .light.border-light, .dark .light.border-light {
+  border-color: #e8e8e8;
+}
+
+.light .border-x-light, .dark .light .border-x-light, .light.border-x-light, .dark .light.border-x-light {
+  border-color: #f3f3f3;
+}
+
+.dark .border-light, .light .dark .border-light, .dark.border-light, .light .dark.border-light {
+  border-color: #2e2e2e;
+}
+
+.dark .border-x-light, .light .dark .border-x-light, .dark.border-x-light, .light .dark.border-x-light {
+  border-color: #232323;
+}
+
+.light .button, .dark .light .button, .light.button, .dark .light.button {
+  background-color: royalblue;
+}
+
+.light .button, .light .button:hover, .light .button:visited, .dark .light .button, .dark .light .button:hover, .dark .light .button:visited, .light.button, .light.button:hover, .light.button:visited, .dark .light.button, .dark .light.button:hover, .dark .light.button:visited {
+  color: white;
+}
+
+.light .button:hover, .dark .light .button:hover, .light.button:hover, .dark .light.button:hover {
+  background-color: #6787e7;
+}
+
+.light .button.subtle-button, .dark .light .button.subtle-button, .light.button.subtle-button, .dark .light.button.subtle-button {
+  color: royalblue;
+  background-color: white;
+}
+
+.light .button.subtle-button:hover, .dark .light .button.subtle-button:hover, .light.button.subtle-button:hover, .dark .light.button.subtle-button:hover {
+  background-color: #d9e1f9;
+}
+
+.dark .button, .light .dark .button, .dark.button, .light .dark.button {
+  background-color: royalblue;
+}
+
+.dark .button, .dark .button:hover, .dark .button:visited, .light .dark .button, .light .dark .button:hover, .light .dark .button:visited, .dark.button, .dark.button:hover, .dark.button:visited, .light .dark.button, .light .dark.button:hover, .light .dark.button:visited {
+  color: white;
+}
+
+.dark .button:hover, .light .dark .button:hover, .dark.button:hover, .light .dark.button:hover {
+  background-color: #6787e7;
+}
+
+.dark .button.subtle-button, .light .dark .button.subtle-button, .dark.button.subtle-button, .light .dark.button.subtle-button {
+  color: royalblue;
+  background-color: white;
+}
+
+.dark .button.subtle-button:hover, .light .dark .button.subtle-button:hover, .dark.button.subtle-button:hover, .light .dark.button.subtle-button:hover {
+  background-color: #d9e1f9;
+}
+
+.light .button-o, .dark .light .button-o, .light.button-o, .dark .light.button-o {
+  background-color: white;
+  border-color: royalblue;
+}
+
+.light .button-o, .light .button-o:visited, .dark .light .button-o, .dark .light .button-o:visited, .light.button-o, .light.button-o:visited, .dark .light.button-o, .dark .light.button-o:visited {
+  color: royalblue;
+}
+
+.light .button-o:hover, .dark .light .button-o:hover, .light.button-o:hover, .dark .light.button-o:hover {
+  color: white;
+  background-color: royalblue;
+  border-color: royalblue;
+}
+
+.light .button-o.subtle-button:not(:hover), .dark .light .button-o.subtle-button:not(:hover), .light.button-o.subtle-button:not(:hover), .dark .light.button-o.subtle-button:not(:hover) {
+  border-color: #171717;
+}
+
+.light .button-o.subtle-button:not(:hover), .light .button-o.subtle-button:not(:hover):visited, .dark .light .button-o.subtle-button:not(:hover), .dark .light .button-o.subtle-button:not(:hover):visited, .light.button-o.subtle-button:not(:hover), .light.button-o.subtle-button:not(:hover):visited, .dark .light.button-o.subtle-button:not(:hover), .dark .light.button-o.subtle-button:not(:hover):visited {
+  color: #171717;
+}
+
+.dark .button-o, .light .dark .button-o, .dark.button-o, .light .dark.button-o {
+  background-color: #171717;
+  border-color: royalblue;
+}
+
+.dark .button-o, .dark .button-o:visited, .light .dark .button-o, .light .dark .button-o:visited, .dark.button-o, .dark.button-o:visited, .light .dark.button-o, .light .dark.button-o:visited {
+  color: royalblue;
+}
+
+.dark .button-o:hover, .light .dark .button-o:hover, .dark.button-o:hover, .light .dark.button-o:hover {
+  color: white;
+  background-color: royalblue;
+  border-color: royalblue;
+}
+
+.dark .button-o.subtle-button:not(:hover), .light .dark .button-o.subtle-button:not(:hover), .dark.button-o.subtle-button:not(:hover), .light .dark.button-o.subtle-button:not(:hover) {
+  border-color: white;
+}
+
+.dark .button-o.subtle-button:not(:hover), .dark .button-o.subtle-button:not(:hover):visited, .light .dark .button-o.subtle-button:not(:hover), .light .dark .button-o.subtle-button:not(:hover):visited, .dark.button-o.subtle-button:not(:hover), .dark.button-o.subtle-button:not(:hover):visited, .light .dark.button-o.subtle-button:not(:hover), .light .dark.button-o.subtle-button:not(:hover):visited {
+  color: white;
+}
+
+.light .fill-color-theme-text, .dark .light .fill-color-theme-text, .light.fill-color-theme-text, .dark .light.fill-color-theme-text {
+  fill: #171717;
+}
+
+.light .fill-color-theme-bg, .dark .light .fill-color-theme-bg, .light.fill-color-theme-bg, .dark .light.fill-color-theme-bg {
+  fill: white;
+}
+
+.light .fill-color-theme-brand, .dark .light .fill-color-theme-brand, .light.fill-color-theme-brand, .dark .light.fill-color-theme-brand {
+  fill: royalblue;
+}
+
+.dark .fill-color-theme-text, .light .dark .fill-color-theme-text, .dark.fill-color-theme-text, .light .dark.fill-color-theme-text {
+  fill: white;
+}
+
+.dark .fill-color-theme-bg, .light .dark .fill-color-theme-bg, .dark.fill-color-theme-bg, .light .dark.fill-color-theme-bg {
+  fill: #171717;
+}
+
+.dark .fill-color-theme-brand, .light .dark .fill-color-theme-brand, .dark.fill-color-theme-brand, .light .dark.fill-color-theme-brand {
+  fill: royalblue;
+}
+
+.light .stroke-color-theme-text, .dark .light .stroke-color-theme-text, .light.stroke-color-theme-text, .dark .light.stroke-color-theme-text {
+  stroke: #171717;
+}
+
+.light .stroke-color-theme-bg, .dark .light .stroke-color-theme-bg, .light.stroke-color-theme-bg, .dark .light.stroke-color-theme-bg {
+  stroke: white;
+}
+
+.light .stroke-color-theme-brand, .dark .light .stroke-color-theme-brand, .light.stroke-color-theme-brand, .dark .light.stroke-color-theme-brand {
+  stroke: royalblue;
+}
+
+.dark .stroke-color-theme-text, .light .dark .stroke-color-theme-text, .dark.stroke-color-theme-text, .light .dark.stroke-color-theme-text {
+  stroke: white;
+}
+
+.dark .stroke-color-theme-bg, .light .dark .stroke-color-theme-bg, .dark.stroke-color-theme-bg, .light .dark.stroke-color-theme-bg {
+  stroke: #171717;
+}
+
+.dark .stroke-color-theme-brand, .light .dark .stroke-color-theme-brand, .dark.stroke-color-theme-brand, .light .dark.stroke-color-theme-brand {
+  stroke: royalblue;
+}
+
+.brand, .light .brand, .dark .brand {
+  background-color: royalblue;
+  color: white;
+  border-color: white;
+}

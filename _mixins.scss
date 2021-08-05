@@ -10,9 +10,9 @@
 $theme-depth: 1 !default; // controls the depth (in a series nested themes) at which an element still inherits the styles of its immediate ancestor theme. stylesheets get much larger and more complex as this number increases, so it should be set as low as possible.
 $theme-classes: ();
 
-/*
- * Utility Functions
- */
+//
+// Utility Functions
+//
 
 @function classify($str) {
     $look-for: '.' '#' '*' ',' '>' '+' '~' '[' ':';
@@ -43,9 +43,9 @@ $theme-classes: ();
     @return #{$selectors};
 }
 
-/*
- * Utility Mixins
- */
+//
+// Utility Mixins
+//
 
 @mixin accessibility($name, $background-color, $text-color, $brand-color: null, $accessibility: "AA") {
     $aa: string.to-upper-case($accessibility) == "AA";
@@ -111,9 +111,9 @@ $theme-classes: ();
     )) !global;
 }
 
-/*
- * Primary Exports
- */
+//
+// Primary Exports
+//
 
 @mixin theme($class: &, $settings: null, $bg: null, $text: null, $brand: null, $depth: $theme-depth) {
     $class: list.nth($class, list.length($class));
