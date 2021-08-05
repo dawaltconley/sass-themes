@@ -1,6 +1,6 @@
 # sass-themes
 
-This module provides functions, mixins, and stylesheets for sass themes: a special set of classes which define colors through inheritance.
+This module provides functions, mixins, and stylesheets for sass themes: a special set of classes that define colors through inheritance.
 
 ## Themes
 
@@ -91,8 +91,8 @@ $themes: (
     // map of themes
 );
 
-@use "build" with ($themes: $themes);
-@use "styles/all";
+@use "sass-themes/build" with ($themes: $themes);
+@use "sass-themes/styles/all";
 ```
 
 ## Themes and specificity
@@ -127,12 +127,12 @@ This is what the `$theme-depth` setting is for. `$theme-depth` controls the leve
 
 As you can see, increasing the `$theme-depth` makes each theme class _significantly_ heavier—even more so if you have three or four theme classes! The default value is 1 and there is rarely a good reason to set it higher (why are you nesting so many themes inside each other, anyway?!).
 
-Even then, it's best used with a post-processor like [uncss](https://www.npmjs.com/package/uncss).
+Even with a `$theme-depth` of 1, is best paired with a post-processor like [uncss](https://www.npmjs.com/package/uncss).
 
-You set the `$theme-depth` when using the `_manifest.scss`, `_build.scss`, and `_mixins.scss` partials; whichever you are using to build your themes.
+You set the `$theme-depth` when using the `_manifest.scss`, `_build.scss`, and `_mixins.scss` partials; whichever you are using to build your themes. This will also set it for all mixins and theme styles `@use`d afterwards.
 
 ```scss
-@use "mixins" with ($theme-depth: 0); // nested themes handled by cascade
+@use "sass-themes/mixins" with ($theme-depth: 0); // nested themes handled by cascade
 @include constructor((
     // map of theme styles
 ));
