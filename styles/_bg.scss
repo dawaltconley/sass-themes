@@ -1,5 +1,5 @@
 @use "sass:map";
-@use "../themes" as t;
+@use "../mixins" as t;
 
 $overlay: 0.5 !default;
 $heavy-overlay: 0.75 !default;

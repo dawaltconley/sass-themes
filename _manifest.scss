@@ -1,0 +1,36 @@
+$themes: (
+    "light": (
+        text-color: #171717,
+        background-color: white,
+        brand-color: royalblue,
+    ),
+    "dark": (
+        text-color: white,
+        background-color: #171717,
+        brand-color: royalblue,
+    ),
+) !default;
+$theme-depth: 1 !default;
+
+$bg-overlay: 0.5 !default;
+$bg-heavy-overlay: 0.75 !default;
+$border-light: 10% !default;
+$border-x-light: 5% !default;
+$btn-hover-mix: 80% !default;
+
+@forward "mixins" with (
+    $theme-depth: $theme-depth
+)
+
+@forward "build" with (
+    $themes: $themes,
+    $theme-depth: $theme-depth
+);
+
+@forward "styles/all" with (
+    $bg-overlay: $bg-overlay
+    $bg-heavy-overlay: $bg-heavy-overlay
+    $border-light: $border-light
+    $border-x-light: $border-x-light
+    $btn-hover-mix: $btn-hover-mix
+);

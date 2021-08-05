@@ -1,6 +1,6 @@
 @use "sass:color";
 @use "sass:map";
-@use "../themes" as t;
+@use "../mixins" as t;
 
 $hover-mix: 80% !default;
 

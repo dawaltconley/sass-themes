@@ -17,8 +17,8 @@ $themes: (
 );
 
 @use "normalize";
-@use "partials/constructor" with ($themes: $themes);
-@use "partials/classes";
+@use "build" with ($themes: $themes);
+@use "styles/all";
 
 .no-bg {
     background-color: transparent !important;

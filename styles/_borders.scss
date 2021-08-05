@@ -1,6 +1,6 @@
 @use "sass:color";
 @use "sass:map";
-@use "../themes" as t;
+@use "../mixins" as t;
 
 $light: 10% !default;
 $x-light: 5% !default;

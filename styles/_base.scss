@@ -1,6 +1,6 @@
 @use "sass:color";
 @use "sass:map";
-@use "../themes" as t;
+@use "../mixins" as t;
 
 @function _m($args...) {
     @return map.get($args...);

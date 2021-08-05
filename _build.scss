@@ -12,5 +12,5 @@ $themes: (
 ) !default;
 $theme-depth: 1 !default;
 
-@use "themes" with ($theme-depth: $theme-depth);
-@include themes.constructor($themes);
+@use "mixins" with ($theme-depth: $theme-depth);
+@include mixins.constructor($themes);
