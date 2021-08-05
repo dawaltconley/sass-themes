@@ -6,7 +6,9 @@ module.exports = eleventyConfig => {
         dir: {
             input: './eleventy',
             output: './eleventy/_site',
+            layouts: '_layouts',
+            data: '_data'
         },
-        htmlTemplateEngine: 'njk'
+        htmlTemplateEngine: 'liquid'
     };
 };

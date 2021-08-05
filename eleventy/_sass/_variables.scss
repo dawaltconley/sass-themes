@@ -1,0 +1,120 @@
+// Build
+
+$baseurl:               "" !default;
+
+$native-scroll:         false !default;
+
+$fa-icons:              () !default;
+
+$device-dp:             () !default;
+
+$device-dppx:           () !default;
+
+// Basic Variables
+
+$base-font-family:      "Raleway", sans-serif;
+$base-font-weight:      400;
+$base-line-height:      1.4;
+$base-line-length:      36em;
+
+$heading-sizes:          2em, 1.2em, 1.1em;
+$heading-font-family:    null;
+$heading-font-weight:    600;
+
+$text-shadow:           1px 1px 4px rgba(0, 0, 0, 0.2);
+$full-shadow:           0 0 0.24em black;
+
+$perspective:           2000px;
+
+// Images
+
+$splash-bg:             url("#{$baseurl}/images/sand.jpeg");
+
+// Generated Classes
+
+$themes: (
+    "light": (
+        text-color: #171717,
+        background-color: white,
+        brand-color: royalblue,
+    ),
+    "dark": (
+        text-color: white,
+        background-color: #171717,
+        brand-color: royalblue,
+    ),
+    "brand": (
+        text-color: blue,
+        background-color: #171717,
+        brand-color: royalblue,
+    ),
+);
+
+$theme-depth: 2; // controls the depth (in a series nested themes) at which an element still inherits the styles of its immediate ancestor theme. stylesheets get much larger and more complex as this number increases, so it should be set as low as possible.
+
+$font-sizes: (
+    "base": 1.25rem,
+    "icon": 1.5rem,
+);
+
+$base-font-size: map-get($font-sizes, base);
+
+$sizes: (
+    "full":             100%,
+    "half":             50%,
+    "screen":           100vw 100vh,
+    "half-screen":      50vw 50vh,
+    "header":           null 56px,
+    "gravatar":         80px,
+    "no":               0,
+    "auto":             auto,
+);
+
+$spacings: (
+    "auto":     auto,
+    "0":        0,
+    "xxs":      5px,
+    "xs":       10px,
+    "s":        15px,
+    "m":        30px,
+    "l":        60px,
+    "full":     100%,
+);
+
+$default-spacing: map-get($spacings, m);
+
+$borders: (
+    "basic": (
+        width: 1px,
+        style: solid,
+    ),
+);
+
+$z-range: -9, 9;
+
+$object-fit-values: cover;
+$object-position-classes: true;
+
+$transitions: (
+    "short":    .25s,
+    "default": .3s,
+    "long":     1s,
+);
+
+$t-icons: map-get($transitions, default);
+
+// Breakpoints
+
+$bp: (
+    "large":    1000px,
+    "laptop":   800px,
+    "mobile":   600px,
+    "header":   600px,
+);
+
+// Functional
+
+$sides: "top", "bottom", "left", "right";
+$side: null;
+
+$angles: ("top": 0deg, "bottom": 180deg, "left": 90deg, "right": 270deg);

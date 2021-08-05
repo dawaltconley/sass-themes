@@ -1,8 +1,3 @@
-@use "normalize";
-
-@use "style";
-@use "partials/themes";
-
 $themes: (
     "light": (
         text-color: #171717,
@@ -17,14 +12,42 @@ $themes: (
     "brand": (
         text-color: white,
         background-color: royalblue,
-        brand-color: teal,
+        brand-color: #bef1f1,
     ),
 );
 
-@include themes.constructor($themes);
+@use "normalize";
+@use "partials/constructor" with ($themes: $themes);
+@use "partials/classes";
 
 .no-bg {
     background-color: transparent !important;
 }
 
-@import "partials/classes";
+@import
+    "../_sass/variables",
+    "../_sass/functions/manifest",
+    "../_sass/mixins/manifest";
+
+@import
+    "../_sass/base",
+    "../_sass/display",
+    "../_sass/layout",
+    "../_sass/containers",
+    "../_sass/wrappers",
+    "../_sass/inline",
+    "../_sass/tables",
+    "../_sass/flexbox",
+    "../_sass/text",
+    "../_sass/links",
+    "../_sass/images",
+    "../_sass/shadows",
+    "../_sass/icons",
+    "../_sass/transforms",
+    "../_sass/pseudo",
+    "../_sass/transitions",
+    "../_sass/header",
+    "../_sass/parallax",
+    "../_sass/media-queries",
+    "../_sass/javascript"
+;

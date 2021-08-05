@@ -1,0 +1,34 @@
+{% capture blank %}
+    {% assign global_scope_return = return %}
+    {% assign global_scope_icon_type = icon_type %}
+    {% assign global_scope_icon_link = icon_link %}
+    {% assign global_scope_icon_style = icon_style %}
+    {% assign global_scope_blank = blank %}
+    {% assign global_scope_contact = contact %}
+
+    {% assign return = nil %}
+    {% for contact in include.icon_set %}
+        {% if contact.type %}
+            {% assign icon_type = contact.type %}
+            {% assign icon_link = contact.link %}
+        {% else %}
+            {% assign icon_type = contact[0] %}
+            {% assign icon_link = contact[1] %}
+        {% endif %}
+        {% assign icon_style = include.style %}
+        {% if icon_link != nil %}
+            {% capture return %}<!--
+                -->{{ return }}<!--
+                {% if include.list %}--><li><!--{% endif %}
+                    -->{% include media-icon.liquid type=icon_type link=icon_link style=icon_style microdata=include.microdata analytics=include.analytics %}<!--
+                {% if include.list %}--></li><!--{% endif %}
+         -->{% endcapture %}
+        {% endif %}
+    {% endfor %}
+
+    {% assign icon_type = global_scope_icon_type %}
+    {% assign icon_link = global_scope_icon_link %}
+    {% assign icon_style = global_scope_icon_style %}
+    {% assign blank = global_scope_blank %}
+    {% assign contact = global_scope_contact %}
+{% endcapture %}{{ return | strip | strip_newlines }}{% assign return = global_scope_return %}

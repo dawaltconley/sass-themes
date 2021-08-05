@@ -1,0 +1,129 @@
+/*
+ * Typography
+ */
+
+@for $i from 1 through 9 {
+    $weight: $i * 100;
+    .fw-#{$weight} {
+        font-weight: $weight;
+    }
+}
+
+.fw-normal {
+    font-weight: normal;
+}
+
+.fw-bold {
+    font-weight: bold;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.shadow {
+    text-shadow: $text-shadow;
+}
+
+.full-shadow {
+    text-shadow: $full-shadow;
+}
+
+.font-smoothing-normal {
+    -webkit-font-smoothing: subpixel-antialiased !important;
+    -moz-osx-font-smoothing: auto !important;
+}
+
+.font-smoothing-dark {
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+}
+
+/*
+ * Text
+ */
+
+.text-left {
+    text-align: left;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-justify {
+    text-align: justify;
+}
+
+.text-justify-full {
+    @extend .text-justify;
+
+    &::after {
+        content: "";
+        display: inline-block;
+        width: 100%;
+    }
+
+    @supports (text-align-last: justify) {
+        text-align-last: justify;
+
+        &::after {
+            display: none;
+        }
+    }
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.lowercase {
+    text-transform: lowercase;
+}
+
+.capitalize {
+    text-transform: capitalize;
+}
+
+.fs-larger {
+    font-size: if(map-has-key($font-sizes, larger), map-get($font-sizes, larger), larger);
+}
+
+.fs-smaller {
+    font-size: if(map-has-key($font-sizes, smaller), map-get($font-sizes, smaller), smaller);
+}
+
+@each $name, $size in $font-sizes {
+    @if not index(larger smaller, $name) {
+        .fs-#{$name} {
+            font-size: $size;
+        }
+    }
+}
+
+.no-wrap {
+    white-space: nowrap;
+}
+
+.avoid-wrap {
+    @extend .no-wrap;
+
+    @supports(text-wrap: avoid) {
+        white-space: initial;
+        white-space: unset;
+        text-wrap: avoid;
+    }
+}
+
+.no-select {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}

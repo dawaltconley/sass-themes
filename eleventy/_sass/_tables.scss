@@ -1,0 +1,24 @@
+/*
+ * Tables
+ */
+
+.table-fixed {
+    @extend .table;
+    table-layout: fixed;
+}
+
+.v-top {
+    vertical-align: top;
+}
+
+.v-center {
+    vertical-align: middle;
+}
+
+.v-bottom {
+    vertical-align: bottom;
+}
+
+.border-collapse {
+    border-collapse: collapse;
+}

@@ -1,0 +1,42 @@
+{% capture blank %}
+  {% if page.parallax %}
+    {% assign parallax = page.parallax %}
+  {% elsif layout.parallax %}
+    {% assign parallax = layout.parallax %}
+  {% elsif page.collection.parallax %}
+    {% assign parallax = page.collection.parallax %}
+  {% endif %}
+
+  {% if page.itemtype %}
+    {% assign itemtype = page.itemtype %}
+  {% elsif layout.itemtype %}
+    {% assign itemtype = layout.itemtype %}
+  {% elsif page.collection.itemtype %}
+    {% assign itemtype = page.collection.itemtype %}
+  {% endif %}
+{% endcapture %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+  {% include head.html %}
+
+  <body class="{% unless parallax %} flex-col flex-none screen-height-min {% else %} parallax-body {% endunless %}" {% if itemtype %} itemscope itemtype="{{ itemtype }}" {% endif %}>
+
+    {% if parallax %}
+    <div class="flex-col flex-none parallax-page">
+    {% endif %}
+
+      {{ content }}
+
+      {% include footer.html %}
+
+    {% if parallax %}
+    </div>
+    {% endif %}
+
+    {% include scripts.html %}
+
+  </body>
+
+</html>

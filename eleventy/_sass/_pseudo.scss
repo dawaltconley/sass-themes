@@ -1,0 +1,169 @@
+/*
+ * Hover
+ */
+
+.hover-display {
+    @include no-hover {
+        display: none;
+    }
+}
+
+.hover-fade-in {
+    opacity: 0;
+    -webkit-transition-property: opacity;
+    transition-property: opacity;
+
+    @include hover {
+        opacity: 1;
+    }
+}
+
+.hover-scale {
+    transform: scale(1) translateZ(0);
+    -webkit-transition-property: transform;
+    transition-property: transform;
+
+    @include hover {
+        transform: scale(1.05) translateZ(0);
+    }
+}
+
+.hover-lighten {
+    @extend .relative;
+
+    &::after {
+        @extend .fill-parent, .t-inherit;
+        content: "";
+        background-color: rgba(white, 0);
+        -webkit-transition-property: background-color;
+        transition-property: background-color;
+    }
+
+    @include hover {
+        &::after {
+            background-color: rgba(white, 0.1);
+        }
+    }
+}
+
+.hover-darken {
+    @extend .relative;
+
+    &::after {
+        @extend .fill-parent, .t-inherit;
+        content: "";
+        background-color: rgba(black, 0);
+        -webkit-transition-property: background-color;
+        transition-property: background-color;
+    }
+
+    @include hover {
+        &::after {
+            background-color: rgba(black, 0.1);
+        }
+    }
+}
+
+.hover-blur {
+    @include blur(0);
+    -webkit-transition-property: -webkit-filter;
+    transition-property: filter;
+
+    @include hover {
+        @include blur(5px);
+    }
+}
+
+%hover-shadow {
+    @extend .relative;
+
+    &::before {
+        @extend .fill-parent;
+        content: "";
+        opacity: 0;
+        transition-duration: inherit;
+        transition-property: opacity;
+        transition-timing-function: ease-out;
+    }
+
+    @include hover {
+        &::before {
+            opacity: 1;
+        }
+    }
+}
+
+.hover-shadow {
+    @each $side in $sides {
+        &-#{str-slice($side, 1, 1)} {
+            @extend %hover-shadow;
+
+            &::before {
+                background: linear-gradient(map-get($angles, $side), rgba(black, 0.3), rgba(black, 0));
+            }
+        }
+    }
+}
+
+.hover-drop-shadow {
+    $size: 2px;
+    transition-property: box-shadow;
+
+    @include hover {
+        box-shadow: $size $size (2*$size) rgba(black, 0.2);
+    }
+}
+
+/*
+ * Target
+ */
+
+.target-display {
+    @include no-target {
+        display: none;
+    }
+}
+
+.target-hide {
+    @include target {
+        display: none;
+    }
+}
+
+.target-max-height-expand {
+    transition-property: max-height;
+    transition-timing-function: ease-out;
+
+    @include target {
+        max-height: 100vw;
+    }
+}
+
+/*
+ * Focus
+ */
+
+.no-focus:focus {
+    outline: none;
+}
+
+/*
+ * Pseudo Element
+ */
+
+.pseudo-fill-parent::before {
+    @extend .fill-parent;
+    content: "";
+}
+
+.fade-bottom {
+    @extend .relative;
+
+    &::after {
+        content: "";
+        position: absolute;
+        left: 0; right: 0; bottom: 0;
+        height: map-get($spacings, l);
+        pointer-events: none;
+    }
+}

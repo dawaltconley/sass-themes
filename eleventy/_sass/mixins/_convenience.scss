@@ -1,0 +1,191 @@
+@mixin mq($breakpoints: $bp, $queries: (lt: max, gt: min)) {
+    $bp-map: ();
+    @each $name, $value in $breakpoints {
+        $bp-map: map-merge($bp-map, ($name: if($value, $value, check-bp($name))));
+    }
+    @each $prefix, $query in $queries {
+        $sorted-bp: map-sort-units($bp-map, $order: px em);
+        @for $i from 1 through length($sorted-bp) {
+            $unit-set: map-sort(nth($sorted-bp, $i));
+            @if $query == "max" {
+                $unit-set: map-reverse($unit-set);
+            }
+            $sorted-bp: set-nth($sorted-bp, $i, $unit-set);
+        }
+        $sorted-bp: merge-all($sorted-bp);
+
+        $last-bp: null;
+        @each $name, $value in $sorted-bp {
+            @if $value == map-get($sorted-bp, $last-bp) {
+                @each $selector in selector-parse(#{&}) {
+                    @at-root #{$selector}-#{$prefix}-#{$name} {
+                        @extend #{$selector}-#{$prefix}-#{$last-bp};
+                    }
+                }
+            } @else {
+                @if ($query == "min") and (index('px', unit($value))) {
+                    $value: $value + 1;
+                }
+                &-#{$prefix}-#{$name} {
+                    @media screen and (#{$query}-width: $value) {
+                        @content;
+                    }
+                }
+                $last-bp: $name;
+            }
+        }
+    }
+}
+
+@mixin fixed-ratio($x, $y, $width: 100%) {
+    width: $width;
+    height: 0;
+    padding-top: $y/$x * $width;
+}
+
+@mixin bg-video-wrapper($x: 100vw, $y: 100vh, $ratio: 16/9) {
+    @if unit($x) != vw or unit($y) != vh {
+        @error "Error in bg-video-wrapper mixin: height and width of the wrapper must be specified in the corresponding viewport unit.";
+    }
+
+    max-width: $x;
+    max-height: $y;
+
+    > iframe {
+        width: $x;
+        height: $x / $ratio;
+        min-width: $y * $ratio;
+        min-height: $y;
+    }
+}
+
+@mixin columns($columns, $spacing: 0px, $offset: null) {
+    @if not($columns > 1) { @error "columns mixin must have more than one column." }
+    $width: 100% / $columns;
+    $row-end: $columns + "n";
+    @if $offset {
+        $row-end: $row-end + "+#{$offset}";
+    }
+
+    width: calc(#{$width} - #{($spacing * ($columns - 1) / $columns)});
+    margin-right: $spacing;
+    margin-bottom: $spacing;
+
+    &:nth-child(#{$row-end}), &:last-child {
+        margin-right: 0;
+    }
+}
+
+@mixin table-columns($spacing: $default-spacing) {
+    display: table;
+    table-layout: fixed;
+    width: calc(100% + (#{$spacing} * 2));
+    margin: -$spacing;
+    border-spacing: $spacing;
+
+    & .column {
+        display: table-cell;
+    }
+}
+
+@mixin inline-columns($breakpoints, $spacing: null) {
+    $bp-col-map: ();
+    @extend .font-0;
+
+    > * {
+        @extend .inline-block, .full-width;
+        margin-bottom: $spacing;
+
+        @for $i from 1 through length($breakpoints) {
+            $breakpoint: nth($breakpoints, $i);
+            $columns: null;
+            @if length($breakpoint) > 2 {
+                @error "the responsive-columns mixin only accepts one or two items per breakpoint: the breakpoint and (optionally) the number of columns.";
+            } @else if length($breakpoint) == 2 {
+                $columns: nth($breakpoint, 2);
+                $breakpoint: nth($breakpoint, 1);
+            } @else if type-of($breakpoint) == map {
+                $columns: nth(map-values($breakpoint), 1);
+                $breakpoint: nth(map-keys($breakpoint), 1);
+            }
+
+            @if type-of($breakpoint) == string and map-has-key($bp, $breakpoint) {
+                $breakpoint: map-get($bp, $breakpoint);
+            } @else if type-of($breakpoint) == string {
+                @error 'responsive-columns mixin: breakpoint name #{$breakpoint} is not a valid breakpoint name; must match a key in the global $bp map.'
+            } @else if type-of($breakpoint) != number {
+                @error 'responsive-columns mixin: breakpoint must be either a number or a string identifier; encountered #{$breakpoint} which is a #{type-of($breakpoint)}'
+            }
+
+            $bp-col-map: map-merge($bp-col-map, ($breakpoint: $columns));
+        }
+
+        $bp-col-map: map-sort($bp-col-map, keys);
+        $last-col: 1;
+
+        @for $i from 1 through length($bp-col-map) {
+            $bp: nth(nth($bp-col-map, $i), 1);
+            $col: nth(nth($bp-col-map, $i), 2);
+            @if not $col { $col: $last-col + 1; }
+            $query: "screen and (min-width: #{$bp + 1px})";
+            @if $i < length($bp-col-map) {
+                $bp-next: nth(nth($bp-col-map, $i+1), 1);
+                $query: "#{$query} and (max-width: #{$bp-next})";
+                $last-col: $col;
+            }
+            @media #{$query} {
+                @include columns($col, $spacing);
+            }
+        }
+    }
+}
+
+@mixin blur($blur) {
+    -webkit-filter: blur($blur);
+    filter: blur($blur);
+}
+
+// This mixin applies the effects its contents when a element
+// with class "hover" (either same element or nearest parent) is hovered
+@mixin hover($hover-class: "hover") {
+    @at-root &.#{$hover-class}:hover,
+    #{last-selector(&, ".#{$hover-class}:hover >", ":not(.#{$hover-class})")},
+    #{last-selector(&, ".#{$hover-class}:hover *:not(.#{$hover-class})", ":not(.#{$hover-class})")} {
+        @content;
+    }
+}
+
+@mixin no-hover($hover-class: "hover") {
+    @at-root &.#{$hover-class}:not(:hover),
+    #{last-selector(&, ".#{$hover-class}:not(:hover) >", ":not(.#{$hover-class})")},
+    #{last-selector(&, ".#{$hover-class}:not(:hover) *:not(.#{$hover-class})", ":not(.#{$hover-class})")} {
+        @content;
+    }
+}
+
+// same idea with a target class
+@mixin target($target-class: "target") {
+    @at-root &.#{$target-class}:target,
+    #{last-selector(&, ".#{$target-class}:target >", ":not(.#{$target-class})")},
+    #{last-selector(&, ".#{$target-class}:target *:not(.#{$target-class})", ":not(.#{$target-class})")} {
+        @content;
+    }
+}
+
+@mixin no-target($target-class: "target") {
+    @at-root &.#{$target-class}:not(:target),
+    #{last-selector(&, ".#{$target-class}:not(:target) >", ":not(#{$target-class})")},
+    #{last-selector(&, ".#{$target-class}:not(:target) *:not(.#{$target-class})", ":not(.#{$target-class})")} {
+        @content;
+    }
+}
+
+@mixin transform($transform) {
+    -webkit-transform: $transform;
+    transform: $transform;
+
+    &.hw-accel, &.hw-accel-deep, .hw-accel-deep & {
+        -webkit-transform: $transform translateZ(0);
+        transform: $transform translateZ(0);
+    }
+}
