@@ -6,9 +6,10 @@
 
 .button {
     @include t.themeify using ($t) {
+        $bg: map.get($t,'bg');
+        $text: map.get($t,'text');
         $button-bg: map.get($t,'button','bg');
         $button-text: map.get($t,'button','text');
-        $text-color: map.get($t,'text');
 
         & {
             background-color: $button-bg;
@@ -32,7 +33,7 @@
         }
 
         &-o {
-            background-color: map.get($t,'bg');
+            background-color: $bg;
             border-color: $button-bg;
 
             &, &:visited {
@@ -46,10 +47,10 @@
             }
 
             &.subtle-button:not(:hover) {
-                border-color: $text-color;
+                border-color: $text;
 
                 &, &:visited {
-                    color: $text-color;
+                    color: $text;
                 }
             }
         }
