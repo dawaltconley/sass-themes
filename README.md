@@ -137,3 +137,22 @@ You set the `$theme-depth` when using the `_manifest.scss`, `_build.scss`, and `
     // map of theme styles
 ));
 ```
+
+## Partials
+
+The structure of partials in the package looks like this:
+
+```
+.
+├── _build.scss
+├── _manifest.scss
+├── _mixins.scss
+└── styles
+    ├── _all.scss
+    ├── _base.scss
+    ├── _bg.scss
+    ├── _borders.scss
+    ├── _buttons.scss
+    ├── _svg.scss
+    └── _text.scss
+```
