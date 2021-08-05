@@ -21,12 +21,13 @@ pre, code {
     @include t.themeify using ($t) {
         $text: _m($t,'text');
         $bg: _m($t,'bg');
+        $light: _m($t,'light');
 
         $ld-tx-bg: t.ld($text, $bg);
-        $box-color: color.adjust($bg, $lightness: $ld-tx-bg * if(_m($t,'light'), -15%, 15%));
+        $box-color: color.adjust($bg, $lightness: $ld-tx-bg * if($light, -15%, 15%));
         $box-color: color.adjust($box-color, $saturation: -(color.saturation($box-color) * 0.5) );
         color: color.mix($text, $box-color, 80%);
-        border-color: color.adjust($box-color, $lightness: -($ld-tx-bg * if(_m($t,'light'), 25%, 10%)));
+        border-color: color.adjust($box-color, $lightness: -($ld-tx-bg * if($light, 25%, 10%)));
         background-color: $box-color;
     }
 }
@@ -35,9 +36,10 @@ input[type="text"], textarea {
     @include t.themeify using ($t) {
         $text: _m($t,'text');
         $bg: _m($t,'bg');
+        $light: _m($t,'light');
 
         color: $text;
-        background: color.mix($text, $bg, if(_m($t,'light'), 0%, 5%));
+        background: color.mix($text, $bg, if($light, 0%, 5%));
         border-color: color.mix($text, $bg, 25%);
 
         &::placeholder {
@@ -51,13 +53,14 @@ a, .theme-link {
     @include t.themeify using ($t) {
         $brand: _m($t,'brand');
         @if $brand {
+            $light: _m($t,'light');
             $ld-br-tx: t.ld($brand, _m($t,'text'));
             $ld-br-bg: t.ld($brand, _m($t,'bg'));
 
             color: $brand;
 
-            &:visited { color: color.adjust($brand, $lightness: if(_m($t,'light'), $ld-br-bg, $ld-br-tx) * 35%); }
-            &:hover { color: color.adjust($brand, $lightness: -(if(_m($t,'light'), $ld-br-tx, $ld-br-bg) * 45%)); }
+            &:visited { color: color.adjust($brand, $lightness: if($light, $ld-br-bg, $ld-br-tx) * 35%); }
+            &:hover { color: color.adjust($brand, $lightness: if($light, $ld-br-tx, $ld-br-bg) * -45%); }
         }
     }
 }
