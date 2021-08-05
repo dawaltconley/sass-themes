@@ -1,0 +1,23 @@
+@use "sass:map";
+@use "../themes" as *;
+
+// Background
+
+.theme-bg {
+    @include themeify using ($theme) {
+        background-color: map.get($theme,'bg');
+    }
+}
+
+.overlay {
+    @include themeify using ($theme) {
+        background-color: rgba(map.get($theme,'bg'), 0.5);
+    }
+}
+
+.heavy-overlay {
+    @include themeify using ($theme) {
+        background-color: rgba(map.get($theme,'bg'), 0.75);
+    }
+}
+

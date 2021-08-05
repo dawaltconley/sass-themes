@@ -1,0 +1,21 @@
+@use "sass:color";
+@use "sass:map";
+@use "../themes" as *;
+
+// Borders
+
+.border {
+    @include themeify using ($theme) {
+        $text: map.get($theme,'text');
+        $bg: map.get($theme,'bg');
+
+        &-light {
+            border-color: color.mix($text, $bg, 10%);
+        }
+
+        &-x-light {
+            border-color: color.mix($text, $bg, 5%);
+        }
+    }
+}
+

@@ -1,0 +1,71 @@
+@use "sass:color";
+@use "sass:map";
+@use "../themes" as *;
+
+@function _m($args...) {
+    @return map.get($args...);
+}
+
+// Base
+
+blockquote {
+    @include themeify using ($theme) {
+        $text: _m($theme, text-light);
+        $bg: _m($theme, bg);
+        color: $text;
+        border-left-color: color.mix($text, $bg, 25%);
+    }
+}
+
+pre, code {
+    @include themeify using ($t) {
+        $text: _m($t,'text');
+        $bg: _m($t,'bg');
+
+        $ld-tx-bg: ld($text, $bg);
+        $box-color: color.adjust($bg, $lightness: $ld-tx-bg * if(_m($t,'light'), -15%, 15%));
+        $box-color: color.adjust($box-color, $saturation: -(color.saturation($box-color) * 0.5) );
+        color: color.mix($text, $box-color, 80%);
+        border-color: color.adjust($box-color, $lightness: -($ld-tx-bg * if(_m($t,'light'), 25%, 10%)));
+        background-color: $box-color;
+    }
+}
+
+input[type="text"], textarea {
+    @include themeify using ($t) {
+        $text: _m($t,'text');
+        $bg: _m($t,'bg');
+
+        color: $text;
+        background: color.mix($text, $bg, if(_m($t,'light'), 0%, 5%));
+        border-color: color.mix($text, $bg, 25%);
+
+        &::placeholder {
+            color: _m($t,'text-light');
+            opacity: 1;
+        }
+    }
+}
+
+a, .theme-link {
+    @include themeify using ($t) {
+        $brand: _m($t,'brand');
+        @if $brand {
+            $ld-br-tx: ld($brand, _m($t,'text'));
+            $ld-br-bg: ld($brand, _m($t,'bg'));
+
+            color: $brand;
+
+            &:visited { color: color.adjust($brand, $lightness: if(_m($t,'light'), $ld-br-bg, $ld-br-tx) * 35%); }
+            &:hover { color: color.adjust($brand, $lightness: -(if(_m($t,'light'), $ld-br-tx, $ld-br-bg) * 45%)); }
+        }
+    }
+}
+
+.subtle-link {
+    @include themeify using ($theme) {
+        &, &:hover, &:visited {
+            color: _m($theme,'text');
+        }
+    }
+}

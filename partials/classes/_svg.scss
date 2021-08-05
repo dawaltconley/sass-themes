@@ -1,0 +1,32 @@
+@use "sass:map";
+@use "../themes" as *;
+
+// SVG
+
+.fill-color-theme {
+    @include themeify using ($theme) {
+        &-text {
+            fill: map.get($theme,'text');
+        }
+        &-bg {
+            fill: map.get($theme,'bg');
+        }
+        &-brand {
+            fill: map.get($theme,'brand');
+        }
+    }
+}
+
+.stroke-color-theme {
+    @include themeify using ($theme) {
+        &-text {
+            stroke: map.get($theme,'text');
+        }
+        &-bg {
+            stroke: map.get($theme,'bg');
+        }
+        &-brand {
+            stroke: map.get($theme,'brand');
+        }
+    }
+}

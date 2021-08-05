@@ -1,0 +1,60 @@
+@use "sass:color";
+@use "sass:map";
+@use "../themes" as *;
+
+// Buttons
+
+.button {
+    @include themeify using ($t) {
+        $bg: map.get($t,'button','bg');
+        $text: map.get($t,'button','text');
+        background-color: $bg;
+
+        &, &:hover, &:visited {
+            color: $text;
+        }
+
+        &:hover {
+            background-color: color.mix($bg, $text, 80%);
+        }
+
+        &.subtle-button {
+            color: $bg;
+            background-color: $text;
+
+            &:hover {
+                background-color: color.mix($text, $bg, 80%);
+            }
+        }
+    }
+}
+
+.button-o {
+    @include themeify using ($t) {
+        $text-color: map.get($t,'text');
+        $button-color: map.get($t,'button','bg');
+        $button-text: map.get($t,'button','text'); 
+
+        background-color: map.get($t,'bg');
+        border-color: $button-color;
+
+        &, &:visited {
+            color: $button-color;
+        }
+
+        &:hover {
+            color: $button-text;
+            background-color: $button-color;
+            border-color: $button-color;
+        }
+
+        &.subtle-button:not(:hover) {
+            border-color: $text-color;
+
+            &, &:visited {
+                color: $text-color;
+            }
+        }
+    }
+}
+
