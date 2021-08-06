@@ -32,6 +32,7 @@
   "homepage": "https://github.com/dawaltconley/sass-themes#readme",
   "devDependencies": {
     "@11ty/eleventy": "^0.12.1",
+    "@dawaltconley/sass": "^0.3.2",
     "eslint": "^7.31.0",
     "gulp": "^4.0.2",
     "gulp-sass": "^5.0.0",

@@ -5,6 +5,7 @@ const sassCompile = () => gulp.src('eleventy/css/**/*.scss')
     .pipe(sass({
         includePaths: [
             'node_modules',
+            'node_modules/@dawaltconley',
             'node_modules/normalize.css'
         ],
         quietDeps: true

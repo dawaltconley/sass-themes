@@ -1,4 +1,5 @@
-@use 'sass-parallax/parallax' with ($perspective: 100px);
+@use 'sass/config' as c;
+@use 'sass-parallax/parallax' with ($perspective: c.$perspective);
 
 body {
     @include parallax.body();
@@ -13,13 +14,13 @@ body {
 }
 
 .parallax-bg-deep {
-    @include parallax.bg(-200);
+    @include parallax.bg(c.$perspective * -2);
 }
 
 .parallax-bg-middle {
-    @include parallax.bg(-100);
+    @include parallax.bg(c.$perspective * -1);
 }
 
 .parallax-bg-shallow {
-    @include parallax.bg(-50);
+    @include parallax.bg(c.$perspective * -0.5);
 }
