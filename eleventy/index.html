@@ -4,7 +4,14 @@ title: Home Page
 parallax: true
 ---
 
-<div class="front theme-bg light">
+<div class="dark parallax-group half-screen-height content-box">
+  <div class="parallax-bg-deep splash-bg"></div>
+  <div class="text-wrapper wrapper-padding margin-auto-h padding-l-v">
+    <h1 class="shadow">Starter Site</h1>
+  </div>
+</div>
+
+<div class="front theme-bg">
 
   <div class="text-wrapper wrapper-padding margin-auto padding-l-v">
 
@@ -50,9 +57,9 @@ parallax: true
     </p>
 
     <p>A device-optimized image:</p>
-    {% assign img = '/assets/gulp-srcset/selfie.jpg' | prepend: site.baseurl %}
+    {% assign img = '/images/clouds.jpeg' | prepend: site.baseurl %}
     {% assign text_wrapper_bp = 36 | times: 1.25 | round %}
-    <img src="{{ img }}" alt="A self portrait." srcset="{% include gulp-srcset.liquid src=img width='1080' %}" sizes="(max-width: {{ text_wrapper_bp }}em) calc(100vw - 60px), calc({{ text_wrapper_bp }}em - 60px)">
+    <img src="{{ img }}" alt="A self portrait." sizes="(max-width: {{ text_wrapper_bp }}em) calc(100vw - 60px), calc({{ text_wrapper_bp }}em - 60px)">
 
   </div>
 

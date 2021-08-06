@@ -3,7 +3,7 @@
 title: Title of Your Site
 description: >
   A subtitle or longer description of the site.
-keywords: null # a YAML list. optional; only used by some older search engines.
+keywords: # a YAML list. optional; only used by some older search engines.
 baseurl: '' # for hosting at a subdomain
 url: "https://starter-test.netlify.com" # full url of main site
 og_image: # default og image used for entire site; can be overridden if specified in page or collection frontmatter
@@ -23,37 +23,66 @@ emptyArray: [] # variable for easy array creation
 
 # Collections
 
-# collections:
-#   comments:
-#     output: false
-#   templates:
-#     output: false
-#
-# defaults:
-#   - scope:
-#       path: "_posts"
-#     values:
-#       layout: "post"
-#       permalink: "/:year/:month/:day/:title/"
+collections:
+  comments:
+    output: false
+  templates:
+    output: false
+
+defaults:
+  - scope:
+      path: "_posts"
+    values:
+      layout: "post"
+      permalink: "/:year/:month/:day/:title/"
 
 # Build settings
 
-# markdown: kramdown
-# exclude:
-#   - "README.md"
-#   - "Gemfile*"
-#   - "package*.json"
-#   - "node_modules"
-#   - "gulpfile.js"
-#   - "assets/test"
-# keep_files:
-#   - "assets"
-#
-# plugins:
-#   - liquid-md5
+markdown: kramdown
+exclude:
+  - "README.md"
+  - "Gemfile*"
+  - "package*.json"
+  - "node_modules"
+  - "gulpfile.js"
+  - "assets/test"
+keep_files:
+  - "assets"
+
+plugins:
+  - liquid-md5
 
 jekyll_comments:
   branch: master
-  collection: comment
+  collection: comments
   path: _comments
   api: # path to comments API
+
+# Prose
+
+prose:
+  ignore:
+    - "*.html"
+    - "*.svg"
+    - "*.xml"
+    - "*.liquid"
+    - "*.js"
+    - "*.json"
+    - "*.jsonp"
+    - "*.rb"
+    - "*.sh"
+    - "_layouts"
+    - "_sass"
+    - "_site"
+    - "css"
+    - "js"
+    - "assets"
+    - "_data/icon-types.yml"
+    - "_includes/lorem-ipsum.md"
+    - "_config*.yml"
+    - "README.md"
+    - ".*rc"
+    - ".ruby-version"
+    - ".nvmrc"
+    - ".gitignore"
+    - "Gemfile*"

@@ -21,7 +21,7 @@
 
   {% include head.html %}
 
-  <body class="{% unless parallax %} flex-col flex-none screen-height-min {% else %} parallax-body {% endunless %}" {% if itemtype %} itemscope itemtype="{{ itemtype }}" {% endif %}>
+  <body class="light {% unless parallax %} flex-col flex-none screen-height-min {% else %} parallax-body {% endunless %}" {% if itemtype %} itemscope itemtype="{{ itemtype }}" {% endif %}>
 
     {% if parallax %}
     <div class="flex-col flex-none parallax-page">

@@ -35,8 +35,10 @@
     "eslint": "^7.31.0",
     "gulp": "^4.0.2",
     "gulp-sass": "^5.0.0",
+    "js-yaml": "^3.14.1",
     "normalize.css": "^8.0.1",
-    "sass": "^1.36.0"
+    "sass": "^1.36.0",
+    "sass-parallax": "^0.1.0"
   },
   "dependencies": {
     "sass-color-helpers": "^2.1.1"

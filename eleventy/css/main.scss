@@ -19,6 +19,7 @@ $themes: (
 @use "normalize";
 @use "build" with ($themes: $themes);
 @use "styles/all";
+@use 'parallax';
 
 .no-bg {
     background-color: transparent !important;
@@ -47,7 +48,6 @@ $themes: (
     "../_sass/pseudo",
     "../_sass/transitions",
     "../_sass/header",
-    "../_sass/parallax",
     "../_sass/media-queries",
     "../_sass/javascript"
 ;
