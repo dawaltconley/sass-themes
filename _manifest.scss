@@ -18,19 +18,17 @@ $border-light: 10% !default;
 $border-x-light: 5% !default;
 $btn-hover-mix: 80% !default;
 
-@forward "mixins" with (
-    $theme-depth: $theme-depth
-)
-
-@forward "build" with (
+@use "build" with (
     $themes: $themes,
     $theme-depth: $theme-depth
 );
 
-@forward "styles/all" with (
-    $bg-overlay: $bg-overlay
-    $bg-heavy-overlay: $bg-heavy-overlay
-    $border-light: $border-light
-    $border-x-light: $border-x-light
+@use "styles/all" with (
+    $bg-overlay: $bg-overlay,
+    $bg-heavy-overlay: $bg-heavy-overlay,
+    $border-light: $border-light,
+    $border-x-light: $border-x-light,
     $btn-hover-mix: $btn-hover-mix
 );
+
+@forward "mixins";
