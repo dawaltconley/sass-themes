@@ -12,6 +12,7 @@ $themes: (
 ) !default;
 $theme-depth: 1 !default;
 
+$anchor-override: '.subtle-link' !default;
 $bg-overlay: 0.5 !default;
 $bg-heavy-overlay: 0.75 !default;
 $border-light: 10% !default;
@@ -24,6 +25,7 @@ $btn-hover-mix: 80% !default;
 );
 
 @use "styles/all" with (
+    $anchor-override: $anchor-override,
     $bg-overlay: $bg-overlay,
     $bg-heavy-overlay: $bg-heavy-overlay,
     $border-light: $border-light,

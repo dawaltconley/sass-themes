@@ -1,10 +1,11 @@
+$anchor-override: '.subtle-link' !default;
 $bg-overlay: 0.5 !default;
 $bg-heavy-overlay: 0.75 !default;
 $border-light: 10% !default;
 $border-x-light: 5% !default;
 $btn-hover-mix: 80% !default;
 
-@forward "base";
+@forward "base" with ($anchor-override: $anchor-override);
 @forward "text";
 @forward "bg" with ($overlay: $bg-overlay, $heavy-overlay: $bg-heavy-overlay);
 @forward "borders" with ($light: $border-light, $x-light: $border-x-light);

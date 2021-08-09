@@ -1,6 +1,9 @@
 @use "sass:color";
+@use "sass:list";
 @use "sass:map";
 @use "../mixins" as t;
+
+$anchor-override: '.subtle-link' !default;
 
 @function _m($args...) {
     @return map.get($args...);
@@ -63,7 +66,7 @@ a, .theme-link {
     }
 }
 
-.subtle-link {
+#{list.join($anchor-override, (), 'comma', false)} {
     @include t.themeify using ($theme) {
         &, &:hover, &:visited {
             color: _m($theme,'text');
