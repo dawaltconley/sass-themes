@@ -1,0 +1,9 @@
+a:hover, a:visited, a {
+    color: blue;
+    text-decoration: underline;
+}
+
+.subtle-link {
+    @extend a;
+    text-decoration: none;
+}

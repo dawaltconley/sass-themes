@@ -17,7 +17,16 @@ $themes: (
 );
 
 @use "build" with ($themes: $themes);
-@use "styles/all";
+@use 'styles/all';
+// @use 'mixins';
+//
+// body, .light {
+//     @include mixins.theme($settings: (
+//         text-color: #171717,
+//         background-color: white,
+//         brand-color: royalblue,
+//     ));
+// }
 
 .no-bg {
     background-color: transparent !important;

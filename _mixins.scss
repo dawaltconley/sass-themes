@@ -119,6 +119,7 @@ $theme-classes: ();
     $class: list.nth($class, list.length($class));
     $class: list.nth($class, list.length($class));
     $class: classify($class);
+    // $class: &;
 
     @if not map.has-key($theme-classes, $class) {
         @include register($class, $settings, $bg, $text, $brand);
@@ -132,7 +133,8 @@ $theme-classes: ();
     }
 }
 
-@mixin constructor($themes, $depth: $theme-depth) {
+@mixin constructor($themes, $depth: $theme-depth, $default: list.nth(map.keys($themes), 1)) {
+    
     @each $theme, $settings in $themes {
         @include register($theme, $settings);
     }
