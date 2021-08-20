@@ -141,7 +141,7 @@ $theme-classes: ();
     }
 }
 
-@mixin themeify($themes: $theme-classes, $depth: $theme-depth) {
+@mixin themify($themes: $theme-classes, $depth: $theme-depth) {
     // @if $themes
     @each $class, $theme in $theme-classes {
         $group: ();
@@ -153,5 +153,11 @@ $theme-classes: ();
         @at-root #{$group} {
             @content($theme);
         }
+    }
+}
+
+@mixin themeify($args...) {
+    @include themify($args...) using ($theme) {
+        @content($theme);
     }
 }
