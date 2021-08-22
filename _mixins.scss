@@ -33,7 +33,7 @@ $theme-classes: ();
     @each $other-theme in map.keys($themes) {
         @if $other-theme != $theme {
             $ancestry: ();
-            @for $d from 0 to $theme-depth {
+            @for $d from 0 to $depth {
                 $new-nest: selector.nest($other-theme, $theme);
                 $ancestry: list.append($ancestry, $new-nest, "space");
                 $selectors: list.append($selectors, $ancestry, "comma");
