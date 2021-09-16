@@ -1,6 +1,6 @@
 # sass-themes
 
-This module provides functions, mixins, and stylesheets for sass themes: a special set of classes that define colors through inheritance.
+This module provides functions, mixins, and style sheets for sass themes: a special set of classes that define colors through inheritance.
 
 ## Themes
 
@@ -62,7 +62,7 @@ You can create classes that inherit theme colors using the `themeify` mixin, fou
 }
 ```
 
-This sets the class `.text-light` to apply the `text-light` property, which is a mix of the theme's text and background colors. If the theme is a light one (dark text on a light background), this will lighten the text, as the name implies. If the theme has light text on a dark background, this will _darkening_ it, to bring it closer to the background color.
+This sets the class `.text-light` to apply the `text-light` property, which is a mix of the theme's text and background colors. If the theme is a light one (dark text on a light background), this will lighten the text, as the name implies. If the theme has light text on a dark background, this will _darken_ it, to bring it closer to the background color.
 
 Perhaps counter-intuitive. But when styling a site I am usually thinking of the colors of elements as relative to the rest of the page, or as serving the same _role_ within a theme. Theme classes are meant to do exactly that; they perform a function which is relative to the theme. This means that themes can be tried out, updated, and adjusted easily, even well into a site's development.
 
@@ -97,7 +97,7 @@ $themes: (
 
 ## Themes and specificity
 
-Specificity can get a little tricky when working like this. Theme styles automatically have more specificity, since they are relative to a class. The CSS output for `text-light` looks like this:
+Specificity can get a little tricky when working like this. Theme styles have more specificity, since they are relative to a class. The CSS output for `text-light` looks like this:
 
 ```scss
 .light .text-light, .light.text-light {
