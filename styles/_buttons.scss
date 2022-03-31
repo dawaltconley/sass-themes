@@ -1,57 +1,66 @@
-@use "sass:color";
-@use "sass:map";
-@use "../mixins" as t;
+@use 'scss-properties' as color-props;
 
 $hover-mix: 80% !default;
 
 .button {
-    @include t.themeify using ($t) {
-        $bg: map.get($t,'bg');
-        $text: map.get($t,'text');
-        $button-bg: map.get($t,'button','bg');
-        $button-text: map.get($t,'button','text');
+    $root: &;
+    background-color: var(--button-bg);
 
-        & {
-            background-color: $button-bg;
+    &--left, &--right {
+        border-radius: 0;
+        transform-origin: bottom;
+    }
+    &--left {
+        transform: skewX(-30deg);
+        #{$root}__text {
+            display: block;
+            transform: skewX(30deg);
+        }
+    }
+    &--right {
+        transform: skewX(30deg);
+        #{$root}__text {
+            display: block;
+            transform: skewX(-30deg);
+        }
+    }
 
-            &, &:hover, &:visited {
-                color: $button-text;
-            }
+    &, &:hover, &:visited {
+        color: var(--button-text);
+    }
 
-            &:hover {
-                background-color: color.mix($button-bg, $button-text, $hover-mix);
-            }
+    &:hover {
+        background-color: color-props.mix(--button-bg, --button-text, $hover-mix);
+    }
 
-            &.subtle-button {
-                color: $button-bg;
-                background-color: $button-text;
+    &.subtle-button {
+        color: var(--button-bg);
+        background-color: var(--button-text);
 
-                &:hover {
-                    background-color: color.mix($button-text, $button-bg, $hover-mix);
-                }
-            }
+        &:hover {
+            background-color: color-props.mix(--button-text, --button-bg, $hover-mix);
+        }
+    }
+
+    &-o {
+        background-color: var(--theme-bg);
+        border-color: var(--button-bg);
+
+        &, &:visited {
+            color: var(--button-bg);
         }
 
-        &-o {
-            background-color: $bg;
-            border-color: $button-bg;
+        &:hover {
+            color: var(--button-text);
+            background-color: var(--button-bg);
+            border-color: var(--button-bg);
+        }
+
+        &.subtle-button:not(:hover) {
+            border-color: var(--theme-text);
 
             &, &:visited {
-                color: $button-bg;
-            }
-
-            &:hover {
-                color: $button-text;
-                background-color: $button-bg;
-                border-color: $button-bg;
-            }
-
-            &.subtle-button:not(:hover) {
-                border-color: $text;
-
-                &, &:visited {
-                    color: $text;
-                }
+                color: var(--theme-text);
             }
         }
     }

@@ -1,20 +1,13 @@
 @use "sass:color";
-@use "sass:list";
 @use "sass:map";
-@use "sass:math";
 @use "sass:meta";
-@use "sass:selector";
 @use "sass:string";
+@use 'scss-properties' as color-props;
 @use "sass-color-helpers/stylesheets/color-helpers" as ch;
 
-$theme-depth: 1 !default; // controls the depth (in a series nested themes) at which an element still inherits the styles of its immediate ancestor theme. stylesheets get much larger and more complex as this number increases, so it should be set as low as possible.
-$theme-classes: ();
+$accessibility: 'AA' !default;
 
-//
-// Utility Functions
-//
-
-@function classify($str) {
+@function _classify($str) {
     $look-for: '.' '#' '*' ',' '>' '+' '~' '[' ':';
     @each $char in $look-for {
         @if string.index($str, $char) {
@@ -24,30 +17,7 @@ $theme-classes: ();
     @return '.#{$str}';
 }
 
-@function ld($color1, $color2) {
-    @return math.div(math.abs(color.lightness($color1) - color.lightness($color2)), 100%);
-}
-
-@function nest($theme, $depth: $theme-depth, $themes: $theme-classes) {
-    $selectors: $theme;
-    @each $other-theme in map.keys($themes) {
-        @if $other-theme != $theme {
-            $ancestry: ();
-            @for $d from 0 to $depth {
-                $new-nest: selector.nest($other-theme, $theme);
-                $ancestry: list.append($ancestry, $new-nest, "space");
-                $selectors: list.append($selectors, $ancestry, "comma");
-            }
-        }
-    }
-    @return #{$selectors};
-}
-
-//
-// Utility Mixins
-//
-
-@mixin accessibility($name, $background-color, $text-color, $brand-color: null, $accessibility: "AA") {
+@mixin accessibility($name, $background-color, $text-color, $brand-color: null, $accessibility: $accessibility) {
     $aa: string.to-upper-case($accessibility) == "AA";
     $aaa: string.to-upper-case($accessibility) == "AAA";
 
@@ -70,94 +40,63 @@ $theme-classes: ();
     }
 }
 
-@mixin register($name, $settings: null, $bg: null, $text: null, $brand: null, $accessibility: null) {
-    $bg: $bg or $settings and map.get($settings, background-color) or map.get($settings, background) or map.get($settings, bg);
-    $text: $text or $settings and map.get($settings, color) or map.get($settings, text-color) or map.get($settings, text);
-    $brand: $brand or $settings and map.get($settings, brand-color) or map.get($settings, brand);
+%theme {
+    color: var(--theme-text);
+    background-color: var(--theme-bg);
+    border-color: var(--theme-text);
+}
 
-    @if not ($bg and $text) {
-        @error 'Invalid theme #{$name}; themes require at least a background and text color.'
+@mixin theme($text: null, $bg: null, $brand: null, $accessibility: $accessibility, $settings: null) {
+    @if meta.type-of($text) == 'map' {
+        $settings: $text;
+    }
+    @if $settings {
+        $bg: map.get($settings, background-color) or map.get($settings, background) or map.get($settings, bg) or map.get($settings, --theme-bg);
+        $text: map.get($settings, color) or map.get($settings, text-color) or map.get($settings, text) or map.get($settings, --theme-text);
+        $brand: map.get($settings, brand-color) or map.get($settings, brand) or map.get($settings, --theme-brand);
+    }
+
+    @if not ($text and $bg) {
+        @error 'theme must specify at least text and background colors: #{&}';
+    }
+
+    @if $accessibility {
+        @include accessibility(
+            $name: #{&},
+            $background-color: $bg,
+            $text-color: $text,
+            $brand-color: $brand,
+            $accessibility: $accessibility,
+        );
     }
 
     $light-theme: color.lightness($text) < color.lightness($bg);
-    // $ld-tx-bg: ld($text, $bg);
-    // $ld-br-tx: $brand and ld($brand, $text);
-    // $ld-br-bg: $brand and ld($brand, $bg);
 
-    $text-light: color.mix($text, $bg, if($light-theme, 58%, 86%));
-    $button-color: $brand or $text;
-    $button-text: if($brand and not $light-theme, $text, $bg);
-
-    $accessibility: $accessibility or $settings and map.get($settings, accessibility) or "AA";
-    @include accessibility(
-        $name: $name,
-        $background-color: $bg,
-        $text-color: $text,
-        $brand-color: $brand,
-        $accessibility: $accessibility,
+    $properties: (
+        --theme-text: $text,
+        --theme-bg: $bg,
+        --button-bg: $brand or $text,
+        --button-text: if($brand and not $light-theme, $text, $bg), // should be a matter of which color (text, bg) has best contrast ratio on brand color (with white / back fallback); // null if no brand? as in: $brand and $color-determined-by-contrast
     );
-
-    $theme-classes: map.merge($theme-classes, classify($name), (
-        light: $light-theme,
-        dark: not $light-theme,
-        text: $text,
-        text-light: $text-light,
-        bg: $bg,
-        brand: $brand,
-        button: (
-            bg: $button-color,
-            text: $button-text
-        ),
-    )) !global;
-}
-
-//
-// Primary Exports
-//
-
-@mixin theme($class: &, $settings: null, $bg: null, $text: null, $brand: null, $depth: $theme-depth) {
-    $class: list.nth($class, list.length($class));
-    $class: list.nth($class, list.length($class));
-    $class: classify($class);
-
-    @if not map.has-key($theme-classes, $class) {
-        @include register($class, $settings, $bg, $text, $brand);
+    @if $brand {
+        $properties: map.merge($properties, (
+            --theme-brand: $brand
+        ));
     }
 
-    @at-root #{nest($class, $depth: $depth)} {
-        $theme: map.get($theme-classes, $class);
-        background-color: map.get($theme, bg);
-        color: map.get($theme, text);
-        border-color: map.get($theme, text);
-    }
+    @include color-props.define($properties);
+
+    --theme-light: #{if($light-theme, 1, 0)};
+    --theme-dark: #{if($light-theme, 0, 1)};
+    --theme-text-light: #{color-props.mix(--theme-text, --theme-bg, '(0.58 + (0.18 * var(--theme-dark)))')};
+
+    @extend %theme;
 }
 
-@mixin constructor($themes, $depth: $theme-depth) {
+@mixin build($themes, $accessibility: $accessibility) {
     @each $theme, $settings in $themes {
-        @include register($theme, $settings);
-    }
-    @each $theme, $settings in $themes {
-        @include theme($theme, $settings);
-    }
-}
-
-@mixin themify($themes: $theme-classes, $depth: $theme-depth) {
-    // @if $themes
-    @each $class, $theme in $theme-classes {
-        $group: ();
-        $class: nest($class, $themes: $themes, $depth: $depth);
-        @each $selector in & {
-            $group: list.append($group, selector.nest($class, $selector), "comma");
-            $group: list.append($group, selector.unify($class, $selector), "comma");
+        #{_classify($theme)} {
+            @include theme($settings, $accessibility: $accessibility);
         }
-        @at-root #{$group} {
-            @content($theme);
-        }
-    }
-}
-
-@mixin themeify($args...) {
-    @include themify($args...) using ($theme) {
-        @content($theme);
     }
 }

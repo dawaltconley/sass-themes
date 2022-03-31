@@ -1,3 +1,5 @@
+@use 'mixins';
+
 $themes: (
     "light": (
         text-color: #171717,
@@ -10,7 +12,6 @@ $themes: (
         brand-color: royalblue,
     ),
 ) !default;
-$theme-depth: 1 !default;
+$accessibility: 'AA' !default;
 
-@use "mixins" with ($theme-depth: $theme-depth);
-@include mixins.constructor($themes);
+@include mixins.build($themes, $accessibility);

@@ -1,24 +1,16 @@
-@use "sass:map";
-@use "../mixins" as t;
+@use 'scss-properties' as color-props;
 
 $overlay: 0.5 !default;
 $heavy-overlay: 0.75 !default;
 
 .theme-bg {
-    @include t.themeify using ($theme) {
-        background-color: map.get($theme,'bg');
-    }
+    background-color: var(--theme-bg);
 }
 
 .overlay {
-    @include t.themeify using ($theme) {
-        background-color: rgba(map.get($theme,'bg'), $overlay);
-    }
+    background-color: color-props.change(--theme-bg, $alpha: $overlay);
 }
 
 .heavy-overlay {
-    @include t.themeify using ($theme) {
-        background-color: rgba(map.get($theme,'bg'), $heavy-overlay);
-    }
+    background-color: color-props.change(--theme-bg, $alpha: $heavy-overlay);
 }
-

@@ -1,15 +1,7 @@
-@use "sass:map";
-@use "../mixins" as t;
-
 .text-light {
-    @include t.themeify using ($theme) {
-        color: map.get($theme,'text-light');
-    }
+    color: var(--theme-text-light);
 }
 
 .text-brand {
-    @include t.themeify using ($theme) {
-        color: map.get($theme,'brand');
-    }
+    color: var(--theme-brand, var(--theme-text));
 }
-

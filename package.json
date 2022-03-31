@@ -1,9 +1,9 @@
 {
   "name": "sass-themes",
-  "version": "0.1.5",
+  "version": "0.1.4",
   "description": "Sass library for managing the primary colors of a website based on their role.",
-  "main": "_manifest.scss",
   "files": [
+    "_index.scss",
     "_mixins.scss",
     "_build.scss",
     "styles/**/*"
@@ -47,6 +47,7 @@
     "stylelint-scss": "^3.20.1"
   },
   "dependencies": {
-    "sass-color-helpers": "^2.1.1"
+    "sass-color-helpers": "^2.1.1",
+    "scss-properties": "github:dawaltconley/scss-properties#6c5a41e1d2892dfde3366c258d35edc4dcc48ccf"
   }
 }
