@@ -12,6 +12,5 @@ $themes: (
         brand-color: royalblue,
     ),
 ) !default;
-$accessibility: 'AA' !default;
 
-@include mixins.build($themes, $accessibility);
+@include mixins.build($themes);
