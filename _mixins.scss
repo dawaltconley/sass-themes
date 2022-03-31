@@ -54,6 +54,7 @@ $accessibility: 'AA' !default;
         $bg: map.get($settings, background-color) or map.get($settings, background) or map.get($settings, bg) or map.get($settings, --theme-bg);
         $text: map.get($settings, color) or map.get($settings, text-color) or map.get($settings, text) or map.get($settings, --theme-text);
         $brand: map.get($settings, brand-color) or map.get($settings, brand) or map.get($settings, --theme-brand);
+        $accessibility: map.get($settings, accessibility) or $accessibility;
     }
 
     @if not ($text and $bg) {
@@ -93,10 +94,10 @@ $accessibility: 'AA' !default;
     @extend %theme;
 }
 
-@mixin build($themes, $accessibility: $accessibility) {
+@mixin build($themes) {
     @each $theme, $settings in $themes {
         #{_classify($theme)} {
-            @include theme($settings, $accessibility: $accessibility);
+            @include theme($settings: $settings);
         }
     }
 }
