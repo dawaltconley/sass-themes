@@ -3167,373 +3167,287 @@ body::before {
   }
 }
 
-.light, .dark .light, .brand .light {
-  background-color: white;
-  color: #171717;
-  border-color: #171717;
+.light, .dark, .brand {
+  color: var(--theme-text);
+  background-color: var(--theme-bg);
+  border-color: var(--theme-text);
 }
 
-.dark, .light .dark, .brand .dark {
-  background-color: #171717;
-  color: white;
-  border-color: white;
+.light {
+  --theme-text: hsla(var(--theme-text-h), var(--theme-text-s), var(--theme-text-l), var(--theme-text-a));
+  --theme-text-r: 23;
+  --theme-text-g: 23;
+  --theme-text-b: 23;
+  --theme-text-h: 0deg;
+  --theme-text-s: 0%;
+  --theme-text-l: 9.0196078431%;
+  --theme-text-a: 1;
+  --theme-bg: hsla(var(--theme-bg-h), var(--theme-bg-s), var(--theme-bg-l), var(--theme-bg-a));
+  --theme-bg-r: 255;
+  --theme-bg-g: 255;
+  --theme-bg-b: 255;
+  --theme-bg-h: 0deg;
+  --theme-bg-s: 0%;
+  --theme-bg-l: 100%;
+  --theme-bg-a: 1;
+  --button-bg: hsla(var(--button-bg-h), var(--button-bg-s), var(--button-bg-l), var(--button-bg-a));
+  --button-bg-r: 65;
+  --button-bg-g: 105;
+  --button-bg-b: 225;
+  --button-bg-h: 225deg;
+  --button-bg-s: 72.7272727273%;
+  --button-bg-l: 56.862745098%;
+  --button-bg-a: 1;
+  --button-text: hsla(var(--button-text-h), var(--button-text-s), var(--button-text-l), var(--button-text-a));
+  --button-text-r: 255;
+  --button-text-g: 255;
+  --button-text-b: 255;
+  --button-text-h: 0deg;
+  --button-text-s: 0%;
+  --button-text-l: 100%;
+  --button-text-a: 1;
+  --theme-brand: hsla(var(--theme-brand-h), var(--theme-brand-s), var(--theme-brand-l), var(--theme-brand-a));
+  --theme-brand-r: 65;
+  --theme-brand-g: 105;
+  --theme-brand-b: 225;
+  --theme-brand-h: 225deg;
+  --theme-brand-s: 72.7272727273%;
+  --theme-brand-l: 56.862745098%;
+  --theme-brand-a: 1;
+  --theme-light: 1;
+  --theme-dark: 0;
+  --theme-text-light: rgba(calc((var(--theme-text-r) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-r) * (1 - (0.58 + (0.18 * var(--theme-dark)))))), calc((var(--theme-text-g) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-g) * (1 - (0.58 + (0.18 * var(--theme-dark)))))), calc((var(--theme-text-b) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-b) * (1 - (0.58 + (0.18 * var(--theme-dark)))))), calc((var(--theme-text-a) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-a) * (1 - (0.58 + (0.18 * var(--theme-dark)))))));
 }
 
-.brand, .light .brand, .dark .brand {
-  background-color: royalblue;
-  color: white;
-  border-color: white;
+.dark {
+  --theme-text: hsla(var(--theme-text-h), var(--theme-text-s), var(--theme-text-l), var(--theme-text-a));
+  --theme-text-r: 255;
+  --theme-text-g: 255;
+  --theme-text-b: 255;
+  --theme-text-h: 0deg;
+  --theme-text-s: 0%;
+  --theme-text-l: 100%;
+  --theme-text-a: 1;
+  --theme-bg: hsla(var(--theme-bg-h), var(--theme-bg-s), var(--theme-bg-l), var(--theme-bg-a));
+  --theme-bg-r: 23;
+  --theme-bg-g: 23;
+  --theme-bg-b: 23;
+  --theme-bg-h: 0deg;
+  --theme-bg-s: 0%;
+  --theme-bg-l: 9.0196078431%;
+  --theme-bg-a: 1;
+  --button-bg: hsla(var(--button-bg-h), var(--button-bg-s), var(--button-bg-l), var(--button-bg-a));
+  --button-bg-r: 65;
+  --button-bg-g: 105;
+  --button-bg-b: 225;
+  --button-bg-h: 225deg;
+  --button-bg-s: 72.7272727273%;
+  --button-bg-l: 56.862745098%;
+  --button-bg-a: 1;
+  --button-text: hsla(var(--button-text-h), var(--button-text-s), var(--button-text-l), var(--button-text-a));
+  --button-text-r: 255;
+  --button-text-g: 255;
+  --button-text-b: 255;
+  --button-text-h: 0deg;
+  --button-text-s: 0%;
+  --button-text-l: 100%;
+  --button-text-a: 1;
+  --theme-brand: hsla(var(--theme-brand-h), var(--theme-brand-s), var(--theme-brand-l), var(--theme-brand-a));
+  --theme-brand-r: 65;
+  --theme-brand-g: 105;
+  --theme-brand-b: 225;
+  --theme-brand-h: 225deg;
+  --theme-brand-s: 72.7272727273%;
+  --theme-brand-l: 56.862745098%;
+  --theme-brand-a: 1;
+  --theme-light: 0;
+  --theme-dark: 1;
+  --theme-text-light: rgba(calc((var(--theme-text-r) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-r) * (1 - (0.58 + (0.18 * var(--theme-dark)))))), calc((var(--theme-text-g) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-g) * (1 - (0.58 + (0.18 * var(--theme-dark)))))), calc((var(--theme-text-b) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-b) * (1 - (0.58 + (0.18 * var(--theme-dark)))))), calc((var(--theme-text-a) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-a) * (1 - (0.58 + (0.18 * var(--theme-dark)))))));
 }
 
-.light blockquote, .dark .light blockquote, .brand .light blockquote, blockquote.light, .dark blockquote.light, .brand blockquote.light {
-  color: #787878;
-  border-left-color: #dddddd;
+.brand {
+  --theme-text: hsla(var(--theme-text-h), var(--theme-text-s), var(--theme-text-l), var(--theme-text-a));
+  --theme-text-r: 255;
+  --theme-text-g: 255;
+  --theme-text-b: 255;
+  --theme-text-h: 0deg;
+  --theme-text-s: 0%;
+  --theme-text-l: 100%;
+  --theme-text-a: 1;
+  --theme-bg: hsla(var(--theme-bg-h), var(--theme-bg-s), var(--theme-bg-l), var(--theme-bg-a));
+  --theme-bg-r: 65;
+  --theme-bg-g: 105;
+  --theme-bg-b: 225;
+  --theme-bg-h: 225deg;
+  --theme-bg-s: 72.7272727273%;
+  --theme-bg-l: 56.862745098%;
+  --theme-bg-a: 1;
+  --button-bg: hsla(var(--button-bg-h), var(--button-bg-s), var(--button-bg-l), var(--button-bg-a));
+  --button-bg-r: 190;
+  --button-bg-g: 241;
+  --button-bg-b: 241;
+  --button-bg-h: 180deg;
+  --button-bg-s: 64.5569620253%;
+  --button-bg-l: 84.5098039216%;
+  --button-bg-a: 1;
+  --button-text: hsla(var(--button-text-h), var(--button-text-s), var(--button-text-l), var(--button-text-a));
+  --button-text-r: 255;
+  --button-text-g: 255;
+  --button-text-b: 255;
+  --button-text-h: 0deg;
+  --button-text-s: 0%;
+  --button-text-l: 100%;
+  --button-text-a: 1;
+  --theme-brand: hsla(var(--theme-brand-h), var(--theme-brand-s), var(--theme-brand-l), var(--theme-brand-a));
+  --theme-brand-r: 190;
+  --theme-brand-g: 241;
+  --theme-brand-b: 241;
+  --theme-brand-h: 180deg;
+  --theme-brand-s: 64.5569620253%;
+  --theme-brand-l: 84.5098039216%;
+  --theme-brand-a: 1;
+  --theme-light: 0;
+  --theme-dark: 1;
+  --theme-text-light: rgba(calc((var(--theme-text-r) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-r) * (1 - (0.58 + (0.18 * var(--theme-dark)))))), calc((var(--theme-text-g) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-g) * (1 - (0.58 + (0.18 * var(--theme-dark)))))), calc((var(--theme-text-b) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-b) * (1 - (0.58 + (0.18 * var(--theme-dark)))))), calc((var(--theme-text-a) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-a) * (1 - (0.58 + (0.18 * var(--theme-dark)))))));
 }
 
-.dark blockquote, .light .dark blockquote, .brand .dark blockquote, blockquote.dark, .light blockquote.dark, .brand blockquote.dark {
-  color: #dfdfdf;
-  border-left-color: #494949;
+blockquote {
+  color: var(--theme-text-light);
+  border-left-color: rgba(calc((var(--theme-text-r) * 0.25) + (var(--theme-bg-r) * 0.75)), calc((var(--theme-text-g) * 0.25) + (var(--theme-bg-g) * 0.75)), calc((var(--theme-text-b) * 0.25) + (var(--theme-bg-b) * 0.75)), calc((var(--theme-text-a) * 0.25) + (var(--theme-bg-a) * 0.75)));
 }
 
-.brand blockquote, .light .brand blockquote, .dark .brand blockquote, blockquote.brand, .light blockquote.brand, .dark blockquote.brand {
-  color: #e4eafb;
-  border-left-color: #6a89e8;
+pre, code {
+  border-color: hsla(var(--theme-bg-h), calc(var(--theme-bg-s) + ((var(--theme-bg-s) - 0%) * -0.6)), calc((var(--theme-bg-l) * calc(0.9 - (0.15 * var(--theme-light)))) + (var(--theme-text-l) * (1 - calc(0.9 - (0.15 * var(--theme-light)))))), var(--theme-bg-a));
+  background-color: hsla(var(--theme-bg-h), calc(var(--theme-bg-s) + ((var(--theme-bg-s) - 0%) * -0.5)), calc((var(--theme-bg-l) * 0.9) + (var(--theme-text-l) * 0.1)), var(--theme-bg-a));
 }
 
-.light pre, .dark .light pre, .brand .light pre, pre.light, .dark pre.light, .brand pre.light, .light code, .dark .light code, .brand .light code, code.light, .dark code.light, .brand code.light {
-  color: #3e3e3e;
-  border-color: #a2a2a2;
-  background-color: gainsboro;
+input[type=text], textarea {
+  color: var(--theme-text);
+  background: rgba(calc((var(--theme-text-r) * calc(0.05 * var(--theme-light))) + (var(--theme-bg-r) * (1 - calc(0.05 * var(--theme-light))))), calc((var(--theme-text-g) * calc(0.05 * var(--theme-light))) + (var(--theme-bg-g) * (1 - calc(0.05 * var(--theme-light))))), calc((var(--theme-text-b) * calc(0.05 * var(--theme-light))) + (var(--theme-bg-b) * (1 - calc(0.05 * var(--theme-light))))), calc((var(--theme-text-a) * calc(0.05 * var(--theme-light))) + (var(--theme-bg-a) * (1 - calc(0.05 * var(--theme-light))))));
+  border-color: rgba(calc((var(--theme-text-r) * 0.25) + (var(--theme-bg-r) * 0.75)), calc((var(--theme-text-g) * 0.25) + (var(--theme-bg-g) * 0.75)), calc((var(--theme-text-b) * 0.25) + (var(--theme-bg-b) * 0.75)), calc((var(--theme-text-a) * 0.25) + (var(--theme-bg-a) * 0.75)));
 }
-
-.dark pre, .light .dark pre, .brand .dark pre, pre.dark, .light pre.dark, .brand pre.dark, .dark code, .light .dark code, .brand .dark code, code.dark, .light code.dark, .brand code.dark {
-  color: #d8d8d8;
-  border-color: #232323;
-  background-color: #3a3a3a;
-}
-
-.brand pre, .light .brand pre, .dark .brand pre, pre.brand, .light pre.brand, .dark pre.brand, .brand code, .light .brand code, .dark .brand code, code.brand, .light code.brand, .dark code.brand {
-  color: #e6e9f3;
-  border-color: #7184bd;
-  background-color: #8091c4;
-}
-
-.light input[type=text], .dark .light input[type=text], .brand .light input[type=text], input.light[type=text], .dark input.light[type=text], .brand input.light[type=text], .light textarea, .dark .light textarea, .brand .light textarea, textarea.light, .dark textarea.light, .brand textarea.light {
-  color: #171717;
-  background: white;
-  border-color: #c5c5c5;
-}
-.light input[type=text]::placeholder, .dark .light input[type=text]::placeholder, .brand .light input[type=text]::placeholder, input.light[type=text]::placeholder, .dark input.light[type=text]::placeholder, .brand input.light[type=text]::placeholder, .light textarea::placeholder, .dark .light textarea::placeholder, .brand .light textarea::placeholder, textarea.light::placeholder, .dark textarea.light::placeholder, .brand textarea.light::placeholder {
-  color: #787878;
+input[type=text]::placeholder, textarea::placeholder {
+  color: var(--theme-text-light);
   opacity: 1;
 }
 
-.dark input[type=text], .light .dark input[type=text], .brand .dark input[type=text], input.dark[type=text], .light input.dark[type=text], .brand input.dark[type=text], .dark textarea, .light .dark textarea, .brand .dark textarea, textarea.dark, .light textarea.dark, .brand textarea.dark {
-  color: white;
-  background: #232323;
-  border-color: #515151;
-}
-.dark input[type=text]::placeholder, .light .dark input[type=text]::placeholder, .brand .dark input[type=text]::placeholder, input.dark[type=text]::placeholder, .light input.dark[type=text]::placeholder, .brand input.dark[type=text]::placeholder, .dark textarea::placeholder, .light .dark textarea::placeholder, .brand .dark textarea::placeholder, textarea.dark::placeholder, .light textarea.dark::placeholder, .brand textarea.dark::placeholder {
-  color: #dfdfdf;
-  opacity: 1;
+:link, .theme-link:link {
+  color: var(--theme-brand);
+  text-decoration: none;
 }
 
-.brand input[type=text], .light .brand input[type=text], .dark .brand input[type=text], input.brand[type=text], .light input.brand[type=text], .dark input.brand[type=text], .brand textarea, .light .brand textarea, .dark .brand textarea, textarea.brand, .light textarea.brand, .dark textarea.brand {
-  color: white;
-  background: #4b71e3;
-  border-color: #718fe9;
-}
-.brand input[type=text]::placeholder, .light .brand input[type=text]::placeholder, .dark .brand input[type=text]::placeholder, input.brand[type=text]::placeholder, .light input.brand[type=text]::placeholder, .dark input.brand[type=text]::placeholder, .brand textarea::placeholder, .light .brand textarea::placeholder, .dark .brand textarea::placeholder, textarea.brand::placeholder, .light textarea.brand::placeholder, .dark textarea.brand::placeholder {
-  color: #e4eafb;
-  opacity: 1;
+:visited, .theme-link:visited {
+  color: hsla(var(--theme-brand-h), calc(var(--theme-brand-s) + ((var(--theme-brand-s) - 0%) * -0.5)), calc(var(--theme-brand-l) + ((var(--theme-brand-l) - 0%) * -0.25)), var(--theme-brand-a));
+  color: hsla(var(--theme-brand-h), calc(var(--theme-brand-s) + ((var(--theme-brand-s) - 0%) * -0.4)), calc((var(--theme-brand-l) * 0.8) + (var(--theme-text-l) * 0.2)), var(--theme-brand-a));
 }
 
-.light a, .dark .light a, .brand .light a, a.light, .dark a.light, .brand a.light, .light .theme-link, .dark .light .theme-link, .brand .light .theme-link, .light.theme-link, .dark .light.theme-link, .brand .light.theme-link {
-  color: royalblue;
-}
-.light a:visited, .dark .light a:visited, .brand .light a:visited, a.light:visited, .dark a.light:visited, .brand a.light:visited, .light .theme-link:visited, .dark .light .theme-link:visited, .brand .light .theme-link:visited, .light.theme-link:visited, .dark .light.theme-link:visited, .brand .light.theme-link:visited {
-  color: #849eec;
-}
-.light a:hover, .dark .light a:hover, .brand .light a:hover, a.light:hover, .dark a.light:hover, .brand a.light:hover, .light .theme-link:hover, .dark .light .theme-link:hover, .brand .light .theme-link:hover, .light.theme-link:hover, .dark .light.theme-link:hover, .brand .light.theme-link:hover {
-  color: #19399c;
+a:hover, .theme-link:hover {
+  color: hsla(var(--theme-brand-h), calc(var(--theme-brand-s) + ((100% - var(--theme-brand-s)) * 0.5)), calc((var(--theme-brand-l) * 0.5) + (var(--theme-text-l) * 0.5)), var(--theme-brand-a));
+  text-decoration: underline;
 }
 
-.dark a, .light .dark a, .brand .dark a, a.dark, .light a.dark, .brand a.dark, .dark .theme-link, .light .dark .theme-link, .brand .dark .theme-link, .dark.theme-link, .light .dark.theme-link, .brand .dark.theme-link {
-  color: royalblue;
-}
-.dark a:visited, .light .dark a:visited, .brand .dark a:visited, a.dark:visited, .light a.dark:visited, .brand a.dark:visited, .dark .theme-link:visited, .light .dark .theme-link:visited, .brand .dark .theme-link:visited, .dark.theme-link:visited, .light .dark.theme-link:visited, .brand .dark.theme-link:visited {
-  color: #849eec;
-}
-.dark a:hover, .light .dark a:hover, .brand .dark a:hover, a.dark:hover, .light a.dark:hover, .brand a.dark:hover, .dark .theme-link:hover, .light .dark .theme-link:hover, .brand .dark .theme-link:hover, .dark.theme-link:hover, .light .dark.theme-link:hover, .brand .dark.theme-link:hover {
-  color: #19399c;
+.subtle-link, .subtle-link:hover, .subtle-link:visited {
+  color: inherit;
 }
 
-.brand a, .light .brand a, .dark .brand a, a.brand, .light a.brand, .dark a.brand, .brand .theme-link, .light .brand .theme-link, .dark .brand .theme-link, .brand.theme-link, .light .brand.theme-link, .dark .brand.theme-link {
-  color: #bef1f1;
-}
-.brand a:visited, .light .brand a:visited, .dark .brand a:visited, a.brand:visited, .light a.brand:visited, .dark a.brand:visited, .brand .theme-link:visited, .light .brand .theme-link:visited, .dark .brand .theme-link:visited, .brand.theme-link:visited, .light .brand.theme-link:visited, .dark .brand.theme-link:visited {
-  color: #d5f6f6;
-}
-.brand a:hover, .light .brand a:hover, .dark .brand a:hover, a.brand:hover, .light a.brand:hover, .dark a.brand:hover, .brand .theme-link:hover, .light .brand .theme-link:hover, .dark .brand .theme-link:hover, .brand.theme-link:hover, .light .brand.theme-link:hover, .dark .brand.theme-link:hover {
-  color: #8ae6e6;
+.text-light {
+  color: var(--theme-text-light);
 }
 
-.light .subtle-link, .light .subtle-link:hover, .light .subtle-link:visited, .dark .light .subtle-link, .dark .light .subtle-link:hover, .dark .light .subtle-link:visited, .brand .light .subtle-link, .brand .light .subtle-link:hover, .brand .light .subtle-link:visited, .light.subtle-link, .light.subtle-link:hover, .light.subtle-link:visited, .dark .light.subtle-link, .dark .light.subtle-link:hover, .dark .light.subtle-link:visited, .brand .light.subtle-link, .brand .light.subtle-link:hover, .brand .light.subtle-link:visited {
-  color: #171717;
+.text-brand {
+  color: var(--theme-brand, var(--theme-text));
 }
 
-.dark .subtle-link, .dark .subtle-link:hover, .dark .subtle-link:visited, .light .dark .subtle-link, .light .dark .subtle-link:hover, .light .dark .subtle-link:visited, .brand .dark .subtle-link, .brand .dark .subtle-link:hover, .brand .dark .subtle-link:visited, .dark.subtle-link, .dark.subtle-link:hover, .dark.subtle-link:visited, .light .dark.subtle-link, .light .dark.subtle-link:hover, .light .dark.subtle-link:visited, .brand .dark.subtle-link, .brand .dark.subtle-link:hover, .brand .dark.subtle-link:visited {
-  color: white;
+.theme-bg {
+  background-color: var(--theme-bg);
 }
 
-.brand .subtle-link, .brand .subtle-link:hover, .brand .subtle-link:visited, .light .brand .subtle-link, .light .brand .subtle-link:hover, .light .brand .subtle-link:visited, .dark .brand .subtle-link, .dark .brand .subtle-link:hover, .dark .brand .subtle-link:visited, .brand.subtle-link, .brand.subtle-link:hover, .brand.subtle-link:visited, .light .brand.subtle-link, .light .brand.subtle-link:hover, .light .brand.subtle-link:visited, .dark .brand.subtle-link, .dark .brand.subtle-link:hover, .dark .brand.subtle-link:visited {
-  color: white;
+.overlay {
+  background-color: hsla(var(--theme-bg-h), var(--theme-bg-s), var(--theme-bg-l), 0.5);
 }
 
-.light .text-light, .dark .light .text-light, .brand .light .text-light, .light.text-light, .dark .light.text-light, .brand .light.text-light {
-  color: #787878;
+.heavy-overlay {
+  background-color: hsla(var(--theme-bg-h), var(--theme-bg-s), var(--theme-bg-l), 0.75);
 }
 
-.dark .text-light, .light .dark .text-light, .brand .dark .text-light, .dark.text-light, .light .dark.text-light, .brand .dark.text-light {
-  color: #dfdfdf;
+.border-light {
+  border-color: rgba(calc((var(--theme-text-r) * 0.1) + (var(--theme-bg-r) * 0.9)), calc((var(--theme-text-g) * 0.1) + (var(--theme-bg-g) * 0.9)), calc((var(--theme-text-b) * 0.1) + (var(--theme-bg-b) * 0.9)), calc((var(--theme-text-a) * 0.1) + (var(--theme-bg-a) * 0.9)));
+}
+.border-x-light {
+  border-color: rgba(calc((var(--theme-text-r) * 0.05) + (var(--theme-bg-r) * 0.95)), calc((var(--theme-text-g) * 0.05) + (var(--theme-bg-g) * 0.95)), calc((var(--theme-text-b) * 0.05) + (var(--theme-bg-b) * 0.95)), calc((var(--theme-text-a) * 0.05) + (var(--theme-bg-a) * 0.95)));
 }
 
-.brand .text-light, .light .brand .text-light, .dark .brand .text-light, .brand.text-light, .light .brand.text-light, .dark .brand.text-light {
-  color: #e4eafb;
+.button {
+  background-color: var(--button-bg);
+}
+.button--left, .button--right {
+  border-radius: 0;
+  transform-origin: bottom;
+}
+.button--left {
+  transform: skewX(-30deg);
+}
+.button--left .button__text {
+  display: block;
+  transform: skewX(30deg);
+}
+.button--right {
+  transform: skewX(30deg);
+}
+.button--right .button__text {
+  display: block;
+  transform: skewX(-30deg);
+}
+.button, .button:hover, .button:visited {
+  color: var(--button-text);
+}
+.button:hover {
+  background-color: rgba(calc((var(--button-bg-r) * 0.8) + (var(--button-text-r) * 0.2)), calc((var(--button-bg-g) * 0.8) + (var(--button-text-g) * 0.2)), calc((var(--button-bg-b) * 0.8) + (var(--button-text-b) * 0.2)), calc((var(--button-bg-a) * 0.8) + (var(--button-text-a) * 0.2)));
+}
+.button.subtle-button {
+  color: var(--button-bg);
+  background-color: var(--button-text);
+}
+.button.subtle-button:hover {
+  background-color: rgba(calc((var(--button-text-r) * 0.8) + (var(--button-bg-r) * 0.2)), calc((var(--button-text-g) * 0.8) + (var(--button-bg-g) * 0.2)), calc((var(--button-text-b) * 0.8) + (var(--button-bg-b) * 0.2)), calc((var(--button-text-a) * 0.8) + (var(--button-bg-a) * 0.2)));
+}
+.button-o {
+  background-color: var(--theme-bg);
+  border-color: var(--button-bg);
+}
+.button-o, .button-o:visited {
+  color: var(--button-bg);
+}
+.button-o:hover {
+  color: var(--button-text);
+  background-color: var(--button-bg);
+  border-color: var(--button-bg);
+}
+.button-o.subtle-button:not(:hover) {
+  border-color: var(--theme-text);
+}
+.button-o.subtle-button:not(:hover), .button-o.subtle-button:not(:hover):visited {
+  color: var(--theme-text);
 }
 
-.light .text-brand, .dark .light .text-brand, .brand .light .text-brand, .light.text-brand, .dark .light.text-brand, .brand .light.text-brand {
-  color: royalblue;
+.fill-color-theme-text {
+  fill: var(--theme-text);
+}
+.fill-color-theme-bg {
+  fill: var(--theme-bg);
+}
+.fill-color-theme-brand {
+  fill: var(--theme-brand);
 }
 
-.dark .text-brand, .light .dark .text-brand, .brand .dark .text-brand, .dark.text-brand, .light .dark.text-brand, .brand .dark.text-brand {
-  color: royalblue;
+.stroke-color-theme-text {
+  stroke: var(--theme-text);
 }
-
-.brand .text-brand, .light .brand .text-brand, .dark .brand .text-brand, .brand.text-brand, .light .brand.text-brand, .dark .brand.text-brand {
-  color: #bef1f1;
+.stroke-color-theme-bg {
+  stroke: var(--theme-bg);
 }
-
-.light .theme-bg, .dark .light .theme-bg, .brand .light .theme-bg, .light.theme-bg, .dark .light.theme-bg, .brand .light.theme-bg {
-  background-color: white;
-}
-
-.dark .theme-bg, .light .dark .theme-bg, .brand .dark .theme-bg, .dark.theme-bg, .light .dark.theme-bg, .brand .dark.theme-bg {
-  background-color: #171717;
-}
-
-.brand .theme-bg, .light .brand .theme-bg, .dark .brand .theme-bg, .brand.theme-bg, .light .brand.theme-bg, .dark .brand.theme-bg {
-  background-color: royalblue;
-}
-
-.light .overlay, .dark .light .overlay, .brand .light .overlay, .light.overlay, .dark .light.overlay, .brand .light.overlay {
-  background-color: rgba(255, 255, 255, 0.5);
-}
-
-.dark .overlay, .light .dark .overlay, .brand .dark .overlay, .dark.overlay, .light .dark.overlay, .brand .dark.overlay {
-  background-color: rgba(23, 23, 23, 0.5);
-}
-
-.brand .overlay, .light .brand .overlay, .dark .brand .overlay, .brand.overlay, .light .brand.overlay, .dark .brand.overlay {
-  background-color: rgba(65, 105, 225, 0.5);
-}
-
-.light .heavy-overlay, .dark .light .heavy-overlay, .brand .light .heavy-overlay, .light.heavy-overlay, .dark .light.heavy-overlay, .brand .light.heavy-overlay {
-  background-color: rgba(255, 255, 255, 0.75);
-}
-
-.dark .heavy-overlay, .light .dark .heavy-overlay, .brand .dark .heavy-overlay, .dark.heavy-overlay, .light .dark.heavy-overlay, .brand .dark.heavy-overlay {
-  background-color: rgba(23, 23, 23, 0.75);
-}
-
-.brand .heavy-overlay, .light .brand .heavy-overlay, .dark .brand .heavy-overlay, .brand.heavy-overlay, .light .brand.heavy-overlay, .dark .brand.heavy-overlay {
-  background-color: rgba(65, 105, 225, 0.75);
-}
-
-.light .border-light, .dark .light .border-light, .brand .light .border-light, .light.border-light, .dark .light.border-light, .brand .light.border-light {
-  border-color: #e8e8e8;
-}
-.light .border-x-light, .dark .light .border-x-light, .brand .light .border-x-light, .light.border-x-light, .dark .light.border-x-light, .brand .light.border-x-light {
-  border-color: #f3f3f3;
-}
-
-.dark .border-light, .light .dark .border-light, .brand .dark .border-light, .dark.border-light, .light .dark.border-light, .brand .dark.border-light {
-  border-color: #2e2e2e;
-}
-.dark .border-x-light, .light .dark .border-x-light, .brand .dark .border-x-light, .dark.border-x-light, .light .dark.border-x-light, .brand .dark.border-x-light {
-  border-color: #232323;
-}
-
-.brand .border-light, .light .brand .border-light, .dark .brand .border-light, .brand.border-light, .light .brand.border-light, .dark .brand.border-light {
-  border-color: #5478e4;
-}
-.brand .border-x-light, .light .brand .border-x-light, .dark .brand .border-x-light, .brand.border-x-light, .light .brand.border-x-light, .dark .brand.border-x-light {
-  border-color: #4b71e3;
-}
-
-.light .button, .dark .light .button, .brand .light .button, .light.button, .dark .light.button, .brand .light.button {
-  background-color: royalblue;
-}
-.light .button, .light .button:hover, .light .button:visited, .dark .light .button, .dark .light .button:hover, .dark .light .button:visited, .brand .light .button, .brand .light .button:hover, .brand .light .button:visited, .light.button, .light.button:hover, .light.button:visited, .dark .light.button, .dark .light.button:hover, .dark .light.button:visited, .brand .light.button, .brand .light.button:hover, .brand .light.button:visited {
-  color: white;
-}
-.light .button:hover, .dark .light .button:hover, .brand .light .button:hover, .light.button:hover, .dark .light.button:hover, .brand .light.button:hover {
-  background-color: #6787e7;
-}
-.light .button.subtle-button, .dark .light .button.subtle-button, .brand .light .button.subtle-button, .light.button.subtle-button, .dark .light.button.subtle-button, .brand .light.button.subtle-button {
-  color: royalblue;
-  background-color: white;
-}
-.light .button.subtle-button:hover, .dark .light .button.subtle-button:hover, .brand .light .button.subtle-button:hover, .light.button.subtle-button:hover, .dark .light.button.subtle-button:hover, .brand .light.button.subtle-button:hover {
-  background-color: #d9e1f9;
-}
-.light .button-o, .dark .light .button-o, .brand .light .button-o, .light.button-o, .dark .light.button-o, .brand .light.button-o {
-  background-color: white;
-  border-color: royalblue;
-}
-.light .button-o, .light .button-o:visited, .dark .light .button-o, .dark .light .button-o:visited, .brand .light .button-o, .brand .light .button-o:visited, .light.button-o, .light.button-o:visited, .dark .light.button-o, .dark .light.button-o:visited, .brand .light.button-o, .brand .light.button-o:visited {
-  color: royalblue;
-}
-.light .button-o:hover, .dark .light .button-o:hover, .brand .light .button-o:hover, .light.button-o:hover, .dark .light.button-o:hover, .brand .light.button-o:hover {
-  color: white;
-  background-color: royalblue;
-  border-color: royalblue;
-}
-.light .button-o.subtle-button:not(:hover), .dark .light .button-o.subtle-button:not(:hover), .brand .light .button-o.subtle-button:not(:hover), .light.button-o.subtle-button:not(:hover), .dark .light.button-o.subtle-button:not(:hover), .brand .light.button-o.subtle-button:not(:hover) {
-  border-color: #171717;
-}
-.light .button-o.subtle-button:not(:hover), .light .button-o.subtle-button:not(:hover):visited, .dark .light .button-o.subtle-button:not(:hover), .dark .light .button-o.subtle-button:not(:hover):visited, .brand .light .button-o.subtle-button:not(:hover), .brand .light .button-o.subtle-button:not(:hover):visited, .light.button-o.subtle-button:not(:hover), .light.button-o.subtle-button:not(:hover):visited, .dark .light.button-o.subtle-button:not(:hover), .dark .light.button-o.subtle-button:not(:hover):visited, .brand .light.button-o.subtle-button:not(:hover), .brand .light.button-o.subtle-button:not(:hover):visited {
-  color: #171717;
-}
-
-.dark .button, .light .dark .button, .brand .dark .button, .dark.button, .light .dark.button, .brand .dark.button {
-  background-color: royalblue;
-}
-.dark .button, .dark .button:hover, .dark .button:visited, .light .dark .button, .light .dark .button:hover, .light .dark .button:visited, .brand .dark .button, .brand .dark .button:hover, .brand .dark .button:visited, .dark.button, .dark.button:hover, .dark.button:visited, .light .dark.button, .light .dark.button:hover, .light .dark.button:visited, .brand .dark.button, .brand .dark.button:hover, .brand .dark.button:visited {
-  color: white;
-}
-.dark .button:hover, .light .dark .button:hover, .brand .dark .button:hover, .dark.button:hover, .light .dark.button:hover, .brand .dark.button:hover {
-  background-color: #6787e7;
-}
-.dark .button.subtle-button, .light .dark .button.subtle-button, .brand .dark .button.subtle-button, .dark.button.subtle-button, .light .dark.button.subtle-button, .brand .dark.button.subtle-button {
-  color: royalblue;
-  background-color: white;
-}
-.dark .button.subtle-button:hover, .light .dark .button.subtle-button:hover, .brand .dark .button.subtle-button:hover, .dark.button.subtle-button:hover, .light .dark.button.subtle-button:hover, .brand .dark.button.subtle-button:hover {
-  background-color: #d9e1f9;
-}
-.dark .button-o, .light .dark .button-o, .brand .dark .button-o, .dark.button-o, .light .dark.button-o, .brand .dark.button-o {
-  background-color: #171717;
-  border-color: royalblue;
-}
-.dark .button-o, .dark .button-o:visited, .light .dark .button-o, .light .dark .button-o:visited, .brand .dark .button-o, .brand .dark .button-o:visited, .dark.button-o, .dark.button-o:visited, .light .dark.button-o, .light .dark.button-o:visited, .brand .dark.button-o, .brand .dark.button-o:visited {
-  color: royalblue;
-}
-.dark .button-o:hover, .light .dark .button-o:hover, .brand .dark .button-o:hover, .dark.button-o:hover, .light .dark.button-o:hover, .brand .dark.button-o:hover {
-  color: white;
-  background-color: royalblue;
-  border-color: royalblue;
-}
-.dark .button-o.subtle-button:not(:hover), .light .dark .button-o.subtle-button:not(:hover), .brand .dark .button-o.subtle-button:not(:hover), .dark.button-o.subtle-button:not(:hover), .light .dark.button-o.subtle-button:not(:hover), .brand .dark.button-o.subtle-button:not(:hover) {
-  border-color: white;
-}
-.dark .button-o.subtle-button:not(:hover), .dark .button-o.subtle-button:not(:hover):visited, .light .dark .button-o.subtle-button:not(:hover), .light .dark .button-o.subtle-button:not(:hover):visited, .brand .dark .button-o.subtle-button:not(:hover), .brand .dark .button-o.subtle-button:not(:hover):visited, .dark.button-o.subtle-button:not(:hover), .dark.button-o.subtle-button:not(:hover):visited, .light .dark.button-o.subtle-button:not(:hover), .light .dark.button-o.subtle-button:not(:hover):visited, .brand .dark.button-o.subtle-button:not(:hover), .brand .dark.button-o.subtle-button:not(:hover):visited {
-  color: white;
-}
-
-.brand .button, .light .brand .button, .dark .brand .button, .brand.button, .light .brand.button, .dark .brand.button {
-  background-color: #bef1f1;
-}
-.brand .button, .brand .button:hover, .brand .button:visited, .light .brand .button, .light .brand .button:hover, .light .brand .button:visited, .dark .brand .button, .dark .brand .button:hover, .dark .brand .button:visited, .brand.button, .brand.button:hover, .brand.button:visited, .light .brand.button, .light .brand.button:hover, .light .brand.button:visited, .dark .brand.button, .dark .brand.button:hover, .dark .brand.button:visited {
-  color: white;
-}
-.brand .button:hover, .light .brand .button:hover, .dark .brand .button:hover, .brand.button:hover, .light .brand.button:hover, .dark .brand.button:hover {
-  background-color: #cbf4f4;
-}
-.brand .button.subtle-button, .light .brand .button.subtle-button, .dark .brand .button.subtle-button, .brand.button.subtle-button, .light .brand.button.subtle-button, .dark .brand.button.subtle-button {
-  color: #bef1f1;
-  background-color: white;
-}
-.brand .button.subtle-button:hover, .light .brand .button.subtle-button:hover, .dark .brand .button.subtle-button:hover, .brand.button.subtle-button:hover, .light .brand.button.subtle-button:hover, .dark .brand.button.subtle-button:hover {
-  background-color: #f2fcfc;
-}
-.brand .button-o, .light .brand .button-o, .dark .brand .button-o, .brand.button-o, .light .brand.button-o, .dark .brand.button-o {
-  background-color: royalblue;
-  border-color: #bef1f1;
-}
-.brand .button-o, .brand .button-o:visited, .light .brand .button-o, .light .brand .button-o:visited, .dark .brand .button-o, .dark .brand .button-o:visited, .brand.button-o, .brand.button-o:visited, .light .brand.button-o, .light .brand.button-o:visited, .dark .brand.button-o, .dark .brand.button-o:visited {
-  color: #bef1f1;
-}
-.brand .button-o:hover, .light .brand .button-o:hover, .dark .brand .button-o:hover, .brand.button-o:hover, .light .brand.button-o:hover, .dark .brand.button-o:hover {
-  color: white;
-  background-color: #bef1f1;
-  border-color: #bef1f1;
-}
-.brand .button-o.subtle-button:not(:hover), .light .brand .button-o.subtle-button:not(:hover), .dark .brand .button-o.subtle-button:not(:hover), .brand.button-o.subtle-button:not(:hover), .light .brand.button-o.subtle-button:not(:hover), .dark .brand.button-o.subtle-button:not(:hover) {
-  border-color: white;
-}
-.brand .button-o.subtle-button:not(:hover), .brand .button-o.subtle-button:not(:hover):visited, .light .brand .button-o.subtle-button:not(:hover), .light .brand .button-o.subtle-button:not(:hover):visited, .dark .brand .button-o.subtle-button:not(:hover), .dark .brand .button-o.subtle-button:not(:hover):visited, .brand.button-o.subtle-button:not(:hover), .brand.button-o.subtle-button:not(:hover):visited, .light .brand.button-o.subtle-button:not(:hover), .light .brand.button-o.subtle-button:not(:hover):visited, .dark .brand.button-o.subtle-button:not(:hover), .dark .brand.button-o.subtle-button:not(:hover):visited {
-  color: white;
-}
-
-.light .fill-color-theme-text, .dark .light .fill-color-theme-text, .brand .light .fill-color-theme-text, .light.fill-color-theme-text, .dark .light.fill-color-theme-text, .brand .light.fill-color-theme-text {
-  fill: #171717;
-}
-.light .fill-color-theme-bg, .dark .light .fill-color-theme-bg, .brand .light .fill-color-theme-bg, .light.fill-color-theme-bg, .dark .light.fill-color-theme-bg, .brand .light.fill-color-theme-bg {
-  fill: white;
-}
-.light .fill-color-theme-brand, .dark .light .fill-color-theme-brand, .brand .light .fill-color-theme-brand, .light.fill-color-theme-brand, .dark .light.fill-color-theme-brand, .brand .light.fill-color-theme-brand {
-  fill: royalblue;
-}
-
-.dark .fill-color-theme-text, .light .dark .fill-color-theme-text, .brand .dark .fill-color-theme-text, .dark.fill-color-theme-text, .light .dark.fill-color-theme-text, .brand .dark.fill-color-theme-text {
-  fill: white;
-}
-.dark .fill-color-theme-bg, .light .dark .fill-color-theme-bg, .brand .dark .fill-color-theme-bg, .dark.fill-color-theme-bg, .light .dark.fill-color-theme-bg, .brand .dark.fill-color-theme-bg {
-  fill: #171717;
-}
-.dark .fill-color-theme-brand, .light .dark .fill-color-theme-brand, .brand .dark .fill-color-theme-brand, .dark.fill-color-theme-brand, .light .dark.fill-color-theme-brand, .brand .dark.fill-color-theme-brand {
-  fill: royalblue;
-}
-
-.brand .fill-color-theme-text, .light .brand .fill-color-theme-text, .dark .brand .fill-color-theme-text, .brand.fill-color-theme-text, .light .brand.fill-color-theme-text, .dark .brand.fill-color-theme-text {
-  fill: white;
-}
-.brand .fill-color-theme-bg, .light .brand .fill-color-theme-bg, .dark .brand .fill-color-theme-bg, .brand.fill-color-theme-bg, .light .brand.fill-color-theme-bg, .dark .brand.fill-color-theme-bg {
-  fill: royalblue;
-}
-.brand .fill-color-theme-brand, .light .brand .fill-color-theme-brand, .dark .brand .fill-color-theme-brand, .brand.fill-color-theme-brand, .light .brand.fill-color-theme-brand, .dark .brand.fill-color-theme-brand {
-  fill: #bef1f1;
-}
-
-.light .stroke-color-theme-text, .dark .light .stroke-color-theme-text, .brand .light .stroke-color-theme-text, .light.stroke-color-theme-text, .dark .light.stroke-color-theme-text, .brand .light.stroke-color-theme-text {
-  stroke: #171717;
-}
-.light .stroke-color-theme-bg, .dark .light .stroke-color-theme-bg, .brand .light .stroke-color-theme-bg, .light.stroke-color-theme-bg, .dark .light.stroke-color-theme-bg, .brand .light.stroke-color-theme-bg {
-  stroke: white;
-}
-.light .stroke-color-theme-brand, .dark .light .stroke-color-theme-brand, .brand .light .stroke-color-theme-brand, .light.stroke-color-theme-brand, .dark .light.stroke-color-theme-brand, .brand .light.stroke-color-theme-brand {
-  stroke: royalblue;
-}
-
-.dark .stroke-color-theme-text, .light .dark .stroke-color-theme-text, .brand .dark .stroke-color-theme-text, .dark.stroke-color-theme-text, .light .dark.stroke-color-theme-text, .brand .dark.stroke-color-theme-text {
-  stroke: white;
-}
-.dark .stroke-color-theme-bg, .light .dark .stroke-color-theme-bg, .brand .dark .stroke-color-theme-bg, .dark.stroke-color-theme-bg, .light .dark.stroke-color-theme-bg, .brand .dark.stroke-color-theme-bg {
-  stroke: #171717;
-}
-.dark .stroke-color-theme-brand, .light .dark .stroke-color-theme-brand, .brand .dark .stroke-color-theme-brand, .dark.stroke-color-theme-brand, .light .dark.stroke-color-theme-brand, .brand .dark.stroke-color-theme-brand {
-  stroke: royalblue;
-}
-
-.brand .stroke-color-theme-text, .light .brand .stroke-color-theme-text, .dark .brand .stroke-color-theme-text, .brand.stroke-color-theme-text, .light .brand.stroke-color-theme-text, .dark .brand.stroke-color-theme-text {
-  stroke: white;
-}
-.brand .stroke-color-theme-bg, .light .brand .stroke-color-theme-bg, .dark .brand .stroke-color-theme-bg, .brand.stroke-color-theme-bg, .light .brand.stroke-color-theme-bg, .dark .brand.stroke-color-theme-bg {
-  stroke: royalblue;
-}
-.brand .stroke-color-theme-brand, .light .brand .stroke-color-theme-brand, .dark .brand .stroke-color-theme-brand, .brand.stroke-color-theme-brand, .light .brand.stroke-color-theme-brand, .dark .brand.stroke-color-theme-brand {
-  stroke: #bef1f1;
+.stroke-color-theme-brand {
+  stroke: var(--theme-brand);
 }
 
 .no-bg {

@@ -1,75 +1,56 @@
-@use "sass:color";
+@use 'scss-properties' as color-props;
 @use "sass:list";
-@use "sass:map";
-@use "../mixins" as t;
 
+$link-selector: '.theme-link' !default;
 $anchor-override: '.subtle-link' !default;
 
-@function _m($args...) {
-    @return map.get($args...);
-}
-
 blockquote {
-    @include t.themeify using ($theme) {
-        $text: _m($theme, text-light);
-        $bg: _m($theme, bg);
-        color: $text;
-        border-left-color: color.mix($text, $bg, 25%);
-    }
+    color: var(--theme-text-light);
+    border-left-color: color-props.mix(--theme-text, --theme-bg, 25%);
 }
 
 pre, code {
-    @include t.themeify using ($t) {
-        $text: _m($t,'text');
-        $bg: _m($t,'bg');
-        $light: _m($t,'light');
-
-        $ld-tx-bg: t.ld($text, $bg);
-        $box-color: color.adjust($bg, $lightness: $ld-tx-bg * if($light, -15%, 15%));
-        $box-color: color.adjust($box-color, $saturation: -(color.saturation($box-color) * 0.5) );
-        color: color.mix($text, $box-color, 80%);
-        border-color: color.adjust($box-color, $lightness: -($ld-tx-bg * if($light, 25%, 10%)));
-        background-color: $box-color;
-    }
+    $lightness-scale: calc(0.9 - (0.15 * var(--theme-light)));
+    border-color: color-props.set(--theme-bg,
+        $saturation: scale -60%,
+        $lightness: mix --theme-text $lightness-scale);
+    background-color: color-props.set(--theme-bg,
+        $saturation: scale -50%,
+        $lightness: mix --theme-text 90%);
 }
 
 input[type="text"], textarea {
-    @include t.themeify using ($t) {
-        $text: _m($t,'text');
-        $bg: _m($t,'bg');
-        $light: _m($t,'light');
+    color: var(--theme-text);
+    background: color-props.mix(--theme-text, --theme-bg, calc(0.05 * var(--theme-light)));
+    border-color: color-props.mix(--theme-text, --theme-bg, 25%);
 
-        color: $text;
-        background: color.mix($text, $bg, if($light, 0%, 5%));
-        border-color: color.mix($text, $bg, 25%);
-
-        &::placeholder {
-            color: _m($t,'text-light');
-            opacity: 1;
-        }
+    &::placeholder {
+        color: var(--theme-text-light);
+        opacity: 1;
     }
 }
 
-a, .theme-link {
-    @include t.themeify using ($t) {
-        $brand: _m($t,'brand');
-        @if $brand {
-            $light: _m($t,'light');
-            $ld-br-tx: t.ld($brand, _m($t,'text'));
-            $ld-br-bg: t.ld($brand, _m($t,'bg'));
+:link, #{$link-selector}:link {
+    color: var(--theme-brand);
+    text-decoration: none;
+}
 
-            color: $brand;
+:visited, #{$link-selector}:visited {
+    color: color-props.scale(--theme-brand, $saturation: -50%, $lightness: -25%);
+    color: color-props.set(--theme-brand,
+        $saturation: scale -40%,
+        $lightness: mix --theme-text 80%);
+}
 
-            &:visited { color: color.adjust($brand, $lightness: if($light, $ld-br-bg, $ld-br-tx) * 35%); }
-            &:hover { color: color.adjust($brand, $lightness: if($light, $ld-br-tx, $ld-br-bg) * -45%); }
-        }
-    }
+a:hover, #{$link-selector}:hover {
+    color: color-props.set(--theme-brand,
+        $saturation: scale 50%,
+        $lightness: mix --theme-text 50%);
+    text-decoration: underline;
 }
 
 #{list.join($anchor-override, (), 'comma', false)} {
-    @include t.themeify using ($theme) {
-        &, &:hover, &:visited {
-            color: _m($theme,'text');
-        }
+    &, &:hover, &:visited {
+        color: inherit;
     }
 }

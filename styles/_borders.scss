@@ -1,22 +1,14 @@
-@use "sass:color";
-@use "sass:map";
-@use "../mixins" as t;
+@use 'scss-properties' as color-props;
 
 $light: 10% !default;
 $x-light: 5% !default;
 
 .border {
-    @include t.themeify using ($theme) {
-        $text: map.get($theme,'text');
-        $bg: map.get($theme,'bg');
+    &-light {
+        border-color: color-props.mix(--theme-text, --theme-bg, $light);
+    }
 
-        &-light {
-            border-color: color.mix($text, $bg, $light);
-        }
-
-        &-x-light {
-            border-color: color.mix($text, $bg, $x-light);
-        }
+    &-x-light {
+        border-color: color-props.mix(--theme-text, --theme-bg, $x-light);
     }
 }
-

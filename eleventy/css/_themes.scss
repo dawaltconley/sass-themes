@@ -17,7 +17,7 @@ $themes: (
 );
 
 @use "build" with ($themes: $themes);
-@use "styles/all";
+@use "styles";
 
 .no-bg {
     background-color: transparent !important;
