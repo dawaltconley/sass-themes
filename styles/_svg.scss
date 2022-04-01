@@ -1,3 +1,7 @@
+//// SVG styles.
+//// @group styles-svg
+
+/// SVG fill classes.
 .fill-color-theme {
     &-text {
         fill: var(--theme-text);
@@ -10,6 +14,7 @@
     }
 }
 
+/// SVG stroke classes.
 .stroke-color-theme {
     &-text {
         stroke: var(--theme-text);

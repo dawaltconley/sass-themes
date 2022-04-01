@@ -1,5 +1,6 @@
 @use 'mixins';
 
+/// Default themes generated when `@use`ing the `sass-themes/build` file.
 $themes: (
     "light": (
         text-color: #171717,

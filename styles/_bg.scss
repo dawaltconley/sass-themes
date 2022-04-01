@@ -1,16 +1,28 @@
+//// Background styles.
+//// @group styles-bg
+
 @use 'scss-properties' as color-props;
 
+/// Opacity of the `.overlay` class
 $overlay: 0.5 !default;
+/// Opacity of the `.heavy-overlay` class
 $heavy-overlay: 0.75 !default;
 
+/// Applies the `--theme-bg` to an element's background color.
 .theme-bg {
     background-color: var(--theme-bg);
 }
 
+/// Applies a semi-transparent `--theme-bg` to an element's background color.
+/// @require $overlay
+/// @link https://github.com/dawaltconley/scss-properties
 .overlay {
     background-color: color-props.change(--theme-bg, $alpha: $overlay);
 }
 
+/// Same as `.overlay`, but with a separate control.
+/// @require $heavy-overlay
+/// @link https://github.com/dawaltconley/scss-properties
 .heavy-overlay {
     background-color: color-props.change(--theme-bg, $alpha: $heavy-overlay);
 }

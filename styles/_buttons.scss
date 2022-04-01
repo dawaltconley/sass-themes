@@ -1,7 +1,14 @@
+//// Button classes.
+//// @group styles-buttons
+//// @link https://github.com/dawaltconley/scss-properties
+
 @use 'scss-properties' as color-props;
 
+/// Controls how much the `.button` and `.button-o` elements react on hover.
 $btn-hover-mix: 80% !default;
 
+/// Button element with an opaque, branded background.
+/// @require $btn-hover-mix
 .button {
     $root: &;
     background-color: var(--button-bg);
@@ -33,6 +40,9 @@ $btn-hover-mix: 80% !default;
         background-color: color-props.mix(--button-bg, --button-text, $btn-hover-mix);
     }
 
+/// More subtle styling for the `.button` class
+/// @name .button.subtle-button
+/// @require {css} .button
     &.subtle-button {
         color: var(--button-bg);
         background-color: var(--button-text);
@@ -42,6 +52,8 @@ $btn-hover-mix: 80% !default;
         }
     }
 
+/// Button element with default background and branded outlines.
+/// @name .button-o
     &-o {
         background-color: var(--theme-bg);
         border-color: var(--button-bg);
@@ -56,6 +68,9 @@ $btn-hover-mix: 80% !default;
             border-color: var(--button-bg);
         }
 
+/// More subtle styling for the `.button-o` class
+/// @name .button-o.subtle-button
+/// @require {css} .button-o
         &.subtle-button:not(:hover) {
             border-color: var(--theme-text);
 

@@ -1,14 +1,22 @@
+//// Base styles
+//// @group styles-base
+//// @link https://github.com/dawaltconley/scss-properties
+
 @use 'scss-properties' as color-props;
 @use "sass:list";
 
+/// Name of the class that applies the default theme styles for links.
 $link-selector: '.theme-link' !default;
+/// Name of the class that unsets the default theme styles for links.
 $anchor-override: '.subtle-link' !default;
 
+/// Default styles for blockquotes.
 blockquote {
     color: var(--theme-text-light);
     border-left-color: color-props.mix(--theme-text, --theme-bg, 25%);
 }
 
+/// Default styles for code blocks.
 pre, code {
     $lightness-scale: calc(0.9 - (0.15 * var(--theme-light)));
     border-color: color-props.set(--theme-bg,
@@ -19,6 +27,7 @@ pre, code {
         $lightness: mix --theme-text 90%);
 }
 
+/// Default styles for form fields.
 input[type="text"], textarea {
     color: var(--theme-text);
     background: color-props.mix(--theme-text, --theme-bg, calc(0.05 * var(--theme-light)));
@@ -30,11 +39,15 @@ input[type="text"], textarea {
     }
 }
 
+/// Default styles for link elements.
+/// @require $link-selector
 :link, #{$link-selector}:link {
     color: var(--theme-brand);
     text-decoration: none;
 }
 
+/// Default styles for visited links.
+/// @require $link-selector
 :visited, #{$link-selector}:visited {
     color: color-props.scale(--theme-brand, $saturation: -50%, $lightness: -25%);
     color: color-props.set(--theme-brand,
@@ -42,6 +55,8 @@ input[type="text"], textarea {
         $lightness: mix --theme-text 80%);
 }
 
+/// Default styles for darkened links.
+/// @require $link-selector
 a:hover, #{$link-selector}:hover {
     color: color-props.set(--theme-brand,
         $saturation: scale 50%,
@@ -49,6 +64,8 @@ a:hover, #{$link-selector}:hover {
     text-decoration: underline;
 }
 
+/// Override default link styles.
+/// @require $anchor-override
 #{list.join($anchor-override, (), 'comma', false)} {
     &, &:hover, &:visited {
         color: inherit;

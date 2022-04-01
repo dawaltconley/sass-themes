@@ -1,3 +1,6 @@
+//// Mixins for defining themes.
+//// @group mixins
+
 @use "sass:color";
 @use "sass:map";
 @use "sass:meta";
@@ -5,8 +8,13 @@
 @use 'scss-properties' as color-props;
 @use "sass-color-helpers/stylesheets/color-helpers" as ch;
 
+/// Defines the default accessibility for all mixins.
 $accessibility: 'AA' !default;
 
+/// Turns a string into a class name. Leaves strings formatted as selectors unmodified.
+/// @param {String} $str
+/// @return {String}
+/// @access private
 @function _classify($str) {
     $look-for: '.' '#' '*' ',' '>' '+' '~' '[' ':';
     @each $char in $look-for {
@@ -17,6 +25,11 @@ $accessibility: 'AA' !default;
     @return '.#{$str}';
 }
 
+/// Checks the color contrast ratios against the WCAG standards. Throws a warning when the provided colors do not meet the standard.
+/// @param {Color} $text
+/// @param {Color} $bg
+/// @param {Color} $brand [null]
+/// @param {'AAA'|'AA'|false} $accessibility [$accessibility] - The accessibility standard to check this themes colors against.
 @mixin accessibility($name, $bg, $text, $brand: null, $accessibility: $accessibility) {
     $aa: string.to-upper-case($accessibility) == "AA";
     $aaa: string.to-upper-case($accessibility) == "AAA";
@@ -40,11 +53,59 @@ $accessibility: 'AA' !default;
     }
 }
 
+/// The styles applied to all theme classes after their properties have been defined.
 %theme {
     color: var(--theme-text);
     background-color: var(--theme-bg);
     border-color: var(--theme-text);
 }
+
+/// Defines the CSS properties for a theme class. Uses the `define` mixin from the [scss-properties library](https://github.com/dawaltconley/scss-properties). Must define at least a text and a background color.
+///
+/// @param {Color} $text [null]
+/// @param {Color} $bg [null]
+/// @param {Color} $brand [null]
+/// @param {'AAA'|'AA'|false} $accessibility [$accessibility] - The accessibility standard to check this themes colors against.
+///
+/// @param {Map} $settings [null] - A map that sets all the parameter values. Can also be passed as the first argument.
+/// @param {Color} settings.text - Aliases: `text-color`, `--theme-text`
+/// @param {Color} settings.bg - Aliases: `background-color`, `background`, `--theme-bg`
+/// @param {Color} settings.brand - Aliases: `brand-color`, `--theme-brand`
+/// @param {'AAA'|'AA'|false} settings.accessibility [$accessibility]
+///
+/// @require {mixin} accessibility
+/// @require $accessibility
+/// @require %theme
+///
+/// @example scss
+///   @use 'sass-themes';
+///
+///   body, .light {
+///     @include sass-themes.theme(
+///       $text:  #111,
+///       $bg:    white,
+///       $brand: royalblue
+///     )
+///   }
+///
+/// @output
+/// Output is simplified for readability. Actual output shown in comments.
+/// ```scss
+/// body, light {
+///   --light-theme:      1;                                          // 1 if text color is darker than background, else 0
+///   --dark-theme:       0;                                          // opposite --light-theme
+///   --theme-text:       #111;                                       // hsla(var(--theme-text-h), var(--theme-text-s), var(--theme-text-l), var(--theme-text-a));
+///   --theme-bg:         white;                                      // hsla(var(--theme-bg-h), var(--theme-bg-s), var(--theme-bg-l), var(--theme-bg-a));
+///   --theme-brand:      royalblue                                   // hsla(var(--theme-brand-h), var(--theme-brand-s), var(--theme-brand-l), var(--theme-brand-a));
+///   --button-text:      if($brand and not $light-theme, $text, $bg) // hsla(var(--button-text-h), var(--button-text-s), var(--button-text-l), var(--button-text-a));
+///   --button-bg:        $brand or $text                             // hsla(var(--button-bg-h), var(--button-bg-s), var(--button-bg-l), var(--button-bg-a));
+///   --theme-text-light: #{color-props.mix(                          // rgba(calc((var(--theme-text-r) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-r) * (1 - (0.58 + (0.18 * var(--theme-dark)))))),
+///                         --theme-text,                             //      calc((var(--theme-text-g) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-g) * (1 - (0.58 + (0.18 * var(--theme-dark)))))),
+///                         --theme-bg,                               //      calc((var(--theme-text-b) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-b) * (1 - (0.58 + (0.18 * var(--theme-dark)))))),
+///                         '(0.58 + (0.18 * var(--theme-dark)))'     //      calc((var(--theme-text-a) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-a) * (1 - (0.58 + (0.18 * var(--theme-dark)))))));
+///                       )};
+/// }
+/// ```
 
 @mixin theme($text: null, $bg: null, $brand: null, $accessibility: $accessibility, $settings: null) {
     @if meta.type-of($text) == 'map' {
@@ -93,6 +154,32 @@ $accessibility: 'AA' !default;
 
     @extend %theme;
 }
+
+/// Creates multiple theme classes based on a settings map.
+/// @param {Map} $themes - Keys are class names. Values are $settings maps that are passed to the theme mixin.
+/// @require {mixin} theme
+/// @example scss
+///   @use 'sass-themes';
+///
+///   @include sass-themes.build(
+///     'light': (
+///         --theme-text:   #171717,
+///         --theme-bg:     white,
+///         --theme-brand:  royalblue ),
+///     'dark': (
+///         --theme-text:   white,
+///         --theme-bg:     #171717,
+///         --theme-brand:  royalblue ));
+///
+/// @output
+/// ```scss
+/// .light {
+///   // theme contents
+/// }
+/// .dark {
+///   // theme contents
+/// }
+/// ```
 
 @mixin build($themes) {
     @each $theme, $settings in $themes {
