@@ -17,25 +17,25 @@ $accessibility: 'AA' !default;
     @return '.#{$str}';
 }
 
-@mixin accessibility($name, $background-color, $text-color, $brand-color: null, $accessibility: $accessibility) {
+@mixin accessibility($name, $bg, $text, $brand: null, $accessibility: $accessibility) {
     $aa: string.to-upper-case($accessibility) == "AA";
     $aaa: string.to-upper-case($accessibility) == "AAA";
 
-    $ct-tx-bg: ch.ch-color-contrast($background-color, $text-color);
+    $ct-tx-bg: ch.ch-color-contrast($bg, $text);
 
     @if ($ct-tx-bg < 4.5 and $aa) or ($ct-tx-bg < 7 and $aaa) {
-        @warn "The contrast ratio of the '#{$name}' theme's text (#{$text-color}) and background (#{$background-color}) colors is #{$ct-tx-bg}, which does not meet WCAG 2.0 #{if($aaa, "AAA standard (7)", "AA standard (4.5)")}.";
+        @warn "The contrast ratio of the '#{$name}' theme's text (#{$text}) and background (#{$bg}) colors is #{$ct-tx-bg}, which does not meet WCAG 2.0 #{if($aaa, "AAA standard (7)", "AA standard (4.5)")}.";
     }
 
-    @if $brand-color {
-        $ct-br-tx: ch.ch-color-contrast($brand-color, $text-color);
-        $ct-br-bg: ch.ch-color-contrast($brand-color, $background-color);
+    @if $brand {
+        $ct-br-tx: ch.ch-color-contrast($brand, $text);
+        $ct-br-bg: ch.ch-color-contrast($brand, $bg);
 
         @if $ct-br-tx < 3 and $aa {
-            @warn "The contrast ratio of the '#{$name}' theme's link (#{$brand-color}) and text (#{$text-color}) colors is #{$ct-br-tx}, which does not meet WCAG 2.0 AA standard (3).";
+            @warn "The contrast ratio of the '#{$name}' theme's link (#{$brand}) and text (#{$text}) colors is #{$ct-br-tx}, which does not meet WCAG 2.0 AA standard (3).";
         }
         @if ($ct-br-bg < 4.5 and $aa) or ($ct-br-bg < 7 and $aaa) {
-            @warn "The contrast ratio of the '#{$name}' theme's link (#{$brand-color}) and background (#{$background-color}) colors is #{$ct-br-bg}, which does not meet WCAG 2.0 #{if($aaa, "AAA standard (7)", "AA standard (4.5)")}.";
+            @warn "The contrast ratio of the '#{$name}' theme's link (#{$brand}) and background (#{$bg}) colors is #{$ct-br-bg}, which does not meet WCAG 2.0 #{if($aaa, "AAA standard (7)", "AA standard (4.5)")}.";
         }
     }
 }
@@ -64,9 +64,9 @@ $accessibility: 'AA' !default;
     @if $accessibility {
         @include accessibility(
             $name: #{&},
-            $background-color: $bg,
-            $text-color: $text,
-            $brand-color: $brand,
+            $text: $text,
+            $bg: $bg,
+            $brand: $brand,
             $accessibility: $accessibility,
         );
     }
