@@ -1,6 +1,6 @@
 @use 'scss-properties' as color-props;
 
-$hover-mix: 80% !default;
+$btn-hover-mix: 80% !default;
 
 .button {
     $root: &;
@@ -30,7 +30,7 @@ $hover-mix: 80% !default;
     }
 
     &:hover {
-        background-color: color-props.mix(--button-bg, --button-text, $hover-mix);
+        background-color: color-props.mix(--button-bg, --button-text, $btn-hover-mix);
     }
 
     &.subtle-button {
@@ -38,7 +38,7 @@ $hover-mix: 80% !default;
         background-color: var(--button-text);
 
         &:hover {
-            background-color: color-props.mix(--button-text, --button-bg, $hover-mix);
+            background-color: color-props.mix(--button-text, --button-bg, $btn-hover-mix);
         }
     }
 

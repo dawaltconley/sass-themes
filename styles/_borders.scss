@@ -1,14 +1,14 @@
 @use 'scss-properties' as color-props;
 
-$light: 10% !default;
-$x-light: 5% !default;
+$border-light: 10% !default;
+$border-x-light: 5% !default;
 
 .border {
     &-light {
-        border-color: color-props.mix(--theme-text, --theme-bg, $light);
+        border-color: color-props.mix(--theme-text, --theme-bg, $border-light);
     }
 
     &-x-light {
-        border-color: color-props.mix(--theme-text, --theme-bg, $x-light);
+        border-color: color-props.mix(--theme-text, --theme-bg, $border-x-light);
     }
 }
