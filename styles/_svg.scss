@@ -1,6 +1,8 @@
 //// SVG styles.
 //// @group styles-svg
 
+@use 'theme';
+
 /// SVG fill classes.
 .fill-color-theme {
     &-text {
