@@ -3,7 +3,7 @@
 //// @link https://github.com/dawaltconley/scss-properties
 
 @use 'node_modules/scss-properties';
-@use "sass:list";
+@use 'sass:list';
 
 /// Name of the class that applies the default theme styles for links.
 $link-selector: '.theme-link' !default;

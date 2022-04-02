@@ -1,13 +1,13 @@
 //// Mixins for defining themes.
 //// @group mixins
 
-@use "sass:color";
-@use "sass:map";
-@use "sass:meta";
-@use "sass:string";
+@use 'sass:color';
+@use 'sass:map';
+@use 'sass:meta';
+@use 'sass:string';
 @use 'styles/theme';
 @use 'node_modules/scss-properties';
-@use "node_modules/sass-color-helpers/stylesheets/color-helpers" as ch;
+@use 'node_modules/sass-color-helpers/stylesheets/color-helpers' as ch;
 
 /// Defines the default accessibility for all mixins. Can be `AA`, `AAA`, or `false`.
 /// @example scss
@@ -167,8 +167,8 @@ $accessibility: 'AA' !default;
 /// @param {'AAA'|'AA'|false} $accessibility [$accessibility] - The accessibility standard to check this themes colors against.
 
 @mixin accessibility($name, $bg, $text, $brand: null, $accessibility: $accessibility) {
-    $aa: string.to-upper-case($accessibility) == "AA";
-    $aaa: string.to-upper-case($accessibility) == "AAA";
+    $aa: string.to-upper-case($accessibility) == 'AA';
+    $aaa: string.to-upper-case($accessibility) == 'AAA';
 
     $ct-tx-bg: ch.ch-color-contrast($bg, $text);
 

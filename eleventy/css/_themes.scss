@@ -1,15 +1,15 @@
 $themes: (
-    "light": (
+    'light': (
         text-color: #171717,
         background-color: white,
         brand-color: royalblue,
     ),
-    "dark": (
+    'dark': (
         text-color: white,
         background-color: #171717,
         brand-color: royalblue,
     ),
-    "brand": (
+    'brand': (
         text-color: white,
         background-color: royalblue,
         brand-color: #bef1f1,
@@ -17,7 +17,7 @@ $themes: (
     ),
 );
 
-@use "index" as sass-themes;
+@use 'index' as sass-themes;
 
 @include sass-themes.build($themes);
 
