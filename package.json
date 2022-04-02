@@ -1,7 +1,7 @@
 {
   "name": "sass-themes",
   "version": "0.1.4",
-  "description": "Mixins for pure CSS parallax.",
+  "description": "Sass library for managing the primary colors of a website based on their role.",
   "files": [
     "_index.scss",
     "_mixins.scss",
