@@ -2,6 +2,7 @@
 //// @group styles-buttons
 //// @link https://github.com/dawaltconley/scss-properties
 
+@use 'theme';
 @use 'scss-properties';
 
 /// Controls how much the `.button` and `.button-o` elements react on hover.

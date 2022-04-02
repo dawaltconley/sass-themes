@@ -2,8 +2,10 @@
 //// @group styles-base
 //// @link https://github.com/dawaltconley/scss-properties
 
-@use 'scss-properties';
+@use 'theme';
+
 @use 'sass:list';
+@use 'scss-properties';
 
 /// Name of the class that applies the default theme styles for links.
 $link-selector: '.theme-link' !default;
