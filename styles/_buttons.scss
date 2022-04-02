@@ -2,7 +2,7 @@
 //// @group styles-buttons
 //// @link https://github.com/dawaltconley/scss-properties
 
-@use 'scss-properties';
+@use 'node_modules/scss-properties';
 
 /// Controls how much the `.button` and `.button-o` elements react on hover.
 $btn-hover-mix: 80% !default;
