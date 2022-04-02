@@ -1,0 +1,225 @@
+@use '../node_modules/sass-true/sass/true' as *;
+
+@use '../mixins' as themes with ($accessibility: false);
+
+@mixin result {
+  .light {
+    --theme-text: hsla(var(--theme-text-h), var(--theme-text-s), var(--theme-text-l), var(--theme-text-a));
+    --theme-text-r: 17;
+    --theme-text-g: 17;
+    --theme-text-b: 17;
+    --theme-text-h: 0deg;
+    --theme-text-s: 0%;
+    --theme-text-l: 6.6666666667%;
+    --theme-text-a: 1;
+    --theme-bg: hsla(var(--theme-bg-h), var(--theme-bg-s), var(--theme-bg-l), var(--theme-bg-a));
+    --theme-bg-r: 255;
+    --theme-bg-g: 255;
+    --theme-bg-b: 255;
+    --theme-bg-h: 0deg;
+    --theme-bg-s: 0%;
+    --theme-bg-l: 100%;
+    --theme-bg-a: 1;
+    --button-bg: hsla(var(--button-bg-h), var(--button-bg-s), var(--button-bg-l), var(--button-bg-a));
+    --button-bg-r: 0;
+    --button-bg-g: 0;
+    --button-bg-b: 255;
+    --button-bg-h: 240deg;
+    --button-bg-s: 100%;
+    --button-bg-l: 50%;
+    --button-bg-a: 1;
+    --button-text: hsla(var(--button-text-h), var(--button-text-s), var(--button-text-l), var(--button-text-a));
+    --button-text-r: 255;
+    --button-text-g: 255;
+    --button-text-b: 255;
+    --button-text-h: 0deg;
+    --button-text-s: 0%;
+    --button-text-l: 100%;
+    --button-text-a: 1;
+    --theme-brand: hsla(var(--theme-brand-h), var(--theme-brand-s), var(--theme-brand-l), var(--theme-brand-a));
+    --theme-brand-r: 0;
+    --theme-brand-g: 0;
+    --theme-brand-b: 255;
+    --theme-brand-h: 240deg;
+    --theme-brand-s: 100%;
+    --theme-brand-l: 50%;
+    --theme-brand-a: 1;
+    --theme-light: 1;
+    --theme-dark: 0;
+    --theme-text-light: rgba(calc((var(--theme-text-r) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-r) * (1 - (0.58 + (0.18 * var(--theme-dark)))))), calc((var(--theme-text-g) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-g) * (1 - (0.58 + (0.18 * var(--theme-dark)))))), calc((var(--theme-text-b) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-b) * (1 - (0.58 + (0.18 * var(--theme-dark)))))), calc((var(--theme-text-a) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-a) * (1 - (0.58 + (0.18 * var(--theme-dark)))))));
+  }
+}
+
+@include describe('create') {
+  @include describe('argument aliases') {
+    @include it('creates a theme with positional arguments') {
+      @include assert {
+        @include output {
+          .light {
+            @include themes.create(#111, white, blue);
+          }
+        }
+        @include expect {
+          @include result;
+        }
+      }
+    }
+    @include it('creates a theme with positional and keyword arguments') {
+      @include assert {
+        @include output {
+          .light {
+            @include themes.create(#111, $brand: blue, $background: white);
+          }
+        }
+        @include expect {
+          @include result;
+        }
+      }
+    }
+    @include it('creates a theme with $text, $bg, $brand keywords') {
+      @include assert {
+        @include output {
+          .light {
+            @include themes.create(
+              $text:  #111,
+              $bg:    white,
+              $brand: blue,
+            );
+          }
+        }
+        @include expect {
+          @include result;
+        }
+      }
+    }
+    @include it('creates a theme with $text, $background, $brand keywords') {
+      @include assert {
+        @include output {
+          .light {
+            @include themes.create(
+              $text:        #111,
+              $background:  white,
+              $brand:       blue,
+            );
+          }
+        }
+        @include expect {
+          @include result;
+        }
+      }
+    }
+    @include it('creates a theme with $text-color, $background-color, $brand-color keywords') {
+      @include assert {
+        @include output {
+          .light {
+            @include themes.create(
+              $text-color:        #111,
+              $background-color:  white,
+              $brand-color:       blue,
+            );
+          }
+        }
+        @include expect {
+          @include result;
+        }
+      }
+    }
+    @include it('creates a theme with $--theme-text, $--theme-bg, $--theme-brand keywords') {
+      @include assert {
+        @include output {
+          .light {
+            @include themes.create(
+              $--theme-text:  #111,
+              $--theme-bg:    white,
+              $--theme-brand: blue,
+            );
+          }
+        }
+        @include expect {
+          @include result;
+        }
+      }
+    }
+    @include it('creates a theme with text, bg, brand map keys') {
+      @include assert {
+        @include output {
+          .light {
+            @include themes.create((
+              text:  #111,
+              bg:    white,
+              brand: blue,
+            ));
+          }
+        }
+        @include expect {
+          @include result;
+        }
+      }
+    }
+    @include it('creates a theme with text, background, brand map keys') {
+      @include assert {
+        @include output {
+          .light {
+            @include themes.create((
+              text:       #111,
+              background: white,
+              brand:      blue,
+            ));
+          }
+        }
+        @include expect {
+          @include result;
+        }
+      }
+    }
+    @include it('creates a theme with text-color, background-color, brand-color map keys') {
+      @include assert {
+        @include output {
+          .light {
+            @include themes.create((
+              text-color:       #111,
+              background-color: white,
+              brand-color:      blue,
+            ));
+          }
+        }
+        @include expect {
+          @include result;
+        }
+      }
+    }
+    @include it('creates a theme with --theme-text, --theme-bg, --theme-brand map keys') {
+      @include assert {
+        @include output {
+          .light {
+            @include themes.create((
+              --theme-text:  #111,
+              --theme-bg:    white,
+              --theme-brand: blue,
+            ));
+          }
+        }
+        @include expect {
+          @include result;
+        }
+      }
+    }
+    @include it('creates a theme using a map of names and settings') {
+      @include assert {
+        @include output {
+          $themes: (
+            'light': (
+              text-color:       #111,
+              background-color: white,
+              brand-color:      blue,
+            )
+          );
+          @include themes.create($themes);
+        }
+        @include expect {
+          @include result;
+        }
+      }
+    }
+  }
+}
