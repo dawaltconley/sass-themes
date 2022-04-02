@@ -133,16 +133,17 @@ This allows you to style elements within a theme differently without extra marku
 </div>
 ```
 
+## Style sheets
+
 Default theme subclasses are defined in the `styles` directory, and can be imported with some configurable variables, all at once through `styles/_index.scss` or individually. They are automatically imported if you `@use` this library's root directory.
 
-If you import styles individually, you should always import the `theme` style first, so that later styles can override theme colors.
+If you import styles individually, you should always import the mixins first, so that later styles can override theme colors.
 
 ```scss
 // importing individual styles
-@use 'sass-themes/styles/theme';
+@use 'sass-themes/mixins' as sass-themes;
 @use 'sass-themes/styles/base';
 @use 'sass-themes/styles/text';
-@use 'sass-themes/mixins' as sass-themes;
 ```
 
 ## Partials
