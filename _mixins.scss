@@ -5,7 +5,7 @@
 @use "sass:map";
 @use "sass:meta";
 @use "sass:string";
-@use 'scss-properties' as color-props;
+@use 'scss-properties';
 @use "sass-color-helpers/stylesheets/color-helpers" as ch;
 
 /// Defines the default accessibility for all mixins.
@@ -99,7 +99,7 @@ $accessibility: 'AA' !default;
 ///   --theme-brand:      royalblue                                   // hsla(var(--theme-brand-h), var(--theme-brand-s), var(--theme-brand-l), var(--theme-brand-a));
 ///   --button-text:      if($brand and not $light-theme, $text, $bg) // hsla(var(--button-text-h), var(--button-text-s), var(--button-text-l), var(--button-text-a));
 ///   --button-bg:        $brand or $text                             // hsla(var(--button-bg-h), var(--button-bg-s), var(--button-bg-l), var(--button-bg-a));
-///   --theme-text-light: #{color-props.mix(                          // rgba(calc((var(--theme-text-r) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-r) * (1 - (0.58 + (0.18 * var(--theme-dark)))))),
+///   --theme-text-light: #{scss-properties.mix(                          // rgba(calc((var(--theme-text-r) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-r) * (1 - (0.58 + (0.18 * var(--theme-dark)))))),
 ///                         --theme-text,                             //      calc((var(--theme-text-g) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-g) * (1 - (0.58 + (0.18 * var(--theme-dark)))))),
 ///                         --theme-bg,                               //      calc((var(--theme-text-b) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-b) * (1 - (0.58 + (0.18 * var(--theme-dark)))))),
 ///                         '(0.58 + (0.18 * var(--theme-dark)))'     //      calc((var(--theme-text-a) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-a) * (1 - (0.58 + (0.18 * var(--theme-dark)))))));
@@ -146,11 +146,11 @@ $accessibility: 'AA' !default;
         ));
     }
 
-    @include color-props.define($properties);
+    @include scss-properties.define($properties);
 
     --theme-light: #{if($light-theme, 1, 0)};
     --theme-dark: #{if($light-theme, 0, 1)};
-    --theme-text-light: #{color-props.mix(--theme-text, --theme-bg, '(0.58 + (0.18 * var(--theme-dark)))')};
+    --theme-text-light: #{scss-properties.mix(--theme-text, --theme-bg, '(0.58 + (0.18 * var(--theme-dark)))')};
 
     @extend %theme;
 }
