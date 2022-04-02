@@ -153,13 +153,13 @@ The structure of partials in the package looks like this:
 .
 ├── _index.scss
 ├── _mixins.scss
-├── styles
-│   ├── _base.scss
-│   ├── _bg.scss
-│   ├── _borders.scss
-│   ├── _buttons.scss
-│   ├── _index.scss
-│   ├── _svg.scss
-│   ├── _text.scss
-│   └── _theme.scss
+└── styles
+    ├── _base.scss
+    ├── _bg.scss
+    ├── _borders.scss
+    ├── _buttons.scss
+    ├── _index.scss
+    ├── _svg.scss
+    ├── _text.scss
+    └── _theme.scss
 ```
