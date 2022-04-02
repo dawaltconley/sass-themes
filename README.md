@@ -1,30 +1,116 @@
 # sass-themes
 
-This module provides functions, mixins, and style sheets for sass themes: a special set of classes that define colors through inheritance.
+This module provides functions, mixins, and style sheets for a set of classes called themes. These classes use CSS properties to define the primary colors of a website in terms of their role.
+
+For more details, refer to the [full documentation](https://dawaltconley.github.io/sass-themes/).
 
 ## Themes
 
-The easiest way to define themes is using a map of three colors: `text-color`, `background-color`, and (optionally) `brand-color`. Maps can also have an `accessibility` key (`AA`, `AAA`, or `null`), which warns if the contrast ratios of the theme colors fail those WCAG standards (default is `AA`).
+Define themes using the `create` mixin. All themes take a `$text` and `$background` color, and optionally a `$brand` color.
 
 ```scss
-$themes: (
-    "light": (                          // other accepted keys:
-        text-color: #171717,            // text, color
-        background-color: white,        // bg, background
-        brand-color: royalblue,         // brand
-        accessibility: AAA
-    ),
-    "dark": (
-        text-color: white,
-        background-color: #171717,
-        brand-color: royalblue,
-    ),
-);
+@use 'sass-themes';
 
-@use "sass-themes/build" with ($themes: $themes);
+body, .light {
+  // using keyword arguments
+  @include sass-themes.create(
+    $text:  #111,
+    $bg:    white,
+    $brand: royalblue
+  )
+}
 ```
 
-This produces `.light` and `.dark` classes, which are used to style the colors of an element ***and*** all of it's children. This allows an element to be styled according to a given theme by either inheritance...
+This outputs CSS properties for use in theme classes. These properties are defined using the [scss-properties library](https://github.com/dawaltconley/scss-properties) so that they can be manipulated later.
+
+The following sample output is simplified for readability, with the actual output shown in comments.
+
+```scss
+body, .light {
+  --light-theme:      1;                                          // 1 if text color is darker than background, else 0
+  --dark-theme:       0;                                          // opposite --light-theme
+  --theme-text:       #111;                                       // hsla(var(--theme-text-h), var(--theme-text-s), var(--theme-text-l), var(--theme-text-a));
+  --theme-bg:         white;                                      // hsla(var(--theme-bg-h), var(--theme-bg-s), var(--theme-bg-l), var(--theme-bg-a));
+  --theme-brand:      royalblue                                   // hsla(var(--theme-brand-h), var(--theme-brand-s), var(--theme-brand-l), var(--theme-brand-a));
+  --button-text:      if($brand and not $light-theme, $text, $bg) // hsla(var(--button-text-h), var(--button-text-s), var(--button-text-l), var(--button-text-a));
+  --button-bg:        $brand or $text                             // hsla(var(--button-bg-h), var(--button-bg-s), var(--button-bg-l), var(--button-bg-a));
+  --theme-text-light: #{scss-properties.mix(                      // rgba(calc((var(--theme-text-r) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-r) * (1 - (0.58 + (0.18 * var(--theme-dark)))))),
+                        --theme-text,                             //      calc((var(--theme-text-g) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-g) * (1 - (0.58 + (0.18 * var(--theme-dark)))))),
+                        --theme-bg,                               //      calc((var(--theme-text-b) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-b) * (1 - (0.58 + (0.18 * var(--theme-dark)))))),
+                        '(0.58 + (0.18 * var(--theme-dark)))'     //      calc((var(--theme-text-a) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-a) * (1 - (0.58 + (0.18 * var(--theme-dark)))))));
+                      )};
+
+  color:              var(--theme-text);
+  background-color:   var(--theme-bg);
+  border-color:       var(--theme-text);
+}
+```
+
+### Accessibility
+
+The `accessibility` mixin checks the color contrast ratios against the WCAG standards. It throws a warning when the provided colors do not meet the standard.
+
+```scss
+@use 'sass-themes';
+
+@include sass-themes.accessibility($text: #111, $bg: white, $brand: blue, $accessibility: 'AA');
+```
+
+The `create` mixin calls this mixin automatically using your theme colors. You can set it's accessibility standard using the `accessibility` keyword for each theme. Or you can set it globally when importing this library.
+
+```scss
+@use 'sass-themes' with ($accessibility: 'AAA');
+```
+
+`$accessibility` can be either `'AA'`, `'AAA'`, or `false` to turn off the warnings. It defaults to `AA`.
+
+### Keyword aliases
+
+The `$text`, `$background`, and `$brand` keywords have a number of aliases:
+
+- `$text`: `text`, `text-color`, `--theme-text`
+- `$background`: `background`, `bg`, `background-color`, `--theme-bg`
+- `$brand`: `brand`, `brand-color`, `--theme-brand`
+
+These aliases can be used as alternate keyword arguments. You can also pass a map of keywords as the only argument.
+
+```scss
+.dark {
+  // using a map of keyword arguments
+  @include sass-themes.create((
+    --theme-text:   white;
+    --theme-bg:     #111;
+    --theme-brand:  royalblue;
+  ));
+}
+```
+
+You can even pass a map that defines multiple theme class names and their colors all at once:
+
+```scss
+@include sass-themes.create((
+  // using a map of class names and keyword arguments
+  'light': (
+      text-color:       #111,
+      background-color: white,
+      brand-color:      royalblue ),
+  'dark': (
+      text-color:       white,
+      background-color: #111,
+      brand-color:      royalblue )));
+```
+
+## Working with themes
+
+You create classes that inherit theme colors by referencing the CSS properties created by the `create` mixin:
+
+```css
+.button {
+    color: var(--theme-brand);
+}
+```
+
+These properties are used to style the colors of an element ***and*** all of it's children. This allows an element to be styled according to a given theme by either inheritance...
 
 ```html
 <div class="light">
@@ -47,95 +133,17 @@ This allows you to style elements within a theme differently without extra marku
 </div>
 ```
 
-## Theme subclasses
+## Style sheets
 
-You can create classes that inherit theme colors using the `themeify` mixin, found in the `_mixins.scss` partial. The include passes a map of theme properties to its content that can be referenced as follows:
+Default theme subclasses are defined in the `styles` directory, and can be imported with some configurable variables, all at once through `styles/_index.scss` or individually. They are automatically imported if you `@use` this library's root directory.
 
-```scss
-@use "sass:map";
-@use "sass-themes/mixins";
-
-.text-light {
-    @include mixins.themeify using ($theme) {
-        color: map.get($theme, 'text-light');
-    }
-}
-```
-
-This sets the class `.text-light` to apply the `text-light` property, which is a mix of the theme's text and background colors. If the theme is a light one (dark text on a light background), this will lighten the text, as the name implies. If the theme has light text on a dark background, this will _darken_ it, to bring it closer to the background color.
-
-Perhaps counter-intuitive. But when styling a site I am usually thinking of the colors of elements as relative to the rest of the page, or as serving the same _role_ within a theme. Theme classes are meant to do exactly that; they perform a function which is relative to the theme. This means that themes can be tried out, updated, and adjusted easily, even well into a site's development.
-
-The full list of properties is defined in by the `register` mixin, and is as follows:
+If you import styles individually, you should always import the mixins first, so that later styles can override theme colors.
 
 ```scss
-(
-    bg: /* background color */,
-    brand: /* brand color */,
-    text: /* text color */,
-    text-light: /* mix of text and bg */,
-    button: (
-        bg: /* brand, if available */,
-        text: /* the lighter of text or bg */
-    ),
-    light: /* true if text is darker than bg */,
-    dark: /* true if bg is darker than text */,
-);
-
-```
-
-Default theme subclasses are defined in the `styles` directory, and can be imported with some configurable variables, all at once through `styles/_all.scss` or individually. They should be imported _after_ registering all your themes and setting the `$theme-depth`.
-
-```scss
-$themes: (
-    // map of themes
-);
-
-@use "sass-themes/build" with ($themes: $themes);
-@use "sass-themes/styles/all";
-```
-
-## Themes and specificity
-
-Specificity can get a little tricky when working like this. Theme styles have more specificity, since they are relative to a class. The CSS output for `text-light` looks like this:
-
-```scss
-.light .text-light, .light.text-light {
-  color: #787878; }
-```
-
-As a result, the recommended approach is to _only_ use theme classes to control colors, and for _all_ colors on a site to be defined through themes. The specificity of theme classes makes it difficult (though not impossible) to control colors in other ways.
-
-## Depth
-
-The intended (and intuitive) behavior of theme classes is that they will be styled relative to the _nearest parent theme_. Unfortunately, CSS needs some coaxing to work like this.
-
-This is what the `$theme-depth` setting is for. `$theme-depth` controls the level at which nested themes will inherit from their nearest parent, reworking the generated CSS like so:
-
-```scss
-// $theme-depth: 1;
-.light.text-light, .light .text-light,
-.dark .light.text-light, .dark .light .text-light {
-    color: #787878; }
-
-// $theme-depth: 2;
-.light.text-light, .light .text-light,
-.dark .light.text-light, .dark .light .text-light, 
-.dark .light .dark .light.text-light, .dark .light .dark .light .text-light {
-    color: #787878; }
-```
-
-As you can see, increasing the `$theme-depth` makes each theme class _significantly_ heavier—even more so if you have three or four theme classes! The default value is 1 and there is rarely a good reason to set it higher (why are you nesting so many themes inside each other, anyway?!).
-
-Even with a `$theme-depth` of 1, is best paired with a post-processor like [uncss](https://www.npmjs.com/package/uncss).
-
-You set the `$theme-depth` when using the `_manifest.scss`, `_build.scss`, and `_mixins.scss` partials; whichever you are using to build your themes. This will also set it for all mixins and theme styles `@use`d afterwards.
-
-```scss
-@use "sass-themes/mixins" with ($theme-depth: 0); // nested themes handled by cascade
-@include constructor((
-    // map of theme styles
-));
+// importing individual styles
+@use 'sass-themes/mixins' as sass-themes;
+@use 'sass-themes/styles/base';
+@use 'sass-themes/styles/text';
 ```
 
 ## Partials
@@ -144,15 +152,15 @@ The structure of partials in the package looks like this:
 
 ```
 .
-├── _build.scss
-├── _manifest.scss
+├── _index.scss
 ├── _mixins.scss
 └── styles
-    ├── _all.scss
-    ├── _base.scss
-    ├── _bg.scss
-    ├── _borders.scss
-    ├── _buttons.scss
-    ├── _svg.scss
-    └── _text.scss
+    ├── _base.scss
+    ├── _bg.scss
+    ├── _borders.scss
+    ├── _buttons.scss
+    ├── _index.scss
+    ├── _svg.scss
+    ├── _text.scss
+    └── _theme.scss
 ```
