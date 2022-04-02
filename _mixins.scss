@@ -2,6 +2,7 @@
 //// @group mixins
 
 @use 'sass:color';
+@use 'sass:list';
 @use 'sass:map';
 @use 'sass:meta';
 @use 'sass:string';
@@ -28,38 +29,17 @@ $accessibility: 'AA' !default;
     @return '.#{$str}';
 }
 
-/// Defines the CSS properties for a theme class. Uses the `define` mixin from the [scss-properties library](https://github.com/dawaltconley/scss-properties). Must define at least a text and a background color.
+/// Defines the CSS properties for a theme class. Uses the `define` mixin from the [scss-properties library](https://github.com/dawaltconley/scss-properties).
 ///
-/// @param {Color} $text [null]
-/// @param {Color} $bg [null]
+/// @param {Color} $text
+/// @param {Color} $bg
 /// @param {Color} $brand [null]
 /// @param {'AAA'|'AA'|false} $accessibility [$accessibility] - The accessibility standard to check this themes colors against.
-///
-/// @param {Map} $settings [null] - A map that sets all the parameter values. Can also be passed as the first argument.
-/// @param {Color} settings.text - Aliases: `text-color`, `--theme-text`
-/// @param {Color} settings.bg - Aliases: `background-color`, `background`, `--theme-bg`
-/// @param {Color} settings.brand - Aliases: `brand-color`, `--theme-brand`
-/// @param {'AAA'|'AA'|false} settings.accessibility [$accessibility]
-///
-/// @require {mixin} accessibility
-/// @require $accessibility
-/// @require %theme
-///
-/// @example scss
-///   @use 'sass-themes';
-///
-///   body, .light {
-///     @include sass-themes.theme(
-///       $text:  #111,
-///       $bg:    white,
-///       $brand: royalblue
-///     )
-///   }
 ///
 /// @output
 /// Output is simplified for readability. Actual output shown in comments.
 /// ```scss
-/// body, light {
+/// body, .light {
 ///   --light-theme:      1;                                          // 1 if text color is darker than background, else 0
 ///   --dark-theme:       0;                                          // opposite --light-theme
 ///   --theme-text:       #111;                                       // hsla(var(--theme-text-h), var(--theme-text-s), var(--theme-text-l), var(--theme-text-a));
@@ -72,37 +52,14 @@ $accessibility: 'AA' !default;
 ///                         --theme-bg,                               //      calc((var(--theme-text-b) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-b) * (1 - (0.58 + (0.18 * var(--theme-dark)))))),
 ///                         '(0.58 + (0.18 * var(--theme-dark)))'     //      calc((var(--theme-text-a) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-a) * (1 - (0.58 + (0.18 * var(--theme-dark)))))));
 ///                       )};
+///
 ///   color:              var(--theme-text);
 ///   background-color:   var(--theme-bg);
 ///   border-color:       var(--theme-text);
 /// }
 /// ```
 
-@mixin define($text: null, $bg: null, $brand: null, $accessibility: $accessibility, $settings: null) {
-    @if meta.type-of($text) == 'map' {
-        $settings: $text;
-    }
-    @if $settings {
-        $bg: map.get($settings, background-color) or map.get($settings, background) or map.get($settings, bg) or map.get($settings, --theme-bg);
-        $text: map.get($settings, color) or map.get($settings, text-color) or map.get($settings, text) or map.get($settings, --theme-text);
-        $brand: map.get($settings, brand-color) or map.get($settings, brand) or map.get($settings, --theme-brand);
-        $accessibility: map.get($settings, accessibility) or $accessibility;
-    }
-
-    @if not ($text and $bg) {
-        @error 'theme must specify at least text and background colors: #{&}';
-    }
-
-    @if $accessibility {
-        @include accessibility(
-            $name: #{&},
-            $text: $text,
-            $bg: $bg,
-            $brand: $brand,
-            $accessibility: $accessibility,
-        );
-    }
-
+@mixin _create($text, $bg, $brand: null, $accessibility: $accessibility) {
     $light-theme: color.lightness($text) < color.lightness($bg);
 
     $properties: (
@@ -126,48 +83,114 @@ $accessibility: 'AA' !default;
     @extend %theme;
 }
 
-/// @alias define
-@mixin theme($args...) {
-    @include define($args...);
-}
-
-/// Creates multiple theme classes based on a settings map.
-/// @param {Map} $themes - Keys are class names. Values are `$settings` maps that are passed to the theme mixin.
-/// @require {mixin} theme
+/// Wrapper for `_create`, which normalizes arguments and keyword aliases before creating a theme. Must define at least a text and a background color.
+///
+/// @param {Color} $text          - Aliases: `$text-color`, `$--theme-text`
+/// @param {Color} $bg            - Aliases: `$background`, `$background-color`, `$--theme-bg`
+/// @param {Color} $brand [null]  - Aliases: `$brand-color`, `$--theme-brand`
+/// @param {'AAA'|'AA'|false} $accessibility [$accessibility] - The accessibility standard to check this themes colors against.
+///
+/// @param {Map} $keywords [null] - A map that sets multiple the parameter values if passed as the only argument.
+///
+/// @require {mixin} _create
+/// @require {mixin} accessibility
+/// @require $accessibility
+/// @require %theme
+///
 /// @example scss
 ///   @use 'sass-themes';
 ///
-///   @include sass-themes.build(
+///   body, .light {
+///     // using keyword arguments
+///     @include sass-themes.create(
+///       $text:  #111,
+///       $bg:    white,
+///       $brand: royalblue
+///     )
+///   }
+///   
+///   .dark {
+///     // using a map of keyword arguments
+///     @include sass-themes.create((
+///       --theme-text:   white;
+///       --theme-bg:     #111;
+///       --theme-brand:  royalblue;
+///     ));
+///   }
+///
+/// @example scss
+///   @use 'sass-themes';
+///
+///   @include sass-themes.create((
+///     // using a map of class names and keyword arguments
 ///     'light': (
-///         --theme-text:   #171717,
+///         --theme-text:   #111,
 ///         --theme-bg:     white,
 ///         --theme-brand:  royalblue ),
 ///     'dark': (
 ///         --theme-text:   white,
-///         --theme-bg:     #171717,
-///         --theme-brand:  royalblue ));
-///
-/// @output
-/// ```scss
-/// .light {
-///   // theme contents
-/// }
-/// .dark {
-///   // theme contents
-/// }
-/// ```
+///         --theme-bg:     #111,
+///         --theme-brand:  royalblue )));
 
-@mixin construct($themes) {
-    @each $theme, $settings in $themes {
-        #{_classify($theme)} {
-            @include define($settings: $settings);
+@mixin create($args...) {
+    $kwargs: meta.keywords($args);
+    @if list.length($args) == 1 and list.length(map.keys($kwargs)) == 0 {
+        // if there's a single map argument, treat it as a map of keyword arguments
+        $first-arg: list.nth($args, 1);
+        @if meta.type-of($first-arg) == 'map' {
+            $kwargs: $first-arg;
         }
+    } @else {
+        // override $kwargs with any positional arguments
+        @each $key, $value in list.zip(('text', 'background', 'brand'), $args) {
+            $kwargs: map.set($kwargs, $key, $value);
+        }
+    }
+
+    @if meta.type-of(list.nth(map.values($kwargs), 1)) == 'map' {
+        // if the value of the first keyword is a map, treat it as a map of theme names and settings. create classes accordingly
+        @each $name, $settings in $kwargs {
+            #{_classify($name)} {
+                @include create($settings);
+            }
+        }
+    } @else {
+        $text:          map.get($kwargs, color) or map.get($kwargs, text-color) or map.get($kwargs, text) or map.get($kwargs, --theme-text);
+        $bg:            map.get($kwargs, background-color) or map.get($kwargs, background) or map.get($kwargs, bg) or map.get($kwargs, --theme-bg);
+        $brand:         map.get($kwargs, brand-color) or map.get($kwargs, brand) or map.get($kwargs, --theme-brand);
+        $accessibility: map.get($kwargs, accessibility) or $accessibility;
+
+        @if not ($text and $bg) {
+            @error 'theme must specify at least text and background colors: #{&}';
+        }
+
+        @if $accessibility {
+            @include accessibility(
+            $name: #{&},
+            $text: $text,
+            $bg: $bg,
+            $brand: $brand,
+            $accessibility: $accessibility,
+            );
+        }
+
+        @include _create($text, $bg, $brand, $accessibility);
     }
 }
 
-/// @alias construct
+/// @alias create
+@mixin theme($args...) {
+    @include create($args...);
+}
+
+/// @alias create
+@mixin define($args...) {
+    @include create($args...);
+}
+
+/// @alias create
 @mixin build($args...) {
-    @include construct($args...);
+    @include create($args...);
 }
 
 /// Checks the color contrast ratios against the WCAG standards. Throws a warning when the provided colors do not meet the standard.
