@@ -27,34 +27,6 @@ $accessibility: 'AA' !default;
     @return '.#{$str}';
 }
 
-/// Checks the color contrast ratios against the WCAG standards. Throws a warning when the provided colors do not meet the standard.
-/// @param {Color} $text
-/// @param {Color} $bg
-/// @param {Color} $brand [null]
-/// @param {'AAA'|'AA'|false} $accessibility [$accessibility] - The accessibility standard to check this themes colors against.
-@mixin accessibility($name, $bg, $text, $brand: null, $accessibility: $accessibility) {
-    $aa: string.to-upper-case($accessibility) == "AA";
-    $aaa: string.to-upper-case($accessibility) == "AAA";
-
-    $ct-tx-bg: ch.ch-color-contrast($bg, $text);
-
-    @if ($ct-tx-bg < 4.5 and $aa) or ($ct-tx-bg < 7 and $aaa) {
-        @warn "The contrast ratio of the '#{$name}' theme's text (#{$text}) and background (#{$bg}) colors is #{$ct-tx-bg}, which does not meet WCAG 2.0 #{if($aaa, "AAA standard (7)", "AA standard (4.5)")}.";
-    }
-
-    @if $brand {
-        $ct-br-tx: ch.ch-color-contrast($brand, $text);
-        $ct-br-bg: ch.ch-color-contrast($brand, $bg);
-
-        @if $ct-br-tx < 3 and $aa {
-            @warn "The contrast ratio of the '#{$name}' theme's link (#{$brand}) and text (#{$text}) colors is #{$ct-br-tx}, which does not meet WCAG 2.0 AA standard (3).";
-        }
-        @if ($ct-br-bg < 4.5 and $aa) or ($ct-br-bg < 7 and $aaa) {
-            @warn "The contrast ratio of the '#{$name}' theme's link (#{$brand}) and background (#{$bg}) colors is #{$ct-br-bg}, which does not meet WCAG 2.0 #{if($aaa, "AAA standard (7)", "AA standard (4.5)")}.";
-        }
-    }
-}
-
 /// The styles applied to all theme classes after their properties have been defined.
 %theme {
     color: var(--theme-text);
@@ -161,7 +133,7 @@ $accessibility: 'AA' !default;
 }
 
 /// Creates multiple theme classes based on a settings map.
-/// @param {Map} $themes - Keys are class names. Values are $settings maps that are passed to the theme mixin.
+/// @param {Map} $themes - Keys are class names. Values are `$settings` maps that are passed to the theme mixin.
 /// @require {mixin} theme
 /// @example scss
 ///   @use 'sass-themes';
@@ -190,6 +162,35 @@ $accessibility: 'AA' !default;
     @each $theme, $settings in $themes {
         #{_classify($theme)} {
             @include theme($settings: $settings);
+        }
+    }
+}
+
+/// Checks the color contrast ratios against the WCAG standards. Throws a warning when the provided colors do not meet the standard.
+/// @param {Color} $text
+/// @param {Color} $bg
+/// @param {Color} $brand [null]
+/// @param {'AAA'|'AA'|false} $accessibility [$accessibility] - The accessibility standard to check this themes colors against.
+
+@mixin accessibility($name, $bg, $text, $brand: null, $accessibility: $accessibility) {
+    $aa: string.to-upper-case($accessibility) == "AA";
+    $aaa: string.to-upper-case($accessibility) == "AAA";
+
+    $ct-tx-bg: ch.ch-color-contrast($bg, $text);
+
+    @if ($ct-tx-bg < 4.5 and $aa) or ($ct-tx-bg < 7 and $aaa) {
+        @warn "The contrast ratio of the '#{$name}' theme's text (#{$text}) and background (#{$bg}) colors is #{$ct-tx-bg}, which does not meet WCAG 2.0 #{if($aaa, "AAA standard (7)", "AA standard (4.5)")}.";
+    }
+
+    @if $brand {
+        $ct-br-tx: ch.ch-color-contrast($brand, $text);
+        $ct-br-bg: ch.ch-color-contrast($brand, $bg);
+
+        @if $ct-br-tx < 3 and $aa {
+            @warn "The contrast ratio of the '#{$name}' theme's link (#{$brand}) and text (#{$text}) colors is #{$ct-br-tx}, which does not meet WCAG 2.0 AA standard (3).";
+        }
+        @if ($ct-br-bg < 4.5 and $aa) or ($ct-br-bg < 7 and $aaa) {
+            @warn "The contrast ratio of the '#{$name}' theme's link (#{$brand}) and background (#{$bg}) colors is #{$ct-br-bg}, which does not meet WCAG 2.0 #{if($aaa, "AAA standard (7)", "AA standard (4.5)")}.";
         }
     }
 }
