@@ -160,7 +160,7 @@ $accessibility: 'AA' !default;
 @mixin construct($themes) {
     @each $theme, $settings in $themes {
         #{_classify($theme)} {
-            @include theme($settings: $settings);
+            @include define($settings: $settings);
         }
     }
 }
