@@ -5,6 +5,7 @@
 @use "sass:map";
 @use "sass:meta";
 @use "sass:string";
+@use 'styles/theme';
 @use 'scss-properties';
 @use "sass-color-helpers/stylesheets/color-helpers" as ch;
 
@@ -25,13 +26,6 @@ $accessibility: 'AA' !default;
         }
     }
     @return '.#{$str}';
-}
-
-/// The styles applied to all theme classes after their properties have been defined.
-%theme {
-    color: var(--theme-text);
-    background-color: var(--theme-bg);
-    border-color: var(--theme-text);
 }
 
 /// Defines the CSS properties for a theme class. Uses the `define` mixin from the [scss-properties library](https://github.com/dawaltconley/scss-properties). Must define at least a text and a background color.

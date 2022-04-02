@@ -1,0 +1,8 @@
+/// The styles applied to all theme classes after their properties have been defined.
+/// @group mixins
+
+%theme {
+    color: var(--theme-text);
+    background-color: var(--theme-bg);
+    border-color: var(--theme-text);
+}
