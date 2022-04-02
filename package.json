@@ -13,6 +13,7 @@
     "docs": "npx sassdoc _mixins.scss styles/* --dest docs && touch docs/.nojekyll",
     "test": "npx @11ty/eleventy; npx gulp test",
     "saveOutput": "cp eleventy/_site/css/main.css test/main.css",
+    "prepare": "npm run docs",
     "prepublishOnly": "npm run test"
   },
   "repository": {
