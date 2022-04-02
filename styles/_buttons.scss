@@ -2,7 +2,7 @@
 //// @group styles-buttons
 //// @link https://github.com/dawaltconley/scss-properties
 
-@use 'scss-properties' as color-props;
+@use 'scss-properties';
 
 /// Controls how much the `.button` and `.button-o` elements react on hover.
 $btn-hover-mix: 80% !default;
@@ -37,7 +37,7 @@ $btn-hover-mix: 80% !default;
     }
 
     &:hover {
-        background-color: color-props.mix(--button-bg, --button-text, $btn-hover-mix);
+        background-color: scss-properties.mix(--button-bg, --button-text, $btn-hover-mix);
     }
 
 /// More subtle styling for the `.button` class
@@ -48,7 +48,7 @@ $btn-hover-mix: 80% !default;
         background-color: var(--button-text);
 
         &:hover {
-            background-color: color-props.mix(--button-text, --button-bg, $btn-hover-mix);
+            background-color: scss-properties.mix(--button-text, --button-bg, $btn-hover-mix);
         }
     }
 

@@ -2,7 +2,7 @@
 //// @group styles-base
 //// @link https://github.com/dawaltconley/scss-properties
 
-@use 'scss-properties' as color-props;
+@use 'scss-properties';
 @use "sass:list";
 
 /// Name of the class that applies the default theme styles for links.
@@ -13,16 +13,16 @@ $anchor-override: '.subtle-link' !default;
 /// Default styles for blockquotes.
 blockquote {
     color: var(--theme-text-light);
-    border-left-color: color-props.mix(--theme-text, --theme-bg, 25%);
+    border-left-color: scss-properties.mix(--theme-text, --theme-bg, 25%);
 }
 
 /// Default styles for code blocks.
 pre, code {
     $lightness-scale: calc(0.9 - (0.15 * var(--theme-light)));
-    border-color: color-props.set(--theme-bg,
+    border-color: scss-properties.set(--theme-bg,
         $saturation: scale -60%,
         $lightness: mix --theme-text $lightness-scale);
-    background-color: color-props.set(--theme-bg,
+    background-color: scss-properties.set(--theme-bg,
         $saturation: scale -50%,
         $lightness: mix --theme-text 90%);
 }
@@ -30,8 +30,8 @@ pre, code {
 /// Default styles for form fields.
 input[type="text"], textarea {
     color: var(--theme-text);
-    background: color-props.mix(--theme-text, --theme-bg, calc(0.05 * var(--theme-light)));
-    border-color: color-props.mix(--theme-text, --theme-bg, 25%);
+    background: scss-properties.mix(--theme-text, --theme-bg, calc(0.05 * var(--theme-light)));
+    border-color: scss-properties.mix(--theme-text, --theme-bg, 25%);
 
     &::placeholder {
         color: var(--theme-text-light);
@@ -49,8 +49,8 @@ input[type="text"], textarea {
 /// Default styles for visited links.
 /// @require $link-selector
 :visited, #{$link-selector}:visited {
-    color: color-props.scale(--theme-brand, $saturation: -50%, $lightness: -25%);
-    color: color-props.set(--theme-brand,
+    color: scss-properties.scale(--theme-brand, $saturation: -50%, $lightness: -25%);
+    color: scss-properties.set(--theme-brand,
         $saturation: scale -40%,
         $lightness: mix --theme-text 80%);
 }
@@ -58,7 +58,7 @@ input[type="text"], textarea {
 /// Default styles for darkened links.
 /// @require $link-selector
 a:hover, #{$link-selector}:hover {
-    color: color-props.set(--theme-brand,
+    color: scss-properties.set(--theme-brand,
         $saturation: scale 50%,
         $lightness: mix --theme-text 50%);
     text-decoration: underline;

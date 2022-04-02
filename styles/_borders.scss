@@ -1,7 +1,7 @@
 //// Border styles.
 //// @group styles-borders
 
-@use 'scss-properties' as color-props;
+@use 'scss-properties';
 
 /// Percent of text color mixed with background in the `.border-light` class.
 $border-light: 10% !default;
@@ -13,13 +13,13 @@ $border-x-light: 5% !default;
 /// @name .border-light
 /// @require $border-light
     &-light {
-        border-color: color-props.mix(--theme-text, --theme-bg, $border-light);
+        border-color: scss-properties.mix(--theme-text, --theme-bg, $border-light);
     }
 
 /// Applies an even subtler color to border styles, relative to `--theme-text` and `--theme-bg`.
 /// @name .border-x-light
 /// @require $border-x-light
     &-x-light {
-        border-color: color-props.mix(--theme-text, --theme-bg, $border-x-light);
+        border-color: scss-properties.mix(--theme-text, --theme-bg, $border-x-light);
     }
 }
