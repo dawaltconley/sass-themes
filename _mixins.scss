@@ -78,7 +78,7 @@ $accessibility: 'AA' !default;
 /// }
 /// ```
 
-@mixin theme($text: null, $bg: null, $brand: null, $accessibility: $accessibility, $settings: null) {
+@mixin define($text: null, $bg: null, $brand: null, $accessibility: $accessibility, $settings: null) {
     @if meta.type-of($text) == 'map' {
         $settings: $text;
     }
@@ -126,6 +126,11 @@ $accessibility: 'AA' !default;
     @extend %theme;
 }
 
+/// @alias define
+@mixin theme($args...) {
+    @include define($args...);
+}
+
 /// Creates multiple theme classes based on a settings map.
 /// @param {Map} $themes - Keys are class names. Values are `$settings` maps that are passed to the theme mixin.
 /// @require {mixin} theme
@@ -152,12 +157,17 @@ $accessibility: 'AA' !default;
 /// }
 /// ```
 
-@mixin build($themes) {
+@mixin construct($themes) {
     @each $theme, $settings in $themes {
         #{_classify($theme)} {
-            @include theme($settings: $settings);
+            @include define($settings: $settings);
         }
     }
+}
+
+/// @alias construct
+@mixin build($args...) {
+    @include construct($args...);
 }
 
 /// Checks the color contrast ratios against the WCAG standards. Throws a warning when the provided colors do not meet the standard.
