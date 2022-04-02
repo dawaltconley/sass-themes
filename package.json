@@ -2,8 +2,8 @@
   "name": "sass-themes",
   "version": "0.1.4",
   "description": "Mixins for pure CSS parallax.",
-  "main": "_manifest.scss",
   "files": [
+    "_index.scss",
     "_mixins.scss",
     "styles/**/*"
   ],
