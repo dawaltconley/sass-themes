@@ -31,7 +31,7 @@
   "bugs": {
     "url": "https://github.com/dawaltconley/sass-themes/issues"
   },
-  "homepage": "https://github.com/dawaltconley/sass-themes#readme",
+  "homepage": "https://dawaltconley.github.io/sass-themes/",
   "devDependencies": {
     "@11ty/eleventy": "^0.12.1",
     "@dawaltconley/sass": "0.3.2",
