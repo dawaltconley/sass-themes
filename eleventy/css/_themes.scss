@@ -13,11 +13,10 @@ $themes: (
         text-color: white,
         background-color: royalblue,
         brand-color: #bef1f1,
-        accessibility: false
     ),
 );
 
-@use 'index' as sass-themes;
+@use 'index' as sass-themes with ($accessibility: false);
 
 @include sass-themes.build($themes);
 
