@@ -17,8 +17,9 @@ $themes: (
     ),
 );
 
-@use "build" with ($themes: $themes);
-@use "styles";
+@use "index" as sass-themes;
+
+@include sass-themes.build($themes);
 
 .no-bg {
     background-color: transparent !important;

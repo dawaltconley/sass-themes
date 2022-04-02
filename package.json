@@ -5,7 +5,6 @@
   "files": [
     "_index.scss",
     "_mixins.scss",
-    "_build.scss",
     "styles/**/*"
   ],
   "scripts": {
