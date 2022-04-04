@@ -4,6 +4,15 @@ This module provides functions, mixins, and style sheets for a set of classes ca
 
 For more details, refer to the [full documentation](https://dawaltconley.github.io/sass-themes/).
 
+## Installation
+
+When installing from npm, make sure to include `node_modules` in your `SASS_PATH` resolve dependencies. `sass-themes` depends on other sass libraries and needs to know where to find them.
+
+```
+npm install sass-themes
+SASS_PATH=node_modules
+```
+
 ## Themes
 
 Define themes using the `create` mixin. All themes take a `$text` and `$background` color, and optionally a `$brand` color.
