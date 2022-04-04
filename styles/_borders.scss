@@ -2,7 +2,7 @@
 //// @group styles-borders
 
 @use 'theme';
-@use 'node_modules/scss-properties';
+@use 'scss-properties';
 
 /// Percent of text color mixed with background in the `.border-light` class.
 $border-light: 10% !default;

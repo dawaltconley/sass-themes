@@ -2,7 +2,7 @@
 //// @group styles-bg
 
 @use 'theme';
-@use 'node_modules/scss-properties';
+@use 'scss-properties';
 
 /// Opacity of the `.overlay` class
 $overlay: 0.5 !default;

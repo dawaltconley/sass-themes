@@ -7,8 +7,8 @@
 @use 'sass:meta';
 @use 'sass:string';
 @use 'styles/theme';
-@use 'node_modules/scss-properties';
-@use 'node_modules/sass-color-helpers/stylesheets/color-helpers' as ch;
+@use 'scss-properties';
+@use 'sass-color-helpers/stylesheets/color-helpers' as ch;
 
 /// Defines the default accessibility for all mixins. Can be `AA`, `AAA`, or `false`.
 /// @example scss
