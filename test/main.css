@@ -3224,6 +3224,10 @@ a:hover, .theme-link:hover {
   background-color: var(--theme-bg);
 }
 
+.no-bg {
+  background-color: transparent;
+}
+
 .overlay {
   background-color: hsla(var(--theme-bg-h), var(--theme-bg-s), var(--theme-bg-l), 0.5);
 }

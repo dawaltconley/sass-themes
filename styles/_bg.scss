@@ -14,6 +14,11 @@ $heavy-overlay: 0.75 !default;
     background-color: var(--theme-bg);
 }
 
+/// Removes an element's background color.
+.no-bg {
+    background-color: transparent;
+}
+
 /// Applies a semi-transparent `--theme-bg` to an element's background color.
 /// @require $overlay
 /// @link https://github.com/dawaltconley/scss-properties
