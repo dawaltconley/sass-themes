@@ -158,7 +158,11 @@ $accessibility: 'AA' !default;
         $text:          map.get($kwargs, color) or map.get($kwargs, text-color) or map.get($kwargs, text) or map.get($kwargs, --theme-text);
         $bg:            map.get($kwargs, background-color) or map.get($kwargs, background) or map.get($kwargs, bg) or map.get($kwargs, --theme-bg);
         $brand:         map.get($kwargs, brand-color) or map.get($kwargs, brand) or map.get($kwargs, --theme-brand);
-        $accessibility: map.get($kwargs, accessibility) or $accessibility;
+        $accessibility: if(
+            map.get($kwargs, accessibility) != null,
+            map.get($kwargs, accessibility),
+            $accessibility
+        );
 
         @if not ($text and $bg) {
             @error 'theme must specify at least text and background colors: #{&}';
