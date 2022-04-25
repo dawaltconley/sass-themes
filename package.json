@@ -1,6 +1,6 @@
 {
   "name": "sass-themes",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Sass library for managing the primary colors of a website based on their role.",
   "files": [
     "_index.scss",
