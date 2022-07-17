@@ -20,13 +20,13 @@ $accessibility: 'AA' !default;
 /// @return {String}
 /// @access private
 @function _classify($str) {
-    $look-for: '.' '#' '*' ',' '>' '+' '~' '[' ':';
-    @each $char in $look-for {
-        @if string.index($str, $char) {
-            @return $str;
-        }
+  $look-for: '.' '#' '*' ',' '>' '+' '~''[' ':';
+  @each $char in $look-for {
+    @if string.index($str, $char) {
+      @return $str;
     }
-    @return '.#{$str}';
+  }
+  @return '.#{$str}';
 }
 
 /// Defines the CSS properties for a theme class. Uses the `define` mixin from the [scss-properties library](https://github.com/dawaltconley/scss-properties).
@@ -60,27 +60,35 @@ $accessibility: 'AA' !default;
 /// ```
 
 @mixin _create($text, $bg, $brand: null, $accessibility: $accessibility) {
-    $light-theme: color.lightness($text) < color.lightness($bg);
+  $light-theme: color.lightness($text) < color.lightness($bg);
 
-    $properties: (
-        --theme-text: $text,
-        --theme-bg: $bg,
-        --button-bg: $brand or $text,
-        --button-text: if($brand and not $light-theme, $text, $bg), // should be a matter of which color (text, bg) has best contrast ratio on brand color (with white / back fallback); // null if no brand? as in: $brand and $color-determined-by-contrast
+  $properties: (
+    --theme-text: $text,
+    --theme-bg: $bg,
+    --button-bg: $brand or $text,
+    --button-text: if($brand and not $light-theme, $text, $bg),
+    // should be a matter of which color (text, bg) has best contrast ratio on brand color (with white / back fallback); // null if no brand? as in: $brand and $color-determined-by-contrast
+  );
+  @if $brand {
+    $properties: map.merge(
+      $properties,
+      (
+        --theme-brand: $brand,
+      )
     );
-    @if $brand {
-        $properties: map.merge($properties, (
-            --theme-brand: $brand
-        ));
-    }
+  }
 
-    @include scss-properties.define($properties);
+  @include scss-properties.define($properties);
 
-    --theme-light: #{if($light-theme, 1, 0)};
-    --theme-dark: #{if($light-theme, 0, 1)};
-    --theme-text-light: #{scss-properties.mix(--theme-text, --theme-bg, '(0.58 + (0.18 * var(--theme-dark)))')};
+  --theme-light: #{if($light-theme, 1, 0)};
+  --theme-dark: #{if($light-theme, 0, 1)};
+  --theme-text-light: #{scss-properties.mix(
+      --theme-text,
+      --theme-bg,
+      '(0.58 + (0.18 * var(--theme-dark)))'
+    )};
 
-    @extend %theme;
+  @extend %theme;
 }
 
 /// Wrapper for `_create`, which normalizes arguments and keyword aliases before creating a theme. Must define at least a text and a background color.
@@ -108,7 +116,7 @@ $accessibility: 'AA' !default;
 ///       $brand: royalblue
 ///     )
 ///   }
-///   
+///
 ///   .dark {
 ///     // using a map of keyword arguments
 ///     @include sass-themes.create((
@@ -133,68 +141,76 @@ $accessibility: 'AA' !default;
 ///         --theme-brand:  royalblue )));
 
 @mixin create($args...) {
-    $kwargs: meta.keywords($args);
-    @if list.length($args) == 1 and list.length(map.keys($kwargs)) == 0 {
-        // if there's a single map argument, treat it as a map of keyword arguments
-        $first-arg: list.nth($args, 1);
-        @if meta.type-of($first-arg) == 'map' {
-            $kwargs: $first-arg;
-        }
-    } @else {
-        // override $kwargs with any positional arguments
-        @each $key, $value in list.zip(('text', 'background', 'brand'), $args) {
-            $kwargs: map.set($kwargs, $key, $value);
-        }
+  $kwargs: meta.keywords($args);
+  @if list.length($args) == 1 and list.length(map.keys($kwargs)) == 0 {
+    // if there's a single map argument, treat it as a map of keyword arguments
+    $first-arg: list.nth($args, 1);
+    @if meta.type-of($first-arg) == 'map' {
+      $kwargs: $first-arg;
+    }
+  } @else {
+    // override $kwargs with any positional arguments
+    @each $key, $value in list.zip(('text', 'background', 'brand'), $args) {
+      $kwargs: map.set($kwargs, $key, $value);
+    }
+  }
+
+  @if meta.type-of(list.nth(map.values($kwargs), 1)) == 'map' {
+    // if the value of the first keyword is a map, treat it as a map of theme names and settings. create classes accordingly
+    @each $name, $settings in $kwargs {
+      #{_classify($name)} {
+        @include create($settings);
+      }
+    }
+  } @else {
+    $text: map.get($kwargs, color) or
+      map.get($kwargs, text-color) or
+      map.get($kwargs, text) or
+      map.get($kwargs, --theme-text);
+    $bg: map.get($kwargs, background-color) or
+      map.get($kwargs, background) or
+      map.get($kwargs, bg) or
+      map.get($kwargs, --theme-bg);
+    $brand: map.get($kwargs, brand-color) or
+      map.get($kwargs, brand) or
+      map.get($kwargs, --theme-brand);
+    $accessibility: if(
+      map.get($kwargs, accessibility) != null,
+      map.get($kwargs, accessibility),
+      $accessibility
+    );
+
+    @if not($text and $bg) {
+      @error 'theme must specify at least text and background colors: #{&}';
     }
 
-    @if meta.type-of(list.nth(map.values($kwargs), 1)) == 'map' {
-        // if the value of the first keyword is a map, treat it as a map of theme names and settings. create classes accordingly
-        @each $name, $settings in $kwargs {
-            #{_classify($name)} {
-                @include create($settings);
-            }
-        }
-    } @else {
-        $text:          map.get($kwargs, color) or map.get($kwargs, text-color) or map.get($kwargs, text) or map.get($kwargs, --theme-text);
-        $bg:            map.get($kwargs, background-color) or map.get($kwargs, background) or map.get($kwargs, bg) or map.get($kwargs, --theme-bg);
-        $brand:         map.get($kwargs, brand-color) or map.get($kwargs, brand) or map.get($kwargs, --theme-brand);
-        $accessibility: if(
-            map.get($kwargs, accessibility) != null,
-            map.get($kwargs, accessibility),
-            $accessibility
-        );
-
-        @if not ($text and $bg) {
-            @error 'theme must specify at least text and background colors: #{&}';
-        }
-
-        @if $accessibility {
-            @include accessibility(
-            $name: #{&},
-            $text: $text,
-            $bg: $bg,
-            $brand: $brand,
-            $accessibility: $accessibility,
-            );
-        }
-
-        @include _create($text, $bg, $brand, $accessibility);
+    @if $accessibility {
+      @include accessibility(
+        $name: #{&},
+        $text: $text,
+        $bg: $bg,
+        $brand: $brand,
+        $accessibility: $accessibility
+      );
     }
+
+    @include _create($text, $bg, $brand, $accessibility);
+  }
 }
 
 /// @alias create
 @mixin theme($args...) {
-    @include create($args...);
+  @include create($args...);
 }
 
 /// @alias create
 @mixin define($args...) {
-    @include create($args...);
+  @include create($args...);
 }
 
 /// @alias create
 @mixin build($args...) {
-    @include create($args...);
+  @include create($args...);
 }
 
 /// Checks the color contrast ratios against the WCAG standards. Throws a warning when the provided colors do not meet the standard.
@@ -203,25 +219,31 @@ $accessibility: 'AA' !default;
 /// @param {Color} $brand [null]
 /// @param {'AAA'|'AA'|false} $accessibility [$accessibility] - The accessibility standard to check this themes colors against.
 
-@mixin accessibility($name, $bg, $text, $brand: null, $accessibility: $accessibility) {
-    $aa: string.to-upper-case($accessibility) == 'AA';
-    $aaa: string.to-upper-case($accessibility) == 'AAA';
+@mixin accessibility(
+  $name,
+  $bg,
+  $text,
+  $brand: null,
+  $accessibility: $accessibility
+) {
+  $aa: string.to-upper-case($accessibility) == 'AA';
+  $aaa: string.to-upper-case($accessibility) == 'AAA';
 
-    $ct-tx-bg: ch.ch-color-contrast($bg, $text);
+  $ct-tx-bg: ch.ch-color-contrast($bg, $text);
 
-    @if ($ct-tx-bg < 4.5 and $aa) or ($ct-tx-bg < 7 and $aaa) {
-        @warn "The contrast ratio of the '#{$name}' theme's text (#{$text}) and background (#{$bg}) colors is #{$ct-tx-bg}, which does not meet WCAG 2.0 #{if($aaa, "AAA standard (7)", "AA standard (4.5)")}.";
+  @if ($ct-tx-bg < 4.5 and $aa) or ($ct-tx-bg < 7 and $aaa) {
+    @warn "The contrast ratio of the '#{$name}' theme's text (#{$text}) and background (#{$bg}) colors is #{$ct-tx-bg}, which does not meet WCAG 2.0 #{if($aaa, 'AAA standard (7)', 'AA standard (4.5)')}.";
+  }
+
+  @if $brand {
+    $ct-br-tx: ch.ch-color-contrast($brand, $text);
+    $ct-br-bg: ch.ch-color-contrast($brand, $bg);
+
+    @if $ct-br-tx < 3 and $aa {
+      @warn "The contrast ratio of the '#{$name}' theme's link (#{$brand}) and text (#{$text}) colors is #{$ct-br-tx}, which does not meet WCAG 2.0 AA standard (3).";
     }
-
-    @if $brand {
-        $ct-br-tx: ch.ch-color-contrast($brand, $text);
-        $ct-br-bg: ch.ch-color-contrast($brand, $bg);
-
-        @if $ct-br-tx < 3 and $aa {
-            @warn "The contrast ratio of the '#{$name}' theme's link (#{$brand}) and text (#{$text}) colors is #{$ct-br-tx}, which does not meet WCAG 2.0 AA standard (3).";
-        }
-        @if ($ct-br-bg < 4.5 and $aa) or ($ct-br-bg < 7 and $aaa) {
-            @warn "The contrast ratio of the '#{$name}' theme's link (#{$brand}) and background (#{$bg}) colors is #{$ct-br-bg}, which does not meet WCAG 2.0 #{if($aaa, "AAA standard (7)", "AA standard (4.5)")}.";
-        }
+    @if ($ct-br-bg < 4.5 and $aa) or ($ct-br-bg < 7 and $aaa) {
+      @warn "The contrast ratio of the '#{$name}' theme's link (#{$brand}) and background (#{$bg}) colors is #{$ct-br-bg}, which does not meet WCAG 2.0 #{if($aaa, 'AAA standard (7)', 'AA standard (4.5)')}.";
     }
+  }
 }

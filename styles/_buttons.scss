@@ -11,73 +11,86 @@ $btn-hover-mix: 80% !default;
 /// Button element with an opaque, branded background.
 /// @require $btn-hover-mix
 .button {
-    $root: &;
-    background-color: var(--button-bg);
+  $root: &;
+  background-color: var(--button-bg);
 
-    &--left, &--right {
-        border-radius: 0;
-        transform-origin: bottom;
+  &--left,
+  &--right {
+    border-radius: 0;
+    transform-origin: bottom;
+  }
+  &--left {
+    transform: skewX(-30deg);
+    #{$root}__text {
+      display: block;
+      transform: skewX(30deg);
     }
-    &--left {
-        transform: skewX(-30deg);
-        #{$root}__text {
-            display: block;
-            transform: skewX(30deg);
-        }
+  }
+  &--right {
+    transform: skewX(30deg);
+    #{$root}__text {
+      display: block;
+      transform: skewX(-30deg);
     }
-    &--right {
-        transform: skewX(30deg);
-        #{$root}__text {
-            display: block;
-            transform: skewX(-30deg);
-        }
-    }
+  }
 
-    &, &:hover, &:visited {
-        color: var(--button-text);
+  &,
+  &:hover,
+  &:visited {
+    color: var(--button-text);
+  }
+
+  &:hover {
+    background-color: scss-properties.mix(
+      --button-bg,
+      --button-text,
+      $btn-hover-mix
+    );
+  }
+
+  /// More subtle styling for the `.button` class
+  /// @name .button.subtle-button
+  /// @require {css} .button
+  &.subtle-button {
+    color: var(--button-bg);
+    background-color: var(--button-text);
+
+    &:hover {
+      background-color: scss-properties.mix(
+        --button-text,
+        --button-bg,
+        $btn-hover-mix
+      );
+    }
+  }
+
+  /// Button element with default background and branded outlines.
+  /// @name .button-o
+  &-o {
+    background-color: var(--theme-bg);
+    border-color: var(--button-bg);
+
+    &,
+    &:visited {
+      color: var(--button-bg);
     }
 
     &:hover {
-        background-color: scss-properties.mix(--button-bg, --button-text, $btn-hover-mix);
+      color: var(--button-text);
+      background-color: var(--button-bg);
+      border-color: var(--button-bg);
     }
 
-/// More subtle styling for the `.button` class
-/// @name .button.subtle-button
-/// @require {css} .button
-    &.subtle-button {
-        color: var(--button-bg);
-        background-color: var(--button-text);
+    /// More subtle styling for the `.button-o` class
+    /// @name .button-o.subtle-button
+    /// @require {css} .button-o
+    &.subtle-button:not(:hover) {
+      border-color: var(--theme-text);
 
-        &:hover {
-            background-color: scss-properties.mix(--button-text, --button-bg, $btn-hover-mix);
-        }
+      &,
+      &:visited {
+        color: var(--theme-text);
+      }
     }
-
-/// Button element with default background and branded outlines.
-/// @name .button-o
-    &-o {
-        background-color: var(--theme-bg);
-        border-color: var(--button-bg);
-
-        &, &:visited {
-            color: var(--button-bg);
-        }
-
-        &:hover {
-            color: var(--button-text);
-            background-color: var(--button-bg);
-            border-color: var(--button-bg);
-        }
-
-/// More subtle styling for the `.button-o` class
-/// @name .button-o.subtle-button
-/// @require {css} .button-o
-        &.subtle-button:not(:hover) {
-            border-color: var(--theme-text);
-
-            &, &:visited {
-                color: var(--theme-text);
-            }
-        }
-    }
+  }
 }

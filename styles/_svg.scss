@@ -5,26 +5,26 @@
 
 /// SVG fill classes.
 .fill-color-theme {
-    &-text {
-        fill: var(--theme-text);
-    }
-    &-bg {
-        fill: var(--theme-bg);
-    }
-    &-brand {
-        fill: var(--theme-brand);
-    }
+  &-text {
+    fill: var(--theme-text);
+  }
+  &-bg {
+    fill: var(--theme-bg);
+  }
+  &-brand {
+    fill: var(--theme-brand);
+  }
 }
 
 /// SVG stroke classes.
 .stroke-color-theme {
-    &-text {
-        stroke: var(--theme-text);
-    }
-    &-bg {
-        stroke: var(--theme-bg);
-    }
-    &-brand {
-        stroke: var(--theme-brand);
-    }
+  &-text {
+    stroke: var(--theme-text);
+  }
+  &-bg {
+    stroke: var(--theme-bg);
+  }
+  &-brand {
+    stroke: var(--theme-brand);
+  }
 }

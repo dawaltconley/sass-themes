@@ -14,62 +14,85 @@ $anchor-override: '.subtle-link' !default;
 
 /// Default styles for blockquotes.
 blockquote {
-    color: var(--theme-text-light);
-    border-left-color: scss-properties.mix(--theme-text, --theme-bg, 25%);
+  color: var(--theme-text-light);
+  border-left-color: scss-properties.mix(--theme-text, --theme-bg, 25%);
 }
 
 /// Default styles for code blocks.
-pre, code {
-    $lightness-scale: calc(0.9 - (0.15 * var(--theme-light)));
-    border-color: scss-properties.set(--theme-bg,
-        $saturation: scale -60%,
-        $lightness: mix --theme-text $lightness-scale);
-    background-color: scss-properties.set(--theme-bg,
-        $saturation: scale -50%,
-        $lightness: mix --theme-text 90%);
+pre,
+code {
+  $lightness-scale: calc(0.9 - (0.15 * var(--theme-light)));
+  border-color: scss-properties.set(
+    --theme-bg,
+    $saturation: scale -60%,
+    $lightness: mix --theme-text $lightness-scale
+  );
+  background-color: scss-properties.set(
+    --theme-bg,
+    $saturation: scale -50%,
+    $lightness: mix --theme-text 90%
+  );
 }
 
 /// Default styles for form fields.
-input[type="text"], textarea {
-    color: var(--theme-text);
-    background: scss-properties.mix(--theme-text, --theme-bg, calc(0.05 * var(--theme-light)));
-    border-color: scss-properties.mix(--theme-text, --theme-bg, 25%);
+input[type='text'],
+textarea {
+  color: var(--theme-text);
+  background: scss-properties.mix(
+    --theme-text,
+    --theme-bg,
+    calc(0.05 * var(--theme-light))
+  );
+  border-color: scss-properties.mix(--theme-text, --theme-bg, 25%);
 
-    &::placeholder {
-        color: var(--theme-text-light);
-        opacity: 1;
-    }
+  &::placeholder {
+    color: var(--theme-text-light);
+    opacity: 1;
+  }
 }
 
 /// Default styles for link elements.
 /// @require $link-selector
-:link, #{$link-selector}:link {
-    color: var(--theme-brand);
-    text-decoration: none;
+:link,
+#{$link-selector}:link {
+  color: var(--theme-brand);
+  text-decoration: none;
 }
 
 /// Default styles for visited links.
 /// @require $link-selector
-:visited, #{$link-selector}:visited {
-    color: scss-properties.scale(--theme-brand, $saturation: -50%, $lightness: -25%);
-    color: scss-properties.set(--theme-brand,
-        $saturation: scale -40%,
-        $lightness: mix --theme-text 80%);
+:visited,
+#{$link-selector}:visited {
+  color: scss-properties.scale(
+    --theme-brand,
+    $saturation: -50%,
+    $lightness: -25%
+  );
+  color: scss-properties.set(
+    --theme-brand,
+    $saturation: scale -40%,
+    $lightness: mix --theme-text 80%
+  );
 }
 
 /// Default styles for darkened links.
 /// @require $link-selector
-a:hover, #{$link-selector}:hover {
-    color: scss-properties.set(--theme-brand,
-        $saturation: scale 50%,
-        $lightness: mix --theme-text 50%);
-    text-decoration: underline;
+a:hover,
+#{$link-selector}:hover {
+  color: scss-properties.set(
+    --theme-brand,
+    $saturation: scale 50%,
+    $lightness: mix --theme-text 50%
+  );
+  text-decoration: underline;
 }
 
 /// Override default link styles.
 /// @require $anchor-override
 #{list.join($anchor-override, (), 'comma', false)} {
-    &, &:hover, &:visited {
-        color: inherit;
-    }
+  &,
+  &:hover,
+  &:visited {
+    color: inherit;
+  }
 }

@@ -1,5 +1,9 @@
 extends:
   - stylelint-config-recommended
   - stylelint-config-recommended-scss
+  - stylelint-config-prettier
 plugins:
   - stylelint-scss
+rules:
+  string-quotes: single
+  scss/operator-no-unspaced: null # buggy

@@ -1,8 +1,11 @@
 @use '../node_modules/sass-true/sass/true' as *;
 
-@use '../mixins' as themes with ($accessibility: false);
+@use '../mixins' as themes with (
+  $accessibility: false
+);
 
 @mixin result {
+  // prettier-ignore
   .light {
     --theme-text: hsla(var(--theme-text-h), var(--theme-text-s), var(--theme-text-l), var(--theme-text-a));
     --theme-text-r: 17;
@@ -80,11 +83,7 @@
       @include assert {
         @include output {
           .light {
-            @include themes.create(
-              $text:  #111,
-              $bg:    white,
-              $brand: blue,
-            );
+            @include themes.create($text: #111, $bg: white, $brand: blue);
           }
         }
         @include expect {
@@ -97,9 +96,9 @@
         @include output {
           .light {
             @include themes.create(
-              $text:        #111,
-              $background:  white,
-              $brand:       blue,
+              $text: #111,
+              $background: white,
+              $brand: blue
             );
           }
         }
@@ -108,14 +107,16 @@
         }
       }
     }
-    @include it('creates a theme with $text-color, $background-color, $brand-color keywords') {
+    @include it(
+      'creates a theme with $text-color, $background-color, $brand-color keywords'
+    ) {
       @include assert {
         @include output {
           .light {
             @include themes.create(
-              $text-color:        #111,
-              $background-color:  white,
-              $brand-color:       blue,
+              $text-color: #111,
+              $background-color: white,
+              $brand-color: blue
             );
           }
         }
@@ -124,14 +125,16 @@
         }
       }
     }
-    @include it('creates a theme with $--theme-text, $--theme-bg, $--theme-brand keywords') {
+    @include it(
+      'creates a theme with $--theme-text, $--theme-bg, $--theme-brand keywords'
+    ) {
       @include assert {
         @include output {
           .light {
             @include themes.create(
-              $--theme-text:  #111,
-              $--theme-bg:    white,
-              $--theme-brand: blue,
+              $--theme-text: #111,
+              $--theme-bg: white,
+              $--theme-brand: blue
             );
           }
         }
@@ -144,11 +147,13 @@
       @include assert {
         @include output {
           .light {
-            @include themes.create((
-              text:  #111,
-              bg:    white,
-              brand: blue,
-            ));
+            @include themes.create(
+              (
+                text: #111,
+                bg: white,
+                brand: blue,
+              )
+            );
           }
         }
         @include expect {
@@ -160,11 +165,13 @@
       @include assert {
         @include output {
           .light {
-            @include themes.create((
-              text:       #111,
-              background: white,
-              brand:      blue,
-            ));
+            @include themes.create(
+              (
+                text: #111,
+                background: white,
+                brand: blue,
+              )
+            );
           }
         }
         @include expect {
@@ -172,15 +179,19 @@
         }
       }
     }
-    @include it('creates a theme with text-color, background-color, brand-color map keys') {
+    @include it(
+      'creates a theme with text-color, background-color, brand-color map keys'
+    ) {
       @include assert {
         @include output {
           .light {
-            @include themes.create((
-              text-color:       #111,
-              background-color: white,
-              brand-color:      blue,
-            ));
+            @include themes.create(
+              (
+                text-color: #111,
+                background-color: white,
+                brand-color: blue,
+              )
+            );
           }
         }
         @include expect {
@@ -188,15 +199,19 @@
         }
       }
     }
-    @include it('creates a theme with --theme-text, --theme-bg, --theme-brand map keys') {
+    @include it(
+      'creates a theme with --theme-text, --theme-bg, --theme-brand map keys'
+    ) {
       @include assert {
         @include output {
           .light {
-            @include themes.create((
-              --theme-text:  #111,
-              --theme-bg:    white,
-              --theme-brand: blue,
-            ));
+            @include themes.create(
+              (
+                --theme-text: #111,
+                --theme-bg: white,
+                --theme-brand: blue,
+              )
+            );
           }
         }
         @include expect {
@@ -209,10 +224,10 @@
         @include output {
           $themes: (
             'light': (
-              text-color:       #111,
+              text-color: #111,
               background-color: white,
-              brand-color:      blue,
-            )
+              brand-color: blue,
+            ),
           );
           @include themes.create($themes);
         }

@@ -3178,32 +3178,38 @@ blockquote {
   border-left-color: rgb(calc((var(--theme-text-r) * 0.25) + (var(--theme-bg-r) * 0.75)), calc((var(--theme-text-g) * 0.25) + (var(--theme-bg-g) * 0.75)), calc((var(--theme-text-b) * 0.25) + (var(--theme-bg-b) * 0.75)));
 }
 
-pre, code {
+pre,
+code {
   border-color: hsl(var(--theme-bg-h), calc(var(--theme-bg-s) + ((var(--theme-bg-s) - 0%) * -0.6)), calc((var(--theme-bg-l) * calc(0.9 - (0.15 * var(--theme-light)))) + (var(--theme-text-l) * (1 - calc(0.9 - (0.15 * var(--theme-light)))))));
   background-color: hsl(var(--theme-bg-h), calc(var(--theme-bg-s) + ((var(--theme-bg-s) - 0%) * -0.5)), calc((var(--theme-bg-l) * 0.9) + (var(--theme-text-l) * 0.1)));
 }
 
-input[type=text], textarea {
+input[type=text],
+textarea {
   color: var(--theme-text);
   background: rgb(calc((var(--theme-text-r) * calc(0.05 * var(--theme-light))) + (var(--theme-bg-r) * (1 - calc(0.05 * var(--theme-light))))), calc((var(--theme-text-g) * calc(0.05 * var(--theme-light))) + (var(--theme-bg-g) * (1 - calc(0.05 * var(--theme-light))))), calc((var(--theme-text-b) * calc(0.05 * var(--theme-light))) + (var(--theme-bg-b) * (1 - calc(0.05 * var(--theme-light))))));
   border-color: rgb(calc((var(--theme-text-r) * 0.25) + (var(--theme-bg-r) * 0.75)), calc((var(--theme-text-g) * 0.25) + (var(--theme-bg-g) * 0.75)), calc((var(--theme-text-b) * 0.25) + (var(--theme-bg-b) * 0.75)));
 }
-input[type=text]::placeholder, textarea::placeholder {
+input[type=text]::placeholder,
+textarea::placeholder {
   color: var(--theme-text-light);
   opacity: 1;
 }
 
-:link, .theme-link:link {
+:link,
+.theme-link:link {
   color: var(--theme-brand);
   text-decoration: none;
 }
 
-:visited, .theme-link:visited {
+:visited,
+.theme-link:visited {
   color: hsl(var(--theme-brand-h), calc(var(--theme-brand-s) + ((var(--theme-brand-s) - 0%) * -0.5)), calc(var(--theme-brand-l) + ((var(--theme-brand-l) - 0%) * -0.25)));
   color: hsl(var(--theme-brand-h), calc(var(--theme-brand-s) + ((var(--theme-brand-s) - 0%) * -0.4)), calc((var(--theme-brand-l) * 0.8) + (var(--theme-text-l) * 0.2)));
 }
 
-a:hover, .theme-link:hover {
+a:hover,
+.theme-link:hover {
   color: hsl(var(--theme-brand-h), calc(var(--theme-brand-s) + ((100% - var(--theme-brand-s)) * 0.5)), calc((var(--theme-brand-l) * 0.5) + (var(--theme-text-l) * 0.5)));
   text-decoration: underline;
 }
