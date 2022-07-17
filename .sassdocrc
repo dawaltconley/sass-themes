@@ -1,6 +1,7 @@
 dest: ./docs
 groups:
   mixins: Mixins
+  utilities: Utilities
   styles-base: 'Styles: Base'
   styles-text: 'Styles: Text'
   styles-bg: 'Styles: Backgrounds'

@@ -1,0 +1,38 @@
+@use '../node_modules/sass-true/sass/true' as *;
+
+@use '../mixins' as themes with ($accessibility: false);
+@use '../utils';
+
+    @include themes.create((
+      'light': (
+        text-color:       #111,
+        background-color: white,
+        brand-color:      blue,
+      )
+    ));
+
+@include describe('if-light') {
+  @include it('resolves CSS values based on the current theme') {
+    $test: utils.if-light(100px, 80em);
+    $expect: calc(var(--theme-light) * 100px + (1 - var(--theme-light)) * 80em);
+    @include assert-equal($test, $expect);
+  }
+  @include it('resolves custom CSS color properties based on the current theme') {
+    $test: utils.if-light(--theme-text, --theme-brand);
+    $expect: rgba(calc((var(--theme-text-r) * var(--theme-light)) + (var(--theme-brand-r) * (1 - var(--theme-light)))), calc((var(--theme-text-g) * var(--theme-light)) + (var(--theme-brand-g) * (1 - var(--theme-light)))), calc((var(--theme-text-b) * var(--theme-light)) + (var(--theme-brand-b) * (1 - var(--theme-light)))), calc((var(--theme-text-a) * var(--theme-light)) + (var(--theme-brand-a) * (1 - var(--theme-light)))));
+    @include assert-equal($test, $expect);
+  }
+}
+
+@include describe('if-dark') {
+  @include it('resolves CSS values based on the current theme') {
+    $test: utils.if-dark(100px, 80em);
+    $expect: calc(var(--theme-dark) * 100px + (1 - var(--theme-dark)) * 80em);
+    @include assert-equal($test, $expect);
+  }
+  @include it('resolves custom CSS color properties based on the current theme') {
+    $test: utils.if-dark(--theme-text, --theme-brand);
+    $expect: rgba(calc((var(--theme-text-r) * var(--theme-dark)) + (var(--theme-brand-r) * (1 - var(--theme-dark)))), calc((var(--theme-text-g) * var(--theme-dark)) + (var(--theme-brand-g) * (1 - var(--theme-dark)))), calc((var(--theme-text-b) * var(--theme-dark)) + (var(--theme-brand-b) * (1 - var(--theme-dark)))), calc((var(--theme-text-a) * var(--theme-dark)) + (var(--theme-brand-a) * (1 - var(--theme-dark)))));
+    @include assert-equal($test, $expect);
+  }
+}

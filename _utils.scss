@@ -1,0 +1,50 @@
+//// Utility functions for working with themes.
+//// @group utilities
+
+@use 'sass:map';
+@use 'scss-properties';
+
+// should be a util of scss-properties
+@function _is-defined($name) {
+  @return map.has-key(scss-properties.$DEFINED, $name);
+}
+
+@function _light-or-dark($test, $true, $false) {
+  @if _is-defined($true) and _is-defined($false) {
+    @return scss-properties.mix($true, $false, $test);
+  } @else {
+    @return calc(#{$test} * #{$true} + (1 - #{$test}) * #{$false});
+  }
+}
+
+/// Returns one of two values depending on whether the current theme is light or dark.
+/// The values can either be custom CSS properties produced by the `create` mixin,
+/// or any CSS value that can be multiplied in a `calc()` function.
+///
+/// @param {String|Number} $true
+/// @param {String|Number} $false
+/// @return {Value} - a calc function that resolves to $true on light themes and $false on dark themes.
+///
+/// @example scss
+///   .theme-class {
+///     color: sass-themes.if-light(--theme-text, --theme-brand);
+///   }
+///
+/// @example scss
+///   .theme-class {
+///     height: sass-themes.if-light(100px, 80em);
+///   }
+
+@function if-light($true, $false) {
+  @return _light-or-dark(var(--theme-light), $true, $false);
+}
+
+/// Same as `if-light` but reversed.
+/// @see {function} if-light
+/// @param {String|Number} $true
+/// @param {String|Number} $false
+/// @return {Value} - a calc function that resolves to $true on dark themes and $false on light themes.
+
+@function if-dark($true, $false) {
+  @return _light-or-dark(var(--theme-dark), $true, $false);
+}
