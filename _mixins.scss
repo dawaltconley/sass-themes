@@ -93,9 +93,9 @@ $accessibility: 'AA' !default;
 
 /// Wrapper for `_create`, which normalizes arguments and keyword aliases before creating a theme. Must define at least a text and a background color.
 ///
-/// @param {Color} $text          - Aliases: `$text-color`, `$--theme-tx`
-/// @param {Color} $bg            - Aliases: `$background`, `$background-color`, `$--theme-bg`
-/// @param {Color} $brand [null]  - Aliases: `$brand-color`, `$--theme-br`
+/// @param {Color} $tx        - Aliases: `$text`, `$color`, `$text-color`, `$--theme-tx`
+/// @param {Color} $bg        - Aliases: `$background`, `$background-color`, `$--theme-bg`
+/// @param {Color} $br [null] - Aliases: `$brand`, `$brand-color`, `$--theme-br`
 /// @param {'AAA'|'AA'|false} $accessibility [$accessibility] - The accessibility standard to check this themes colors against.
 ///
 /// @param {Map} $keywords [null] - A map that sets multiple the parameter values if passed as the only argument.
@@ -111,18 +111,18 @@ $accessibility: 'AA' !default;
 ///   body, .light {
 ///     // using keyword arguments
 ///     @include sass-themes.create(
-///       $text:  #111,
-///       $bg:    white,
-///       $brand: royalblue
+///       $tx: #111,
+///       $bg: white,
+///       $br: royalblue
 ///     )
 ///   }
 ///
 ///   .dark {
 ///     // using a map of keyword arguments
 ///     @include sass-themes.create((
-///       --theme-tx:   white;
-///       --theme-bg:     #111;
-///       --theme-br:  royalblue;
+///       --theme-tx: white;
+///       --theme-bg: #111;
+///       --theme-br: royalblue;
 ///     ));
 ///   }
 ///
@@ -132,13 +132,13 @@ $accessibility: 'AA' !default;
 ///   @include sass-themes.create((
 ///     // using a map of class names and keyword arguments
 ///     'light': (
-///         --theme-tx:   #111,
-///         --theme-bg:     white,
-///         --theme-br:  royalblue ),
+///         --theme-tx: #111,
+///         --theme-bg: white,
+///         --theme-br: royalblue ),
 ///     'dark': (
-///         --theme-tx:   white,
-///         --theme-bg:     #111,
-///         --theme-br:  royalblue )));
+///         --theme-tx: white,
+///         --theme-bg: #111,
+///         --theme-br: royalblue )));
 
 @mixin create($args...) {
   $kwargs: meta.keywords($args);
@@ -166,6 +166,7 @@ $accessibility: 'AA' !default;
     $text: map.get($kwargs, color) or
       map.get($kwargs, text-color) or
       map.get($kwargs, text) or
+      map.get($kwargs, tx) or
       map.get($kwargs, --theme-tx);
     $bg: map.get($kwargs, background-color) or
       map.get($kwargs, background) or
@@ -173,6 +174,7 @@ $accessibility: 'AA' !default;
       map.get($kwargs, --theme-bg);
     $brand: map.get($kwargs, brand-color) or
       map.get($kwargs, brand) or
+      map.get($kwargs, br) or
       map.get($kwargs, --theme-br);
     $accessibility: if(
       map.get($kwargs, accessibility) != null,
