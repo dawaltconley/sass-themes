@@ -155,6 +155,12 @@ If you import styles individually, you should always import the mixins first, so
 @use 'sass-themes/styles/text';
 ```
 
+## Tailwind CSS
+
+This package exports a plugin for integrating with Tailwind CSS via `require('sass-themes/tailwind')`. This adds `theme-tx`, `theme-bg`, and `theme-br` colors to your Tailwind CSS theme, which use the corresponding CSS property.
+
+`sass-themes` still requires a Sass build step in order to create the theme classes that these Tailwind colors depend on. You may not want to import certain (or any) theme subclasses if using Tailwind; consider only importing the mixins and utility functions.
+
 ## Partials
 
 The structure of partials in the package looks like this:
