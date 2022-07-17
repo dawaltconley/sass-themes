@@ -6,25 +6,25 @@
 /// SVG fill classes.
 .fill-color-theme {
   &-text {
-    fill: var(--theme-text);
+    fill: var(--theme-tx);
   }
   &-bg {
     fill: var(--theme-bg);
   }
   &-brand {
-    fill: var(--theme-brand);
+    fill: var(--theme-br);
   }
 }
 
 /// SVG stroke classes.
 .stroke-color-theme {
   &-text {
-    stroke: var(--theme-text);
+    stroke: var(--theme-tx);
   }
   &-bg {
     stroke: var(--theme-bg);
   }
   &-brand {
-    stroke: var(--theme-brand);
+    stroke: var(--theme-br);
   }
 }

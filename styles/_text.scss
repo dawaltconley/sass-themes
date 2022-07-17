@@ -5,10 +5,10 @@
 
 /// Light text, relative to background color.
 .text-light {
-  color: var(--theme-text-light);
+  color: var(--theme-tx--light);
 }
 
 /// Applies the brand color to text.
 .text-brand {
-  color: var(--theme-brand, var(--theme-text));
+  color: var(--theme-br, var(--theme-tx));
 }

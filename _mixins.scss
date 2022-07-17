@@ -42,20 +42,20 @@ $accessibility: 'AA' !default;
 /// body, .light {
 ///   --light-theme:      1;                                          // 1 if text color is darker than background, else 0
 ///   --dark-theme:       0;                                          // opposite --light-theme
-///   --theme-text:       #111;                                       // hsla(var(--theme-text-h), var(--theme-text-s), var(--theme-text-l), var(--theme-text-a));
+///   --theme-tx:       #111;                                       // hsla(var(--theme-tx-h), var(--theme-tx-s), var(--theme-tx-l), var(--theme-tx-a));
 ///   --theme-bg:         white;                                      // hsla(var(--theme-bg-h), var(--theme-bg-s), var(--theme-bg-l), var(--theme-bg-a));
-///   --theme-brand:      royalblue                                   // hsla(var(--theme-brand-h), var(--theme-brand-s), var(--theme-brand-l), var(--theme-brand-a));
+///   --theme-br:      royalblue                                   // hsla(var(--theme-br-h), var(--theme-br-s), var(--theme-br-l), var(--theme-br-a));
 ///   --button-text:      if($brand and not $light-theme, $text, $bg) // hsla(var(--button-text-h), var(--button-text-s), var(--button-text-l), var(--button-text-a));
 ///   --button-bg:        $brand or $text                             // hsla(var(--button-bg-h), var(--button-bg-s), var(--button-bg-l), var(--button-bg-a));
-///   --theme-text-light: #{scss-properties.mix(                      // rgba(calc((var(--theme-text-r) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-r) * (1 - (0.58 + (0.18 * var(--theme-dark)))))),
-///                         --theme-text,                             //      calc((var(--theme-text-g) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-g) * (1 - (0.58 + (0.18 * var(--theme-dark)))))),
-///                         --theme-bg,                               //      calc((var(--theme-text-b) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-b) * (1 - (0.58 + (0.18 * var(--theme-dark)))))),
-///                         '(0.58 + (0.18 * var(--theme-dark)))'     //      calc((var(--theme-text-a) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-a) * (1 - (0.58 + (0.18 * var(--theme-dark)))))));
+///   --theme-tx--light: #{scss-properties.mix(                      // rgba(calc((var(--theme-tx-r) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-r) * (1 - (0.58 + (0.18 * var(--theme-dark)))))),
+///                         --theme-tx,                             //      calc((var(--theme-tx-g) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-g) * (1 - (0.58 + (0.18 * var(--theme-dark)))))),
+///                         --theme-bg,                               //      calc((var(--theme-tx-b) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-b) * (1 - (0.58 + (0.18 * var(--theme-dark)))))),
+///                         '(0.58 + (0.18 * var(--theme-dark)))'     //      calc((var(--theme-tx-a) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-a) * (1 - (0.58 + (0.18 * var(--theme-dark)))))));
 ///                       )};
 ///
-///   color:              var(--theme-text);
+///   color:              var(--theme-tx);
 ///   background-color:   var(--theme-bg);
-///   border-color:       var(--theme-text);
+///   border-color:       var(--theme-tx);
 /// }
 /// ```
 
@@ -63,7 +63,7 @@ $accessibility: 'AA' !default;
   $light-theme: color.lightness($text) < color.lightness($bg);
 
   $properties: (
-    --theme-text: $text,
+    --theme-tx: $text,
     --theme-bg: $bg,
     --button-bg: $brand or $text,
     --button-text: if($brand and not $light-theme, $text, $bg),
@@ -73,7 +73,7 @@ $accessibility: 'AA' !default;
     $properties: map.merge(
       $properties,
       (
-        --theme-brand: $brand,
+        --theme-br: $brand,
       )
     );
   }
@@ -82,8 +82,8 @@ $accessibility: 'AA' !default;
 
   --theme-light: #{if($light-theme, 1, 0)};
   --theme-dark: #{if($light-theme, 0, 1)};
-  --theme-text-light: #{scss-properties.mix(
-      --theme-text,
+  --theme-tx--light: #{scss-properties.mix(
+      --theme-tx,
       --theme-bg,
       '(0.58 + (0.18 * var(--theme-dark)))'
     )};
@@ -93,9 +93,9 @@ $accessibility: 'AA' !default;
 
 /// Wrapper for `_create`, which normalizes arguments and keyword aliases before creating a theme. Must define at least a text and a background color.
 ///
-/// @param {Color} $text          - Aliases: `$text-color`, `$--theme-text`
+/// @param {Color} $text          - Aliases: `$text-color`, `$--theme-tx`
 /// @param {Color} $bg            - Aliases: `$background`, `$background-color`, `$--theme-bg`
-/// @param {Color} $brand [null]  - Aliases: `$brand-color`, `$--theme-brand`
+/// @param {Color} $brand [null]  - Aliases: `$brand-color`, `$--theme-br`
 /// @param {'AAA'|'AA'|false} $accessibility [$accessibility] - The accessibility standard to check this themes colors against.
 ///
 /// @param {Map} $keywords [null] - A map that sets multiple the parameter values if passed as the only argument.
@@ -120,9 +120,9 @@ $accessibility: 'AA' !default;
 ///   .dark {
 ///     // using a map of keyword arguments
 ///     @include sass-themes.create((
-///       --theme-text:   white;
+///       --theme-tx:   white;
 ///       --theme-bg:     #111;
-///       --theme-brand:  royalblue;
+///       --theme-br:  royalblue;
 ///     ));
 ///   }
 ///
@@ -132,13 +132,13 @@ $accessibility: 'AA' !default;
 ///   @include sass-themes.create((
 ///     // using a map of class names and keyword arguments
 ///     'light': (
-///         --theme-text:   #111,
+///         --theme-tx:   #111,
 ///         --theme-bg:     white,
-///         --theme-brand:  royalblue ),
+///         --theme-br:  royalblue ),
 ///     'dark': (
-///         --theme-text:   white,
+///         --theme-tx:   white,
 ///         --theme-bg:     #111,
-///         --theme-brand:  royalblue )));
+///         --theme-br:  royalblue )));
 
 @mixin create($args...) {
   $kwargs: meta.keywords($args);
@@ -166,14 +166,14 @@ $accessibility: 'AA' !default;
     $text: map.get($kwargs, color) or
       map.get($kwargs, text-color) or
       map.get($kwargs, text) or
-      map.get($kwargs, --theme-text);
+      map.get($kwargs, --theme-tx);
     $bg: map.get($kwargs, background-color) or
       map.get($kwargs, background) or
       map.get($kwargs, bg) or
       map.get($kwargs, --theme-bg);
     $brand: map.get($kwargs, brand-color) or
       map.get($kwargs, brand) or
-      map.get($kwargs, --theme-brand);
+      map.get($kwargs, --theme-br);
     $accessibility: if(
       map.get($kwargs, accessibility) != null,
       map.get($kwargs, accessibility),

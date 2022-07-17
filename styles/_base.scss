@@ -14,8 +14,8 @@ $anchor-override: '.subtle-link' !default;
 
 /// Default styles for blockquotes.
 blockquote {
-  color: var(--theme-text-light);
-  border-left-color: scss-properties.mix(--theme-text, --theme-bg, 25%);
+  color: var(--theme-tx--light);
+  border-left-color: scss-properties.mix(--theme-tx, --theme-bg, 25%);
 }
 
 /// Default styles for code blocks.
@@ -25,28 +25,28 @@ code {
   border-color: scss-properties.set(
     --theme-bg,
     $saturation: scale -60%,
-    $lightness: mix --theme-text $lightness-scale
+    $lightness: mix --theme-tx $lightness-scale
   );
   background-color: scss-properties.set(
     --theme-bg,
     $saturation: scale -50%,
-    $lightness: mix --theme-text 90%
+    $lightness: mix --theme-tx 90%
   );
 }
 
 /// Default styles for form fields.
 input[type='text'],
 textarea {
-  color: var(--theme-text);
+  color: var(--theme-tx);
   background: scss-properties.mix(
-    --theme-text,
+    --theme-tx,
     --theme-bg,
     calc(0.05 * var(--theme-light))
   );
-  border-color: scss-properties.mix(--theme-text, --theme-bg, 25%);
+  border-color: scss-properties.mix(--theme-tx, --theme-bg, 25%);
 
   &::placeholder {
-    color: var(--theme-text-light);
+    color: var(--theme-tx--light);
     opacity: 1;
   }
 }
@@ -55,7 +55,7 @@ textarea {
 /// @require $link-selector
 :link,
 #{$link-selector}:link {
-  color: var(--theme-brand);
+  color: var(--theme-br);
   text-decoration: none;
 }
 
@@ -63,15 +63,11 @@ textarea {
 /// @require $link-selector
 :visited,
 #{$link-selector}:visited {
-  color: scss-properties.scale(
-    --theme-brand,
-    $saturation: -50%,
-    $lightness: -25%
-  );
+  color: scss-properties.scale(--theme-br, $saturation: -50%, $lightness: -25%);
   color: scss-properties.set(
-    --theme-brand,
+    --theme-br,
     $saturation: scale -40%,
-    $lightness: mix --theme-text 80%
+    $lightness: mix --theme-tx 80%
   );
 }
 
@@ -80,9 +76,9 @@ textarea {
 a:hover,
 #{$link-selector}:hover {
   color: scss-properties.set(
-    --theme-brand,
+    --theme-br,
     $saturation: scale 50%,
-    $lightness: mix --theme-text 50%
+    $lightness: mix --theme-tx 50%
   );
   text-decoration: underline;
 }

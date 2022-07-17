@@ -25,9 +25,9 @@
   @include it(
     'resolves custom CSS color properties based on the current theme'
   ) {
-    $test: utils.if-light(--theme-text, --theme-brand);
+    $test: utils.if-light(--theme-tx, --theme-br);
     // prettier-ignore
-    $expect: rgba(calc((var(--theme-text-r) * var(--theme-light)) + (var(--theme-brand-r) * (1 - var(--theme-light)))), calc((var(--theme-text-g) * var(--theme-light)) + (var(--theme-brand-g) * (1 - var(--theme-light)))), calc((var(--theme-text-b) * var(--theme-light)) + (var(--theme-brand-b) * (1 - var(--theme-light)))), calc((var(--theme-text-a) * var(--theme-light)) + (var(--theme-brand-a) * (1 - var(--theme-light)))));
+    $expect: rgba(calc((var(--theme-tx-r) * var(--theme-light)) + (var(--theme-br-r) * (1 - var(--theme-light)))), calc((var(--theme-tx-g) * var(--theme-light)) + (var(--theme-br-g) * (1 - var(--theme-light)))), calc((var(--theme-tx-b) * var(--theme-light)) + (var(--theme-br-b) * (1 - var(--theme-light)))), calc((var(--theme-tx-a) * var(--theme-light)) + (var(--theme-br-a) * (1 - var(--theme-light)))));
     @include assert-equal($test, $expect);
   }
 }
@@ -42,9 +42,9 @@
   @include it(
     'resolves custom CSS color properties based on the current theme'
   ) {
-    $test: utils.if-dark(--theme-text, --theme-brand);
+    $test: utils.if-dark(--theme-tx, --theme-br);
     // prettier-ignore
-    $expect: rgba(calc((var(--theme-text-r) * var(--theme-dark)) + (var(--theme-brand-r) * (1 - var(--theme-dark)))), calc((var(--theme-text-g) * var(--theme-dark)) + (var(--theme-brand-g) * (1 - var(--theme-dark)))), calc((var(--theme-text-b) * var(--theme-dark)) + (var(--theme-brand-b) * (1 - var(--theme-dark)))), calc((var(--theme-text-a) * var(--theme-dark)) + (var(--theme-brand-a) * (1 - var(--theme-dark)))));
+    $expect: rgba(calc((var(--theme-tx-r) * var(--theme-dark)) + (var(--theme-br-r) * (1 - var(--theme-dark)))), calc((var(--theme-tx-g) * var(--theme-dark)) + (var(--theme-br-g) * (1 - var(--theme-dark)))), calc((var(--theme-tx-b) * var(--theme-dark)) + (var(--theme-br-b) * (1 - var(--theme-dark)))), calc((var(--theme-tx-a) * var(--theme-dark)) + (var(--theme-br-a) * (1 - var(--theme-dark)))));
     @include assert-equal($test, $expect);
   }
 }

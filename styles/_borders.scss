@@ -10,21 +10,17 @@ $border-light: 10% !default;
 $border-x-light: 5% !default;
 
 .border {
-  /// Applies a subtle color to border styles, relative to `--theme-text` and `--theme-bg`.
+  /// Applies a subtle color to border styles, relative to `--theme-tx` and `--theme-bg`.
   /// @name .border-light
   /// @require $border-light
   &-light {
-    border-color: scss-properties.mix(--theme-text, --theme-bg, $border-light);
+    border-color: scss-properties.mix(--theme-tx, --theme-bg, $border-light);
   }
 
-  /// Applies an even subtler color to border styles, relative to `--theme-text` and `--theme-bg`.
+  /// Applies an even subtler color to border styles, relative to `--theme-tx` and `--theme-bg`.
   /// @name .border-x-light
   /// @require $border-x-light
   &-x-light {
-    border-color: scss-properties.mix(
-      --theme-text,
-      --theme-bg,
-      $border-x-light
-    );
+    border-color: scss-properties.mix(--theme-tx, --theme-bg, $border-x-light);
   }
 }

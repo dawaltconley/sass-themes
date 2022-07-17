@@ -7,14 +7,14 @@
 @mixin result {
   // prettier-ignore
   .light {
-    --theme-text: hsla(var(--theme-text-h), var(--theme-text-s), var(--theme-text-l), var(--theme-text-a));
-    --theme-text-r: 17;
-    --theme-text-g: 17;
-    --theme-text-b: 17;
-    --theme-text-h: 0deg;
-    --theme-text-s: 0%;
-    --theme-text-l: 6.6666666667%;
-    --theme-text-a: 1;
+    --theme-tx: hsla(var(--theme-tx-h), var(--theme-tx-s), var(--theme-tx-l), var(--theme-tx-a));
+    --theme-tx-r: 17;
+    --theme-tx-g: 17;
+    --theme-tx-b: 17;
+    --theme-tx-h: 0deg;
+    --theme-tx-s: 0%;
+    --theme-tx-l: 6.6666666667%;
+    --theme-tx-a: 1;
     --theme-bg: hsla(var(--theme-bg-h), var(--theme-bg-s), var(--theme-bg-l), var(--theme-bg-a));
     --theme-bg-r: 255;
     --theme-bg-g: 255;
@@ -39,17 +39,17 @@
     --button-text-s: 0%;
     --button-text-l: 100%;
     --button-text-a: 1;
-    --theme-brand: hsla(var(--theme-brand-h), var(--theme-brand-s), var(--theme-brand-l), var(--theme-brand-a));
-    --theme-brand-r: 0;
-    --theme-brand-g: 0;
-    --theme-brand-b: 255;
-    --theme-brand-h: 240deg;
-    --theme-brand-s: 100%;
-    --theme-brand-l: 50%;
-    --theme-brand-a: 1;
+    --theme-br: hsla(var(--theme-br-h), var(--theme-br-s), var(--theme-br-l), var(--theme-br-a));
+    --theme-br-r: 0;
+    --theme-br-g: 0;
+    --theme-br-b: 255;
+    --theme-br-h: 240deg;
+    --theme-br-s: 100%;
+    --theme-br-l: 50%;
+    --theme-br-a: 1;
     --theme-light: 1;
     --theme-dark: 0;
-    --theme-text-light: rgba(calc((var(--theme-text-r) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-r) * (1 - (0.58 + (0.18 * var(--theme-dark)))))), calc((var(--theme-text-g) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-g) * (1 - (0.58 + (0.18 * var(--theme-dark)))))), calc((var(--theme-text-b) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-b) * (1 - (0.58 + (0.18 * var(--theme-dark)))))), calc((var(--theme-text-a) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-a) * (1 - (0.58 + (0.18 * var(--theme-dark)))))));
+    --theme-tx--light: rgba(calc((var(--theme-tx-r) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-r) * (1 - (0.58 + (0.18 * var(--theme-dark)))))), calc((var(--theme-tx-g) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-g) * (1 - (0.58 + (0.18 * var(--theme-dark)))))), calc((var(--theme-tx-b) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-b) * (1 - (0.58 + (0.18 * var(--theme-dark)))))), calc((var(--theme-tx-a) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-a) * (1 - (0.58 + (0.18 * var(--theme-dark)))))));
   }
 }
 
@@ -126,15 +126,15 @@
       }
     }
     @include it(
-      'creates a theme with $--theme-text, $--theme-bg, $--theme-brand keywords'
+      'creates a theme with $--theme-tx, $--theme-bg, $--theme-br keywords'
     ) {
       @include assert {
         @include output {
           .light {
             @include themes.create(
-              $--theme-text: #111,
+              $--theme-tx: #111,
               $--theme-bg: white,
-              $--theme-brand: blue
+              $--theme-br: blue
             );
           }
         }
@@ -200,16 +200,16 @@
       }
     }
     @include it(
-      'creates a theme with --theme-text, --theme-bg, --theme-brand map keys'
+      'creates a theme with --theme-tx, --theme-bg, --theme-br map keys'
     ) {
       @include assert {
         @include output {
           .light {
             @include themes.create(
               (
-                --theme-text: #111,
+                --theme-tx: #111,
                 --theme-bg: white,
-                --theme-brand: blue,
+                --theme-br: blue,
               )
             );
           }

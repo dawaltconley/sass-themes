@@ -85,11 +85,11 @@ $btn-hover-mix: 80% !default;
     /// @name .button-o.subtle-button
     /// @require {css} .button-o
     &.subtle-button:not(:hover) {
-      border-color: var(--theme-text);
+      border-color: var(--theme-tx);
 
       &,
       &:visited {
-        color: var(--theme-text);
+        color: var(--theme-tx);
       }
     }
   }
