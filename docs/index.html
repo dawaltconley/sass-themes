@@ -1,100 +1,126 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Sass-themes - v0.2.2</title><link rel="stylesheet" href="assets/css/main.css"><link href="https://fonts.googleapis.com/css?family=Open+Sans:400,500,700" rel="stylesheet" type="text/css"><meta name="viewport" content="width=device-width"><meta content="IE=edge, chrome=1" http-equiv="X-UA-Compatible"><!-- Open Graph tags --><meta property="og:title" content="Sass-themes - SassDoc"><meta property="og:type" content="website"><meta property="og:description" content="<p>Sass library for managing the primary colors of a website based on their role.</p>
-"><!-- Thanks to Sass-lang.com for the icons --><link href="assets/images/favicon.png" rel="shortcut icon"></head><body><aside class="sidebar" role="nav"><div class="sidebar__header"><h1 class="sidebar__title"><a href="https://dawaltconley.github.io/sass-themes/">Sass-themes - v0.2.2</a></h1></div><div class="sidebar__body"><button type="button" class="btn-toggle js-btn-toggle" data-alt="Open all">Close all</button><p class="sidebar__item sidebar__item--heading" data-slug="mixins"><a href="#mixins">Mixins</a></p><div><p class="sidebar__item sidebar__item--sub-heading" data-slug="mixins-variable"><a href="#mixins-variable">variables</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="mixins" data-name="accessibility" data-type="variable"><a href="#mixins-variable-accessibility">accessibility</a></li></ul><p class="sidebar__item sidebar__item--sub-heading" data-slug="mixins-function"><a href="#mixins-function">functions</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="mixins" data-name="_classify" data-type="function"><a href="#mixins-function-_classify">_classify</a></li></ul><p class="sidebar__item sidebar__item--sub-heading" data-slug="mixins-mixin"><a href="#mixins-mixin">mixins</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="mixins" data-name="_create" data-type="mixin"><a href="#mixins-mixin-_create">_create</a></li><li class="sidebar__item sassdoc__item" data-group="mixins" data-name="create" data-type="mixin"><a href="#mixins-mixin-create">create</a></li><li class="sidebar__item sassdoc__item" data-group="mixins" data-name="accessibility" data-type="mixin"><a href="#mixins-mixin-accessibility">accessibility</a></li></ul><p class="sidebar__item sidebar__item--sub-heading" data-slug="mixins-placeholder"><a href="#mixins-placeholder">placeholders</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="mixins" data-name="theme" data-type="placeholder"><a href="#mixins-placeholder-theme">theme</a></li></ul></div><p class="sidebar__item sidebar__item--heading" data-slug="styles-base"><a href="#styles-base">Styles: Base</a></p><div><p class="sidebar__item sidebar__item--sub-heading" data-slug="styles-base-variable"><a href="#styles-base-variable">variables</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="styles-base" data-name="link-selector" data-type="variable"><a href="#styles-base-variable-link-selector">link-selector</a></li><li class="sidebar__item sassdoc__item" data-group="styles-base" data-name="anchor-override" data-type="variable"><a href="#styles-base-variable-anchor-override">anchor-override</a></li></ul><p class="sidebar__item sidebar__item--sub-heading" data-slug="styles-base-css"><a href="#styles-base-css">css</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="styles-base" data-name="blockquote" data-type="css"><a href="#styles-base-css-blockquote">blockquote</a></li><li class="sidebar__item sassdoc__item" data-group="styles-base" data-name="pre, code" data-type="css"><a href="#styles-base-css-pre, code">pre, code</a></li><li class="sidebar__item sassdoc__item" data-group="styles-base" data-name="input[type=&quot;text&quot;], textarea" data-type="css"><a href="#styles-base-css-input[type=&quot;text&quot;], textarea">input[type=&quot;text&quot;], textarea</a></li><li class="sidebar__item sassdoc__item" data-group="styles-base" data-name=":link, #{$link-selector}:link" data-type="css"><a href="#styles-base-css-:link, #{$link-selector}:link">:link, #{$link-selector}:link</a></li><li class="sidebar__item sassdoc__item" data-group="styles-base" data-name=":visited, #{$link-selector}:visited" data-type="css"><a href="#styles-base-css-:visited, #{$link-selector}:visited">:visited, #{$link-selector}:visited</a></li><li class="sidebar__item sassdoc__item" data-group="styles-base" data-name="a:hover, #{$link-selector}:hover" data-type="css"><a href="#styles-base-css-a:hover, #{$link-selector}:hover">a:hover, #{$link-selector}:hover</a></li><li class="sidebar__item sassdoc__item" data-group="styles-base" data-name="#{list.join($anchor-override, (), &#39;comma&#39;, false)}" data-type="css"><a href="#styles-base-css-#{list.join($anchor-override, (), &#39;comma&#39;, false)}">#{list.join($anchor-override, (), &#39;comma&#39;, false)}</a></li></ul></div><p class="sidebar__item sidebar__item--heading" data-slug="styles-bg"><a href="#styles-bg">Styles: Backgrounds</a></p><div><p class="sidebar__item sidebar__item--sub-heading" data-slug="styles-bg-variable"><a href="#styles-bg-variable">variables</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="styles-bg" data-name="overlay" data-type="variable"><a href="#styles-bg-variable-overlay">overlay</a></li><li class="sidebar__item sassdoc__item" data-group="styles-bg" data-name="heavy-overlay" data-type="variable"><a href="#styles-bg-variable-heavy-overlay">heavy-overlay</a></li></ul><p class="sidebar__item sidebar__item--sub-heading" data-slug="styles-bg-css"><a href="#styles-bg-css">css</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="styles-bg" data-name=".theme-bg" data-type="css"><a href="#styles-bg-css-.theme-bg">.theme-bg</a></li><li class="sidebar__item sassdoc__item" data-group="styles-bg" data-name=".no-bg" data-type="css"><a href="#styles-bg-css-.no-bg">.no-bg</a></li><li class="sidebar__item sassdoc__item" data-group="styles-bg" data-name=".overlay" data-type="css"><a href="#styles-bg-css-.overlay">.overlay</a></li><li class="sidebar__item sassdoc__item" data-group="styles-bg" data-name=".heavy-overlay" data-type="css"><a href="#styles-bg-css-.heavy-overlay">.heavy-overlay</a></li></ul></div><p class="sidebar__item sidebar__item--heading" data-slug="styles-borders"><a href="#styles-borders">Styles: Borders</a></p><div><p class="sidebar__item sidebar__item--sub-heading" data-slug="styles-borders-variable"><a href="#styles-borders-variable">variables</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="styles-borders" data-name="border-light" data-type="variable"><a href="#styles-borders-variable-border-light">border-light</a></li><li class="sidebar__item sassdoc__item" data-group="styles-borders" data-name="border-x-light" data-type="variable"><a href="#styles-borders-variable-border-x-light">border-x-light</a></li></ul><p class="sidebar__item sidebar__item--sub-heading" data-slug="styles-borders-css"><a href="#styles-borders-css">css</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="styles-borders" data-name=".border-light" data-type="css"><a href="#styles-borders-css-.border-light">.border-light</a></li><li class="sidebar__item sassdoc__item" data-group="styles-borders" data-name=".border-x-light" data-type="css"><a href="#styles-borders-css-.border-x-light">.border-x-light</a></li></ul></div><p class="sidebar__item sidebar__item--heading" data-slug="styles-buttons"><a href="#styles-buttons">Styles: Buttons</a></p><div><p class="sidebar__item sidebar__item--sub-heading" data-slug="styles-buttons-variable"><a href="#styles-buttons-variable">variables</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="styles-buttons" data-name="btn-hover-mix" data-type="variable"><a href="#styles-buttons-variable-btn-hover-mix">btn-hover-mix</a></li></ul><p class="sidebar__item sidebar__item--sub-heading" data-slug="styles-buttons-css"><a href="#styles-buttons-css">css</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="styles-buttons" data-name=".button" data-type="css"><a href="#styles-buttons-css-.button">.button</a></li><li class="sidebar__item sassdoc__item" data-group="styles-buttons" data-name=".button.subtle-button" data-type="css"><a href="#styles-buttons-css-.button.subtle-button">.button.subtle-button</a></li><li class="sidebar__item sassdoc__item" data-group="styles-buttons" data-name=".button-o" data-type="css"><a href="#styles-buttons-css-.button-o">.button-o</a></li><li class="sidebar__item sassdoc__item" data-group="styles-buttons" data-name=".button-o.subtle-button" data-type="css"><a href="#styles-buttons-css-.button-o.subtle-button">.button-o.subtle-button</a></li></ul></div><p class="sidebar__item sidebar__item--heading" data-slug="styles-svg"><a href="#styles-svg">Styles: SVG</a></p><div><p class="sidebar__item sidebar__item--sub-heading" data-slug="styles-svg-css"><a href="#styles-svg-css">css</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="styles-svg" data-name=".fill-color-theme" data-type="css"><a href="#styles-svg-css-.fill-color-theme">.fill-color-theme</a></li><li class="sidebar__item sassdoc__item" data-group="styles-svg" data-name=".stroke-color-theme" data-type="css"><a href="#styles-svg-css-.stroke-color-theme">.stroke-color-theme</a></li></ul></div><p class="sidebar__item sidebar__item--heading" data-slug="styles-text"><a href="#styles-text">Styles: Text</a></p><div><p class="sidebar__item sidebar__item--sub-heading" data-slug="styles-text-css"><a href="#styles-text-css">css</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="styles-text" data-name=".text-light" data-type="css"><a href="#styles-text-css-.text-light">.text-light</a></li><li class="sidebar__item sassdoc__item" data-group="styles-text" data-name=".text-brand" data-type="css"><a href="#styles-text-css-.text-brand">.text-brand</a></li></ul></div><p class="sidebar__item sidebar__item--heading" data-slug="utilities"><a href="#utilities">Utilities</a></p><div><p class="sidebar__item sidebar__item--sub-heading" data-slug="utilities-function"><a href="#utilities-function">functions</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="utilities" data-name="if-light" data-type="function"><a href="#utilities-function-if-light">if-light</a></li><li class="sidebar__item sassdoc__item" data-group="utilities" data-name="if-dark" data-type="function"><a href="#utilities-function-if-dark">if-dark</a></li></ul></div></div></aside><article class="main" role="main"><header class="header" role="banner"><div class="container"><div class="sassdoc__searchbar searchbar"><label for="js-search-input" class="visually-hidden">Search</label><div class="searchbar__form" id="js-search"><input name="search" type="search" class="searchbar__field" autocomplete="off" autofocus id="js-search-input" placeholder="Search"><ul class="searchbar__suggestions" id="js-search-suggestions"></ul></div></div></div></header><section class="main__section"><h1 class="main__heading" id="mixins"><div class="container">Mixins</div></h1><section class="main__sub-section" id="mixins-variable"><h2 class="main__heading--secondary"><div class="container">variables</div></h2><section class="main__item container item" id="mixins-variable-accessibility"><h3 class="item__heading"><a class="item__name" href="#variable-accessibility">accessibility</a></h3><div class="item__code-wrapper"><pre class="item__code language-scss"><code>$accessibility: &#39;AA&#39; !default;</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Defines the default accessibility for all mixins. Can be <code>AA</code>, <code>AAA</code>, or <code>false</code>.</p></div><h3 class="item__sub-heading">Example</h3><div class="item__example example"><pre class="example__code language-scss"><code>@use &#39;sass-themes&#39; with ($accessibility: &#39;AAA&#39;);</code></pre></div><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[mixin]</span> <a href="#mixins-mixin-create"><code>create</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#mixins-mixin-accessibility"><code>accessibility</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#mixins-mixin-accessibility"><code>accessibility</code></a></li></ul></section></section><section class="main__sub-section" id="mixins-function"><h2 class="main__heading--secondary"><div class="container">functions</div></h2><section class="main__item container item" id="mixins-function-_classify"><h3 class="item__heading"><span class="item__access">[private]</span> <a class="item__name" href="#function-_classify">_classify</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function _classify($str) { 
-    $look-for: &#39;.&#39; &#39;#&#39; &#39;*&#39; &#39;,&#39; &#39;&gt;&#39; &#39;+&#39; &#39;~&#39; &#39;[&#39; &#39;:&#39;;
-    @each $char in $look-for {
-        @if string.index($str, $char) {
-            @return $str;
-        }
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Sass-themes - v0.3.0</title><link rel="stylesheet" href="assets/css/main.css"><link href="https://fonts.googleapis.com/css?family=Open+Sans:400,500,700" rel="stylesheet" type="text/css"><meta name="viewport" content="width=device-width"><meta content="IE=edge, chrome=1" http-equiv="X-UA-Compatible"><!-- Open Graph tags --><meta property="og:title" content="Sass-themes - SassDoc"><meta property="og:type" content="website"><meta property="og:description" content="<p>Sass library for managing the primary colors of a website based on their role.</p>
+"><!-- Thanks to Sass-lang.com for the icons --><link href="assets/images/favicon.png" rel="shortcut icon"></head><body><aside class="sidebar" role="nav"><div class="sidebar__header"><h1 class="sidebar__title"><a href="https://dawaltconley.github.io/sass-themes/">Sass-themes - v0.3.0</a></h1></div><div class="sidebar__body"><button type="button" class="btn-toggle js-btn-toggle" data-alt="Open all">Close all</button><p class="sidebar__item sidebar__item--heading" data-slug="mixins"><a href="#mixins">Mixins</a></p><div><p class="sidebar__item sidebar__item--sub-heading" data-slug="mixins-variable"><a href="#mixins-variable">variables</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="mixins" data-name="accessibility" data-type="variable"><a href="#mixins-variable-accessibility">accessibility</a></li></ul><p class="sidebar__item sidebar__item--sub-heading" data-slug="mixins-function"><a href="#mixins-function">functions</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="mixins" data-name="_classify" data-type="function"><a href="#mixins-function-_classify">_classify</a></li></ul><p class="sidebar__item sidebar__item--sub-heading" data-slug="mixins-mixin"><a href="#mixins-mixin">mixins</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="mixins" data-name="_create" data-type="mixin"><a href="#mixins-mixin-_create">_create</a></li><li class="sidebar__item sassdoc__item" data-group="mixins" data-name="create" data-type="mixin"><a href="#mixins-mixin-create">create</a></li><li class="sidebar__item sassdoc__item" data-group="mixins" data-name="accessibility" data-type="mixin"><a href="#mixins-mixin-accessibility">accessibility</a></li></ul><p class="sidebar__item sidebar__item--sub-heading" data-slug="mixins-placeholder"><a href="#mixins-placeholder">placeholders</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="mixins" data-name="theme" data-type="placeholder"><a href="#mixins-placeholder-theme">theme</a></li></ul></div><p class="sidebar__item sidebar__item--heading" data-slug="styles-base"><a href="#styles-base">Styles: Base</a></p><div><p class="sidebar__item sidebar__item--sub-heading" data-slug="styles-base-variable"><a href="#styles-base-variable">variables</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="styles-base" data-name="link-selector" data-type="variable"><a href="#styles-base-variable-link-selector">link-selector</a></li><li class="sidebar__item sassdoc__item" data-group="styles-base" data-name="anchor-override" data-type="variable"><a href="#styles-base-variable-anchor-override">anchor-override</a></li></ul><p class="sidebar__item sidebar__item--sub-heading" data-slug="styles-base-css"><a href="#styles-base-css">css</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="styles-base" data-name="blockquote" data-type="css"><a href="#styles-base-css-blockquote">blockquote</a></li><li class="sidebar__item sassdoc__item" data-group="styles-base" data-name="pre,
+code" data-type="css"><a href="#styles-base-css-pre,
+code">pre, code</a></li><li class="sidebar__item sassdoc__item" data-group="styles-base" data-name="input[type=&#39;text&#39;],
+textarea" data-type="css"><a href="#styles-base-css-input[type=&#39;text&#39;],
+textarea">input[type=&#39;text&#39;], textarea</a></li><li class="sidebar__item sassdoc__item" data-group="styles-base" data-name=":link,
+#{$link-selector}:link" data-type="css"><a href="#styles-base-css-:link,
+#{$link-selector}:link">:link, #{$link-selector}:link</a></li><li class="sidebar__item sassdoc__item" data-group="styles-base" data-name=":visited,
+#{$link-selector}:visited" data-type="css"><a href="#styles-base-css-:visited,
+#{$link-selector}:visited">:visited, #{$link-selector}:visited</a></li><li class="sidebar__item sassdoc__item" data-group="styles-base" data-name="a:hover,
+#{$link-selector}:hover" data-type="css"><a href="#styles-base-css-a:hover,
+#{$link-selector}:hover">a:hover, #{$link-selector}:hover</a></li><li class="sidebar__item sassdoc__item" data-group="styles-base" data-name="#{list.join($anchor-override, (), &#39;comma&#39;, false)}" data-type="css"><a href="#styles-base-css-#{list.join($anchor-override, (), &#39;comma&#39;, false)}">#{list.join($anchor-override, (), &#39;comma&#39;, false)}</a></li></ul></div><p class="sidebar__item sidebar__item--heading" data-slug="styles-bg"><a href="#styles-bg">Styles: Backgrounds</a></p><div><p class="sidebar__item sidebar__item--sub-heading" data-slug="styles-bg-variable"><a href="#styles-bg-variable">variables</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="styles-bg" data-name="overlay" data-type="variable"><a href="#styles-bg-variable-overlay">overlay</a></li><li class="sidebar__item sassdoc__item" data-group="styles-bg" data-name="heavy-overlay" data-type="variable"><a href="#styles-bg-variable-heavy-overlay">heavy-overlay</a></li></ul><p class="sidebar__item sidebar__item--sub-heading" data-slug="styles-bg-css"><a href="#styles-bg-css">css</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="styles-bg" data-name=".theme-bg" data-type="css"><a href="#styles-bg-css-.theme-bg">.theme-bg</a></li><li class="sidebar__item sassdoc__item" data-group="styles-bg" data-name=".no-bg" data-type="css"><a href="#styles-bg-css-.no-bg">.no-bg</a></li><li class="sidebar__item sassdoc__item" data-group="styles-bg" data-name=".overlay" data-type="css"><a href="#styles-bg-css-.overlay">.overlay</a></li><li class="sidebar__item sassdoc__item" data-group="styles-bg" data-name=".heavy-overlay" data-type="css"><a href="#styles-bg-css-.heavy-overlay">.heavy-overlay</a></li></ul></div><p class="sidebar__item sidebar__item--heading" data-slug="styles-borders"><a href="#styles-borders">Styles: Borders</a></p><div><p class="sidebar__item sidebar__item--sub-heading" data-slug="styles-borders-variable"><a href="#styles-borders-variable">variables</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="styles-borders" data-name="border-light" data-type="variable"><a href="#styles-borders-variable-border-light">border-light</a></li><li class="sidebar__item sassdoc__item" data-group="styles-borders" data-name="border-x-light" data-type="variable"><a href="#styles-borders-variable-border-x-light">border-x-light</a></li></ul><p class="sidebar__item sidebar__item--sub-heading" data-slug="styles-borders-css"><a href="#styles-borders-css">css</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="styles-borders" data-name="&amp;-light" data-type="css"><a href="#styles-borders-css-&amp;-light">&amp;-light</a></li><li class="sidebar__item sassdoc__item" data-group="styles-borders" data-name="&amp;-x-light" data-type="css"><a href="#styles-borders-css-&amp;-x-light">&amp;-x-light</a></li></ul></div><p class="sidebar__item sidebar__item--heading" data-slug="styles-buttons"><a href="#styles-buttons">Styles: Buttons</a></p><div><p class="sidebar__item sidebar__item--sub-heading" data-slug="styles-buttons-variable"><a href="#styles-buttons-variable">variables</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="styles-buttons" data-name="btn-hover-mix" data-type="variable"><a href="#styles-buttons-variable-btn-hover-mix">btn-hover-mix</a></li></ul><p class="sidebar__item sidebar__item--sub-heading" data-slug="styles-buttons-css"><a href="#styles-buttons-css">css</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="styles-buttons" data-name=".button" data-type="css"><a href="#styles-buttons-css-.button">.button</a></li><li class="sidebar__item sassdoc__item" data-group="styles-buttons" data-name="&amp;.subtle-button" data-type="css"><a href="#styles-buttons-css-&amp;.subtle-button">&amp;.subtle-button</a></li><li class="sidebar__item sassdoc__item" data-group="styles-buttons" data-name="&amp;-o" data-type="css"><a href="#styles-buttons-css-&amp;-o">&amp;-o</a></li><li class="sidebar__item sassdoc__item" data-group="styles-buttons" data-name="&amp;.subtle-button:not(:hover)" data-type="css"><a href="#styles-buttons-css-&amp;.subtle-button:not(:hover)">&amp;.subtle-button:not(:hover)</a></li></ul></div><p class="sidebar__item sidebar__item--heading" data-slug="styles-svg"><a href="#styles-svg">Styles: SVG</a></p><div><p class="sidebar__item sidebar__item--sub-heading" data-slug="styles-svg-css"><a href="#styles-svg-css">css</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="styles-svg" data-name=".fill-color-theme" data-type="css"><a href="#styles-svg-css-.fill-color-theme">.fill-color-theme</a></li><li class="sidebar__item sassdoc__item" data-group="styles-svg" data-name=".stroke-color-theme" data-type="css"><a href="#styles-svg-css-.stroke-color-theme">.stroke-color-theme</a></li></ul></div><p class="sidebar__item sidebar__item--heading" data-slug="styles-text"><a href="#styles-text">Styles: Text</a></p><div><p class="sidebar__item sidebar__item--sub-heading" data-slug="styles-text-css"><a href="#styles-text-css">css</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="styles-text" data-name=".text-light" data-type="css"><a href="#styles-text-css-.text-light">.text-light</a></li><li class="sidebar__item sassdoc__item" data-group="styles-text" data-name=".text-brand" data-type="css"><a href="#styles-text-css-.text-brand">.text-brand</a></li></ul></div><p class="sidebar__item sidebar__item--heading" data-slug="utilities"><a href="#utilities">Utilities</a></p><div><p class="sidebar__item sidebar__item--sub-heading" data-slug="utilities-function"><a href="#utilities-function">functions</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="utilities" data-name="if-light" data-type="function"><a href="#utilities-function-if-light">if-light</a></li><li class="sidebar__item sassdoc__item" data-group="utilities" data-name="if-dark" data-type="function"><a href="#utilities-function-if-dark">if-dark</a></li></ul></div></div></aside><article class="main" role="main"><header class="header" role="banner"><div class="container"><div class="sassdoc__searchbar searchbar"><label for="js-search-input" class="visually-hidden">Search</label><div class="searchbar__form" id="js-search"><input name="search" type="search" class="searchbar__field" autocomplete="off" autofocus id="js-search-input" placeholder="Search"><ul class="searchbar__suggestions" id="js-search-suggestions"></ul></div></div></div></header><section class="main__section"><h1 class="main__heading" id="mixins"><div class="container">Mixins</div></h1><section class="main__sub-section" id="mixins-variable"><h2 class="main__heading--secondary"><div class="container">variables</div></h2><section class="main__item container item" id="mixins-variable-accessibility"><h3 class="item__heading"><a class="item__name" href="#variable-accessibility">accessibility</a></h3><div class="item__code-wrapper"><pre class="item__code language-scss"><code>$accessibility: &#39;AA&#39; !default;</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Defines the default accessibility for all mixins. Can be <code>AA</code>, <code>AAA</code>, or <code>false</code>.</p></div><h3 class="item__sub-heading">Example</h3><div class="item__example example"><pre class="example__code language-scss"><code>@use &#39;sass-themes&#39; with ($accessibility: &#39;AAA&#39;);</code></pre></div><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[mixin]</span> <a href="#mixins-mixin-create"><code>create</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#mixins-mixin-accessibility"><code>accessibility</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#mixins-mixin-accessibility"><code>accessibility</code></a></li></ul></section></section><section class="main__sub-section" id="mixins-function"><h2 class="main__heading--secondary"><div class="container">functions</div></h2><section class="main__item container item" id="mixins-function-_classify"><h3 class="item__heading"><span class="item__access">[private]</span> <a class="item__name" href="#function-_classify">_classify</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function _classify($str) { 
+  $look-for: &#39;.&#39; &#39;#&#39; &#39;*&#39; &#39;,&#39; &#39;&gt;&#39; &#39;+&#39; &#39;~&#39;&#39;[&#39; &#39;:&#39;;
+  @each $char in $look-for {
+    @if string.index($str, $char) {
+      @return $str;
     }
-    @return &#39;.#{$str}&#39;;
+  }
+  @return &#39;.#{$str}&#39;;
  }" data-collapsed="@function _classify($str) { ... }"><code>@function _classify($str) { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Turns a string into a class name. Leaves strings formatted as selectors unmodified.</p></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$str</code></th><td data-label="desc">&mdash;<span class="visually-hidden"> none</span></td><td data-label="type"><code>String</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr></tbody></table><h3 class="item__sub-heading">Returns</h3><div class="item__description item__description--inline"><code>String</code></div><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[mixin]</span> <a href="#mixins-mixin-create"><code>create</code></a></li></ul></section></section><section class="main__sub-section" id="mixins-mixin"><h2 class="main__heading--secondary"><div class="container">mixins</div></h2><section class="main__item container item" id="mixins-mixin-_create"><h3 class="item__heading"><span class="item__access">[private]</span> <a class="item__name" href="#mixin-_create">_create</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@mixin _create($text, $bg, $brand: null, $accessibility: $accessibility) { 
-    $light-theme: color.lightness($text) &lt; color.lightness($bg);
+  $light-theme: color.lightness($text) &lt; color.lightness($bg);
 
-    $properties: (
-        --theme-text: $text,
-        --theme-bg: $bg,
-        --button-bg: $brand or $text,
-        --button-text: if($brand and not $light-theme, $text, $bg), // should be a matter of which color (text, bg) has best contrast ratio on brand color (with white / back fallback); // null if no brand? as in: $brand and $color-determined-by-contrast
+  $properties: (
+    --theme-tx: $text,
+    --theme-bg: $bg,
+    --button-bg: $brand or $text,
+    --button-text: if($brand and not $light-theme, $text, $bg),
+    // should be a matter of which color (text, bg) has best contrast ratio on brand color (with white / back fallback); // null if no brand? as in: $brand and $color-determined-by-contrast
+  );
+  @if $brand {
+    $properties: map.merge(
+      $properties,
+      (
+        --theme-br: $brand,
+      )
     );
-    @if $brand {
-        $properties: map.merge($properties, (
-            --theme-brand: $brand
-        ));
-    }
+  }
 
-    @include scss-properties.define($properties);
+  @include scss-properties.define($properties);
 
-    --theme-light: #{if($light-theme, 1, 0)};
-    --theme-dark: #{if($light-theme, 0, 1)};
-    --theme-text-light: #{scss-properties.mix(--theme-text, --theme-bg, &#39;(0.58 + (0.18 * var(--theme-dark)))&#39;)};
+  --theme-light: #{if($light-theme, 1, 0)};
+  --theme-dark: #{if($light-theme, 0, 1)};
+  --theme-tx--light: #{scss-properties.mix(
+      --theme-tx,
+      --theme-bg,
+      &#39;(0.58 + (0.18 * var(--theme-dark)))&#39;
+    )};
 
-    @extend %theme;
+  @extend %theme;
  }" data-collapsed="@mixin _create($text, $bg, $brand: null, $accessibility: $accessibility) { ... }"><code>@mixin _create($text, $bg, $brand: null, $accessibility: $accessibility) { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Defines the CSS properties for a theme class. Uses the <code>define</code> mixin from the <a href="https://github.com/dawaltconley/scss-properties">scss-properties library</a>.</p></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$text</code></th><td data-label="desc">&mdash;<span class="visually-hidden"> none</span></td><td data-label="type"><code>Color</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$bg</code></th><td data-label="desc">&mdash;<span class="visually-hidden"> none</span></td><td data-label="type"><code>Color</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$brand</code></th><td data-label="desc">&mdash;<span class="visually-hidden"> none</span></td><td data-label="type"><code>Color</code></td><td data-label="default"><code>null</code></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$accessibility</code></th><td data-label="desc"><p>The accessibility standard to check this themes colors against.</p></td><td data-label="type"><code>'aaa'</code> or <code>'aa'</code> or <code>False</code></td><td data-label="default"><code>$accessibility</code></td></tr></tbody></table><h3 class="item__sub-heading">Output</h3><div class="item__description"><p>Output is simplified for readability. Actual output shown in comments.</p><pre><code class="language-scss">body, .light {
   --light-theme:      1;                                          // 1 if text color is darker than background, else 0
   --dark-theme:       0;                                          // opposite --light-theme
-  --theme-text:       #111;                                       // hsla(var(--theme-text-h), var(--theme-text-s), var(--theme-text-l), var(--theme-text-a));
+  --theme-tx:       #111;                                       // hsla(var(--theme-tx-h), var(--theme-tx-s), var(--theme-tx-l), var(--theme-tx-a));
   --theme-bg:         white;                                      // hsla(var(--theme-bg-h), var(--theme-bg-s), var(--theme-bg-l), var(--theme-bg-a));
-  --theme-brand:      royalblue                                   // hsla(var(--theme-brand-h), var(--theme-brand-s), var(--theme-brand-l), var(--theme-brand-a));
+  --theme-br:      royalblue                                   // hsla(var(--theme-br-h), var(--theme-br-s), var(--theme-br-l), var(--theme-br-a));
   --button-text:      if($brand and not $light-theme, $text, $bg) // hsla(var(--button-text-h), var(--button-text-s), var(--button-text-l), var(--button-text-a));
   --button-bg:        $brand or $text                             // hsla(var(--button-bg-h), var(--button-bg-s), var(--button-bg-l), var(--button-bg-a));
-  --theme-text-light: #{scss-properties.mix(                      // rgba(calc((var(--theme-text-r) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-r) * (1 - (0.58 + (0.18 * var(--theme-dark)))))),
-                        --theme-text,                             //      calc((var(--theme-text-g) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-g) * (1 - (0.58 + (0.18 * var(--theme-dark)))))),
-                        --theme-bg,                               //      calc((var(--theme-text-b) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-b) * (1 - (0.58 + (0.18 * var(--theme-dark)))))),
-                        &#39;(0.58 + (0.18 * var(--theme-dark)))&#39;     //      calc((var(--theme-text-a) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-a) * (1 - (0.58 + (0.18 * var(--theme-dark)))))));
+  --theme-tx--light: #{scss-properties.mix(                      // rgba(calc((var(--theme-tx-r) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-r) * (1 - (0.58 + (0.18 * var(--theme-dark)))))),
+                        --theme-tx,                             //      calc((var(--theme-tx-g) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-g) * (1 - (0.58 + (0.18 * var(--theme-dark)))))),
+                        --theme-bg,                               //      calc((var(--theme-tx-b) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-b) * (1 - (0.58 + (0.18 * var(--theme-dark)))))),
+                        &#39;(0.58 + (0.18 * var(--theme-dark)))&#39;     //      calc((var(--theme-tx-a) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-a) * (1 - (0.58 + (0.18 * var(--theme-dark)))))));
                       )};
 
-  color:              var(--theme-text);
+  color:              var(--theme-tx);
   background-color:   var(--theme-bg);
-  border-color:       var(--theme-text);
+  border-color:       var(--theme-tx);
 }</code></pre></div><h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[placeholder]</span> <a href="#mixins-placeholder-theme"><code>theme</code></a></li></ul><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[mixin]</span> <a href="#mixins-mixin-create"><code>create</code></a></li></ul></section><section class="main__item container item" id="mixins-mixin-create"><h3 class="item__heading"><a class="item__name" href="#mixin-create">create</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@mixin create($text, $bg, $brand: null, $accessibility: $accessibility, $keywords: null) { 
-    $kwargs: meta.keywords($args);
-    @if list.length($args) == 1 and list.length(map.keys($kwargs)) == 0 {
-        // if there&#39;s a single map argument, treat it as a map of keyword arguments
-        $first-arg: list.nth($args, 1);
-        @if meta.type-of($first-arg) == &#39;map&#39; {
-            $kwargs: $first-arg;
-        }
-    } @else {
-        // override $kwargs with any positional arguments
-        @each $key, $value in list.zip((&#39;text&#39;, &#39;background&#39;, &#39;brand&#39;), $args) {
-            $kwargs: map.set($kwargs, $key, $value);
-        }
+  $kwargs: meta.keywords($args);
+  @if list.length($args) == 1 and list.length(map.keys($kwargs)) == 0 {
+    // if there&#39;s a single map argument, treat it as a map of keyword arguments
+    $first-arg: list.nth($args, 1);
+    @if meta.type-of($first-arg) == &#39;map&#39; {
+      $kwargs: $first-arg;
+    }
+  } @else {
+    // override $kwargs with any positional arguments
+    @each $key, $value in list.zip((&#39;text&#39;, &#39;background&#39;, &#39;brand&#39;), $args) {
+      $kwargs: map.set($kwargs, $key, $value);
+    }
+  }
+
+  @if meta.type-of(list.nth(map.values($kwargs), 1)) == &#39;map&#39; {
+    // if the value of the first keyword is a map, treat it as a map of theme names and settings. create classes accordingly
+    @each $name, $settings in $kwargs {
+      #{_classify($name)} {
+        @include create($settings);
+      }
+    }
+  } @else {
+    $text: map.get($kwargs, color) or
+      map.get($kwargs, text-color) or
+      map.get($kwargs, text) or
+      map.get($kwargs, --theme-tx);
+    $bg: map.get($kwargs, background-color) or
+      map.get($kwargs, background) or
+      map.get($kwargs, bg) or
+      map.get($kwargs, --theme-bg);
+    $brand: map.get($kwargs, brand-color) or
+      map.get($kwargs, brand) or
+      map.get($kwargs, --theme-br);
+    $accessibility: if(
+      map.get($kwargs, accessibility) != null,
+      map.get($kwargs, accessibility),
+      $accessibility
+    );
+
+    @if not($text and $bg) {
+      @error &#39;theme must specify at least text and background colors: #{&amp;}&#39;;
     }
 
-    @if meta.type-of(list.nth(map.values($kwargs), 1)) == &#39;map&#39; {
-        // if the value of the first keyword is a map, treat it as a map of theme names and settings. create classes accordingly
-        @each $name, $settings in $kwargs {
-            #{_classify($name)} {
-                @include create($settings);
-            }
-        }
-    } @else {
-        $text:          map.get($kwargs, color) or map.get($kwargs, text-color) or map.get($kwargs, text) or map.get($kwargs, --theme-text);
-        $bg:            map.get($kwargs, background-color) or map.get($kwargs, background) or map.get($kwargs, bg) or map.get($kwargs, --theme-bg);
-        $brand:         map.get($kwargs, brand-color) or map.get($kwargs, brand) or map.get($kwargs, --theme-brand);
-        $accessibility: if(
-            map.get($kwargs, accessibility) != null,
-            map.get($kwargs, accessibility),
-            $accessibility
-        );
-
-        @if not ($text and $bg) {
-            @error &#39;theme must specify at least text and background colors: #{&amp;}&#39;;
-        }
-
-        @if $accessibility {
-            @include accessibility(
-            $name: #{&amp;},
-            $text: $text,
-            $bg: $bg,
-            $brand: $brand,
-            $accessibility: $accessibility,
-            );
-        }
-
-        @include _create($text, $bg, $brand, $accessibility);
+    @if $accessibility {
+      @include accessibility(
+        $name: #{&amp;},
+        $text: $text,
+        $bg: $bg,
+        $brand: $brand,
+        $accessibility: $accessibility
+      );
     }
- }" data-collapsed="@mixin create($text, $bg, $brand: null, $accessibility: $accessibility, $keywords: null) { ... }"><code>@mixin create($text, $bg, $brand: null, $accessibility: $accessibility, $keywords: null) { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Wrapper for <code>_create</code>, which normalizes arguments and keyword aliases before creating a theme. Must define at least a text and a background color.</p></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$text</code></th><td data-label="desc"><p>Aliases: <code>$text-color</code>, <code>$--theme-text</code></p></td><td data-label="type"><code>Color</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$bg</code></th><td data-label="desc"><p>Aliases: <code>$background</code>, <code>$background-color</code>, <code>$--theme-bg</code></p></td><td data-label="type"><code>Color</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$brand</code></th><td data-label="desc"><p>Aliases: <code>$brand-color</code>, <code>$--theme-brand</code></p></td><td data-label="type"><code>Color</code></td><td data-label="default"><code>null</code></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$accessibility</code></th><td data-label="desc"><p>The accessibility standard to check this themes colors against.</p></td><td data-label="type"><code>'aaa'</code> or <code>'aa'</code> or <code>False</code></td><td data-label="default"><code>$accessibility</code></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$keywords</code></th><td data-label="desc"><p>A map that sets multiple the parameter values if passed as the only argument.</p></td><td data-label="type"><code>Map</code></td><td data-label="default"><code>null</code></td></tr></tbody></table><h3 class="item__sub-heading">Example</h3><div class="item__example example"><pre class="example__code language-scss"><code>@use &#39;sass-themes&#39;;
+
+    @include _create($text, $bg, $brand, $accessibility);
+  }
+ }" data-collapsed="@mixin create($text, $bg, $brand: null, $accessibility: $accessibility, $keywords: null) { ... }"><code>@mixin create($text, $bg, $brand: null, $accessibility: $accessibility, $keywords: null) { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Wrapper for <code>_create</code>, which normalizes arguments and keyword aliases before creating a theme. Must define at least a text and a background color.</p></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$text</code></th><td data-label="desc"><p>Aliases: <code>$text-color</code>, <code>$--theme-tx</code></p></td><td data-label="type"><code>Color</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$bg</code></th><td data-label="desc"><p>Aliases: <code>$background</code>, <code>$background-color</code>, <code>$--theme-bg</code></p></td><td data-label="type"><code>Color</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$brand</code></th><td data-label="desc"><p>Aliases: <code>$brand-color</code>, <code>$--theme-br</code></p></td><td data-label="type"><code>Color</code></td><td data-label="default"><code>null</code></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$accessibility</code></th><td data-label="desc"><p>The accessibility standard to check this themes colors against.</p></td><td data-label="type"><code>'aaa'</code> or <code>'aa'</code> or <code>False</code></td><td data-label="default"><code>$accessibility</code></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$keywords</code></th><td data-label="desc"><p>A map that sets multiple the parameter values if passed as the only argument.</p></td><td data-label="type"><code>Map</code></td><td data-label="default"><code>null</code></td></tr></tbody></table><h3 class="item__sub-heading">Example</h3><div class="item__example example"><pre class="example__code language-scss"><code>@use &#39;sass-themes&#39;;
 
 body, .light {
   // using keyword arguments
@@ -108,83 +134,125 @@ body, .light {
 .dark {
   // using a map of keyword arguments
   @include sass-themes.create((
-    --theme-text:   white;
+    --theme-tx:   white;
     --theme-bg:     #111;
-    --theme-brand:  royalblue;
+    --theme-br:  royalblue;
   ));
 }</code></pre></div><div class="item__example example"><pre class="example__code language-scss"><code>@use &#39;sass-themes&#39;;
 
 @include sass-themes.create((
   // using a map of class names and keyword arguments
   &#39;light&#39;: (
-      --theme-text:   #111,
+      --theme-tx:   #111,
       --theme-bg:     white,
-      --theme-brand:  royalblue ),
+      --theme-br:  royalblue ),
   &#39;dark&#39;: (
-      --theme-text:   white,
+      --theme-tx:   white,
       --theme-bg:     #111,
-      --theme-brand:  royalblue )));</code></pre></div><h3 class="item__sub-heading">Throws</h3><ul class="list-unstyled"><li><p>theme must specify at least text and background colors: #{&amp;}</p></li></ul><h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#mixins-function-_classify"><code>_classify</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[mixin]</span> <a href="#mixins-mixin-_create"><code>_create</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[mixin]</span> <a href="#mixins-mixin-accessibility"><code>accessibility</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[variable]</span> <a href="#mixins-variable-accessibility"><code>accessibility</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[placeholder]</span> <a href="#mixins-placeholder-theme"><code>theme</code></a></li></ul></section><section class="main__item container item" id="mixins-mixin-accessibility"><h3 class="item__heading"><a class="item__name" href="#mixin-accessibility">accessibility</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@mixin accessibility($text, $bg, $brand: null, $accessibility: $accessibility) { 
-    $aa: string.to-upper-case($accessibility) == &#39;AA&#39;;
-    $aaa: string.to-upper-case($accessibility) == &#39;AAA&#39;;
+      --theme-br:  royalblue )));</code></pre></div><h3 class="item__sub-heading">Throws</h3><ul class="list-unstyled"><li><p>theme must specify at least text and background colors: #{&amp;}</p></li></ul><h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#mixins-function-_classify"><code>_classify</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[mixin]</span> <a href="#mixins-mixin-_create"><code>_create</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[mixin]</span> <a href="#mixins-mixin-accessibility"><code>accessibility</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[variable]</span> <a href="#mixins-variable-accessibility"><code>accessibility</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[placeholder]</span> <a href="#mixins-placeholder-theme"><code>theme</code></a></li></ul></section><section class="main__item container item" id="mixins-mixin-accessibility"><h3 class="item__heading"><a class="item__name" href="#mixin-accessibility">accessibility</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@mixin accessibility($text, $bg, $brand: null, $accessibility: $accessibility) { 
+  $aa: string.to-upper-case($accessibility) == &#39;AA&#39;;
+  $aaa: string.to-upper-case($accessibility) == &#39;AAA&#39;;
 
-    $ct-tx-bg: ch.ch-color-contrast($bg, $text);
+  $ct-tx-bg: ch.ch-color-contrast($bg, $text);
 
-    @if ($ct-tx-bg &lt; 4.5 and $aa) or ($ct-tx-bg &lt; 7 and $aaa) {
-        @warn &quot;The contrast ratio of the &#39;#{$name}&#39; theme&#39;s text (#{$text}) and background (#{$bg}) colors is #{$ct-tx-bg}, which does not meet WCAG 2.0 #{if($aaa, &quot;AAA standard (7)&quot;, &quot;AA standard (4.5)&quot;)}.&quot;;
+  @if ($ct-tx-bg &lt; 4.5 and $aa) or ($ct-tx-bg &lt; 7 and $aaa) {
+    @warn &quot;The contrast ratio of the &#39;#{$name}&#39; theme&#39;s text (#{$text}) and background (#{$bg}) colors is #{$ct-tx-bg}, which does not meet WCAG 2.0 #{if($aaa, &#39;AAA standard (7)&#39;, &#39;AA standard (4.5)&#39;)}.&quot;;
+  }
+
+  @if $brand {
+    $ct-br-tx: ch.ch-color-contrast($brand, $text);
+    $ct-br-bg: ch.ch-color-contrast($brand, $bg);
+
+    @if $ct-br-tx &lt; 3 and $aa {
+      @warn &quot;The contrast ratio of the &#39;#{$name}&#39; theme&#39;s link (#{$brand}) and text (#{$text}) colors is #{$ct-br-tx}, which does not meet WCAG 2.0 AA standard (3).&quot;;
     }
-
-    @if $brand {
-        $ct-br-tx: ch.ch-color-contrast($brand, $text);
-        $ct-br-bg: ch.ch-color-contrast($brand, $bg);
-
-        @if $ct-br-tx &lt; 3 and $aa {
-            @warn &quot;The contrast ratio of the &#39;#{$name}&#39; theme&#39;s link (#{$brand}) and text (#{$text}) colors is #{$ct-br-tx}, which does not meet WCAG 2.0 AA standard (3).&quot;;
-        }
-        @if ($ct-br-bg &lt; 4.5 and $aa) or ($ct-br-bg &lt; 7 and $aaa) {
-            @warn &quot;The contrast ratio of the &#39;#{$name}&#39; theme&#39;s link (#{$brand}) and background (#{$bg}) colors is #{$ct-br-bg}, which does not meet WCAG 2.0 #{if($aaa, &quot;AAA standard (7)&quot;, &quot;AA standard (4.5)&quot;)}.&quot;;
-        }
+    @if ($ct-br-bg &lt; 4.5 and $aa) or ($ct-br-bg &lt; 7 and $aaa) {
+      @warn &quot;The contrast ratio of the &#39;#{$name}&#39; theme&#39;s link (#{$brand}) and background (#{$bg}) colors is #{$ct-br-bg}, which does not meet WCAG 2.0 #{if($aaa, &#39;AAA standard (7)&#39;, &#39;AA standard (4.5)&#39;)}.&quot;;
     }
+  }
  }" data-collapsed="@mixin accessibility($text, $bg, $brand: null, $accessibility: $accessibility) { ... }"><code>@mixin accessibility($text, $bg, $brand: null, $accessibility: $accessibility) { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Checks the color contrast ratios against the WCAG standards. Throws a warning when the provided colors do not meet the standard.</p></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$text</code></th><td data-label="desc">&mdash;<span class="visually-hidden"> none</span></td><td data-label="type"><code>Color</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$bg</code></th><td data-label="desc">&mdash;<span class="visually-hidden"> none</span></td><td data-label="type"><code>Color</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$brand</code></th><td data-label="desc">&mdash;<span class="visually-hidden"> none</span></td><td data-label="type"><code>Color</code></td><td data-label="default"><code>null</code></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$accessibility</code></th><td data-label="desc"><p>The accessibility standard to check this themes colors against.</p></td><td data-label="type"><code>'aaa'</code> or <code>'aa'</code> or <code>False</code></td><td data-label="default"><code>$accessibility</code></td></tr></tbody></table><h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[variable]</span> <a href="#mixins-variable-accessibility"><code>accessibility</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[variable]</span> <a href="#mixins-variable-accessibility"><code>accessibility</code></a></li></ul><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[mixin]</span> <a href="#mixins-mixin-create"><code>create</code></a></li></ul></section></section><section class="main__sub-section" id="mixins-placeholder"><h2 class="main__heading--secondary"><div class="container">placeholders</div></h2><section class="main__item container item" id="mixins-placeholder-theme"><h3 class="item__heading"><a class="item__name" href="#placeholder-theme">theme</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="%theme { 
-    color: var(--theme-text);
-    background-color: var(--theme-bg);
-    border-color: var(--theme-text);
- }" data-collapsed="%theme { ... }"><code>%theme { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>The styles applied to all theme classes after their properties have been defined.</p></div><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[mixin]</span> <a href="#mixins-mixin-_create"><code>_create</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#mixins-mixin-create"><code>create</code></a></li></ul></section></section></section><section class="main__section"><h1 class="main__heading" id="styles-base"><div class="container">Styles: Base</div></h1><section class="main__sub-section" id="styles-base-variable"><h2 class="main__heading--secondary"><div class="container">variables</div></h2><section class="main__item container item" id="styles-base-variable-link-selector"><h3 class="item__heading"><a class="item__name" href="#variable-link-selector">link-selector</a></h3><div class="item__code-wrapper"><pre class="item__code language-scss"><code>$link-selector: &#39;.theme-link&#39; !default;</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Name of the class that applies the default theme styles for links.</p></div><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[css]</span> <a href="#styles-base-css-:link, #{$link-selector}:link"><code>:link, #{$link-selector}:link</code></a></li><li><span class="item__cross-type">[css]</span> <a href="#styles-base-css-:visited, #{$link-selector}:visited"><code>:visited, #{$link-selector}:visited</code></a></li><li><span class="item__cross-type">[css]</span> <a href="#styles-base-css-a:hover, #{$link-selector}:hover"><code>a:hover, #{$link-selector}:hover</code></a></li></ul><h3 class="item__sub-heading">Links</h3><ul class="list-unstyled"><li><a href="https://github.com/dawaltconley/scss-properties">https://github.com/dawaltconley/scss-properties</a></li></ul></section><section class="main__item container item" id="styles-base-variable-anchor-override"><h3 class="item__heading"><a class="item__name" href="#variable-anchor-override">anchor-override</a></h3><div class="item__code-wrapper"><pre class="item__code language-scss"><code>$anchor-override: &#39;.subtle-link&#39; !default;</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Name of the class that unsets the default theme styles for links.</p></div><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[css]</span> <a href="#styles-base-css-#{list.join($anchor-override, (), &#39;comma&#39;, false)}"><code>#{list.join($anchor-override, (), &#39;comma&#39;, false)}</code></a></li></ul><h3 class="item__sub-heading">Links</h3><ul class="list-unstyled"><li><a href="https://github.com/dawaltconley/scss-properties">https://github.com/dawaltconley/scss-properties</a></li></ul></section></section><section class="main__sub-section" id="styles-base-css"><h2 class="main__heading--secondary"><div class="container">css</div></h2><section class="main__item container item" id="styles-base-css-blockquote"><h3 class="item__heading"><a class="item__name" href="#css-blockquote">blockquote</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="<code>blockquote {
-  color: var(--theme-text-light);
-    border-left-color: scss-properties.mix(--theme-text, --theme-bg, 25%);
-}</code>" data-collapsed="blockquote { ... }"><code>blockquote { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Default styles for blockquotes.</p></div><h3 class="item__sub-heading">Links</h3><ul class="list-unstyled"><li><a href="https://github.com/dawaltconley/scss-properties">https://github.com/dawaltconley/scss-properties</a></li></ul></section><section class="main__item container item" id="styles-base-css-pre, code"><h3 class="item__heading"><a class="item__name" href="#css-pre, code">pre, code</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="<code>pre, code {
+  color: var(--theme-tx);
+  background-color: var(--theme-bg);
+  border-color: var(--theme-tx);
+ }" data-collapsed="%theme { ... }"><code>%theme { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>The styles applied to all theme classes after their properties have been defined.</p></div><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[mixin]</span> <a href="#mixins-mixin-_create"><code>_create</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#mixins-mixin-create"><code>create</code></a></li></ul></section></section></section><section class="main__section"><h1 class="main__heading" id="styles-base"><div class="container">Styles: Base</div></h1><section class="main__sub-section" id="styles-base-variable"><h2 class="main__heading--secondary"><div class="container">variables</div></h2><section class="main__item container item" id="styles-base-variable-link-selector"><h3 class="item__heading"><a class="item__name" href="#variable-link-selector">link-selector</a></h3><div class="item__code-wrapper"><pre class="item__code language-scss"><code>$link-selector: &#39;.theme-link&#39; !default;</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Name of the class that applies the default theme styles for links.</p></div><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[css]</span> <a href="#styles-base-css-:link,
+#{$link-selector}:link"><code>:link, #{$link-selector}:link</code></a></li><li><span class="item__cross-type">[css]</span> <a href="#styles-base-css-:visited,
+#{$link-selector}:visited"><code>:visited, #{$link-selector}:visited</code></a></li><li><span class="item__cross-type">[css]</span> <a href="#styles-base-css-a:hover,
+#{$link-selector}:hover"><code>a:hover, #{$link-selector}:hover</code></a></li></ul><h3 class="item__sub-heading">Links</h3><ul class="list-unstyled"><li><a href="https://github.com/dawaltconley/scss-properties">https://github.com/dawaltconley/scss-properties</a></li></ul></section><section class="main__item container item" id="styles-base-variable-anchor-override"><h3 class="item__heading"><a class="item__name" href="#variable-anchor-override">anchor-override</a></h3><div class="item__code-wrapper"><pre class="item__code language-scss"><code>$anchor-override: &#39;.subtle-link&#39; !default;</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Name of the class that unsets the default theme styles for links.</p></div><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[css]</span> <a href="#styles-base-css-#{list.join($anchor-override, (), &#39;comma&#39;, false)}"><code>#{list.join($anchor-override, (), &#39;comma&#39;, false)}</code></a></li></ul><h3 class="item__sub-heading">Links</h3><ul class="list-unstyled"><li><a href="https://github.com/dawaltconley/scss-properties">https://github.com/dawaltconley/scss-properties</a></li></ul></section></section><section class="main__sub-section" id="styles-base-css"><h2 class="main__heading--secondary"><div class="container">css</div></h2><section class="main__item container item" id="styles-base-css-blockquote"><h3 class="item__heading"><a class="item__name" href="#css-blockquote">blockquote</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="<code>blockquote {
+  color: var(--theme-tx--light);
+  border-left-color: scss-properties.mix(--theme-tx, --theme-bg, 25%);
+}</code>" data-collapsed="blockquote { ... }"><code>blockquote { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Default styles for blockquotes.</p></div><h3 class="item__sub-heading">Links</h3><ul class="list-unstyled"><li><a href="https://github.com/dawaltconley/scss-properties">https://github.com/dawaltconley/scss-properties</a></li></ul></section><section class="main__item container item" id="styles-base-css-pre,
+code"><h3 class="item__heading"><a class="item__name" href="#css-pre,
+code">pre, code</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="<code>pre,
+code {
   $lightness-scale: calc(0.9 - (0.15 * var(--theme-light)));
-    border-color: scss-properties.set(--theme-bg,
-        $saturation: scale -60%,
-        $lightness: mix --theme-text $lightness-scale);
-    background-color: scss-properties.set(--theme-bg,
-        $saturation: scale -50%,
-        $lightness: mix --theme-text 90%);
-}</code>" data-collapsed="pre, code { ... }"><code>pre, code { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Default styles for code blocks.</p></div><h3 class="item__sub-heading">Links</h3><ul class="list-unstyled"><li><a href="https://github.com/dawaltconley/scss-properties">https://github.com/dawaltconley/scss-properties</a></li></ul></section><section class="main__item container item" id="styles-base-css-input[type=&quot;text&quot;], textarea"><h3 class="item__heading"><a class="item__name" href="#css-input[type=&quot;text&quot;], textarea">input[type=&quot;text&quot;], textarea</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="<code>input[type=&quot;text&quot;], textarea {
-  color: var(--theme-text);
-    background: scss-properties.mix(--theme-text, --theme-bg, calc(0.05 * var(--theme-light)));
-    border-color: scss-properties.mix(--theme-text, --theme-bg, 25%);
+  border-color: scss-properties.set(
+    --theme-bg,
+    $saturation: scale -60%,
+    $lightness: mix --theme-tx $lightness-scale
+  );
+  background-color: scss-properties.set(
+    --theme-bg,
+    $saturation: scale -50%,
+    $lightness: mix --theme-tx 90%
+  );
+}</code>" data-collapsed="pre,
+code { ... }"><code>pre,
+code { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Default styles for code blocks.</p></div><h3 class="item__sub-heading">Links</h3><ul class="list-unstyled"><li><a href="https://github.com/dawaltconley/scss-properties">https://github.com/dawaltconley/scss-properties</a></li></ul></section><section class="main__item container item" id="styles-base-css-input[type=&#39;text&#39;],
+textarea"><h3 class="item__heading"><a class="item__name" href="#css-input[type=&#39;text&#39;],
+textarea">input[type=&#39;text&#39;], textarea</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="<code>input[type=&#39;text&#39;],
+textarea {
+  color: var(--theme-tx);
+  background: scss-properties.mix(
+    --theme-tx,
+    --theme-bg,
+    calc(0.05 * var(--theme-light))
+  );
+  border-color: scss-properties.mix(--theme-tx, --theme-bg, 25%);
 
-    &amp;::placeholder {
-        color: var(--theme-text-light);
-        opacity: 1;
-    }
-}</code>" data-collapsed="input[type=&quot;text&quot;], textarea { ... }"><code>input[type=&quot;text&quot;], textarea { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Default styles for form fields.</p></div><h3 class="item__sub-heading">Links</h3><ul class="list-unstyled"><li><a href="https://github.com/dawaltconley/scss-properties">https://github.com/dawaltconley/scss-properties</a></li></ul></section><section class="main__item container item" id="styles-base-css-:link, #{$link-selector}:link"><h3 class="item__heading"><a class="item__name" href="#css-:link, #{$link-selector}:link">:link, #{$link-selector}:link</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="<code>:link, #{$link-selector}:link {
-  color: var(--theme-brand);
-    text-decoration: none;
-}</code>" data-collapsed=":link, #{$link-selector}:link { ... }"><code>:link, #{$link-selector}:link { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Default styles for link elements.</p></div><h3 class="item__sub-heading">Links</h3><ul class="list-unstyled"><li><a href="https://github.com/dawaltconley/scss-properties">https://github.com/dawaltconley/scss-properties</a></li></ul></section><section class="main__item container item" id="styles-base-css-:visited, #{$link-selector}:visited"><h3 class="item__heading"><a class="item__name" href="#css-:visited, #{$link-selector}:visited">:visited, #{$link-selector}:visited</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="<code>:visited, #{$link-selector}:visited {
-  color: scss-properties.scale(--theme-brand, $saturation: -50%, $lightness: -25%);
-    color: scss-properties.set(--theme-brand,
-        $saturation: scale -40%,
-        $lightness: mix --theme-text 80%);
-}</code>" data-collapsed=":visited, #{$link-selector}:visited { ... }"><code>:visited, #{$link-selector}:visited { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Default styles for visited links.</p></div><h3 class="item__sub-heading">Links</h3><ul class="list-unstyled"><li><a href="https://github.com/dawaltconley/scss-properties">https://github.com/dawaltconley/scss-properties</a></li></ul></section><section class="main__item container item" id="styles-base-css-a:hover, #{$link-selector}:hover"><h3 class="item__heading"><a class="item__name" href="#css-a:hover, #{$link-selector}:hover">a:hover, #{$link-selector}:hover</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="<code>a:hover, #{$link-selector}:hover {
-  color: scss-properties.set(--theme-brand,
-        $saturation: scale 50%,
-        $lightness: mix --theme-text 50%);
-    text-decoration: underline;
-}</code>" data-collapsed="a:hover, #{$link-selector}:hover { ... }"><code>a:hover, #{$link-selector}:hover { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Default styles for darkened links.</p></div><h3 class="item__sub-heading">Links</h3><ul class="list-unstyled"><li><a href="https://github.com/dawaltconley/scss-properties">https://github.com/dawaltconley/scss-properties</a></li></ul></section><section class="main__item container item" id="styles-base-css-#{list.join($anchor-override, (), &#39;comma&#39;, false)}"><h3 class="item__heading"><a class="item__name" href="#css-#{list.join($anchor-override, (), &#39;comma&#39;, false)}">#{list.join($anchor-override, (), &#39;comma&#39;, false)}</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="<code>#{list.join($anchor-override, (), &#39;comma&#39;, false)} {
-  &amp;, &amp;:hover, &amp;:visited {
-        color: inherit;
-    }
+  &amp;::placeholder {
+    color: var(--theme-tx--light);
+    opacity: 1;
+  }
+}</code>" data-collapsed="input[type=&#39;text&#39;],
+textarea { ... }"><code>input[type=&#39;text&#39;],
+textarea { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Default styles for form fields.</p></div><h3 class="item__sub-heading">Links</h3><ul class="list-unstyled"><li><a href="https://github.com/dawaltconley/scss-properties">https://github.com/dawaltconley/scss-properties</a></li></ul></section><section class="main__item container item" id="styles-base-css-:link,
+#{$link-selector}:link"><h3 class="item__heading"><a class="item__name" href="#css-:link,
+#{$link-selector}:link">:link, #{$link-selector}:link</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="<code>:link,
+#{$link-selector}:link {
+  color: var(--theme-br);
+  text-decoration: none;
+}</code>" data-collapsed=":link,
+#{$link-selector}:link { ... }"><code>:link,
+#{$link-selector}:link { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Default styles for link elements.</p></div><h3 class="item__sub-heading">Links</h3><ul class="list-unstyled"><li><a href="https://github.com/dawaltconley/scss-properties">https://github.com/dawaltconley/scss-properties</a></li></ul></section><section class="main__item container item" id="styles-base-css-:visited,
+#{$link-selector}:visited"><h3 class="item__heading"><a class="item__name" href="#css-:visited,
+#{$link-selector}:visited">:visited, #{$link-selector}:visited</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="<code>:visited,
+#{$link-selector}:visited {
+  color: scss-properties.scale(--theme-br, $saturation: -50%, $lightness: -25%);
+  color: scss-properties.set(
+    --theme-br,
+    $saturation: scale -40%,
+    $lightness: mix --theme-tx 80%
+  );
+}</code>" data-collapsed=":visited,
+#{$link-selector}:visited { ... }"><code>:visited,
+#{$link-selector}:visited { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Default styles for visited links.</p></div><h3 class="item__sub-heading">Links</h3><ul class="list-unstyled"><li><a href="https://github.com/dawaltconley/scss-properties">https://github.com/dawaltconley/scss-properties</a></li></ul></section><section class="main__item container item" id="styles-base-css-a:hover,
+#{$link-selector}:hover"><h3 class="item__heading"><a class="item__name" href="#css-a:hover,
+#{$link-selector}:hover">a:hover, #{$link-selector}:hover</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="<code>a:hover,
+#{$link-selector}:hover {
+  color: scss-properties.set(
+    --theme-br,
+    $saturation: scale 50%,
+    $lightness: mix --theme-tx 50%
+  );
+  text-decoration: underline;
+}</code>" data-collapsed="a:hover,
+#{$link-selector}:hover { ... }"><code>a:hover,
+#{$link-selector}:hover { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Default styles for darkened links.</p></div><h3 class="item__sub-heading">Links</h3><ul class="list-unstyled"><li><a href="https://github.com/dawaltconley/scss-properties">https://github.com/dawaltconley/scss-properties</a></li></ul></section><section class="main__item container item" id="styles-base-css-#{list.join($anchor-override, (), &#39;comma&#39;, false)}"><h3 class="item__heading"><a class="item__name" href="#css-#{list.join($anchor-override, (), &#39;comma&#39;, false)}">#{list.join($anchor-override, (), &#39;comma&#39;, false)}</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="<code>#{list.join($anchor-override, (), &#39;comma&#39;, false)} {
+  &amp;,
+  &amp;:hover,
+  &amp;:visited {
+    color: inherit;
+  }
 }</code>" data-collapsed="#{list.join($anchor-override, (), &#39;comma&#39;, false)} { ... }"><code>#{list.join($anchor-override, (), &#39;comma&#39;, false)} { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Override default link styles.</p></div><h3 class="item__sub-heading">Links</h3><ul class="list-unstyled"><li><a href="https://github.com/dawaltconley/scss-properties">https://github.com/dawaltconley/scss-properties</a></li></ul></section></section></section><section class="main__section"><h1 class="main__heading" id="styles-bg"><div class="container">Styles: Backgrounds</div></h1><section class="main__sub-section" id="styles-bg-variable"><h2 class="main__heading--secondary"><div class="container">variables</div></h2><section class="main__item container item" id="styles-bg-variable-overlay"><h3 class="item__heading"><a class="item__name" href="#variable-overlay">overlay</a></h3><div class="item__code-wrapper"><pre class="item__code language-scss"><code>$overlay: 0.5 !default;</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Opacity of the <code>.overlay</code> class</p></div><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[css]</span> <a href="#styles-bg-css-.overlay"><code>.overlay</code></a></li></ul></section><section class="main__item container item" id="styles-bg-variable-heavy-overlay"><h3 class="item__heading"><a class="item__name" href="#variable-heavy-overlay">heavy-overlay</a></h3><div class="item__code-wrapper"><pre class="item__code language-scss"><code>$heavy-overlay: 0.75 !default;</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Opacity of the <code>.heavy-overlay</code> class</p></div><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[css]</span> <a href="#styles-bg-css-.heavy-overlay"><code>.heavy-overlay</code></a></li></ul></section></section><section class="main__sub-section" id="styles-bg-css"><h2 class="main__heading--secondary"><div class="container">css</div></h2><section class="main__item container item" id="styles-bg-css-.theme-bg"><h3 class="item__heading"><a class="item__name" href="#css-.theme-bg">.theme-bg</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="<code>.theme-bg {
   background-color: var(--theme-bg);
 }</code>" data-collapsed=".theme-bg { ... }"><code>.theme-bg { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Applies the <code>--theme-bg</code> to an element&#39;s background color.</p></div></section><section class="main__item container item" id="styles-bg-css-.no-bg"><h3 class="item__heading"><a class="item__name" href="#css-.no-bg">.no-bg</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="<code>.no-bg {
@@ -193,147 +261,167 @@ body, .light {
   background-color: scss-properties.change(--theme-bg, $alpha: $overlay);
 }</code>" data-collapsed=".overlay { ... }"><code>.overlay { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Applies a semi-transparent <code>--theme-bg</code> to an element&#39;s background color.</p></div><h3 class="item__sub-heading">Links</h3><ul class="list-unstyled"><li><a href="https://github.com/dawaltconley/scss-properties">https://github.com/dawaltconley/scss-properties</a></li></ul></section><section class="main__item container item" id="styles-bg-css-.heavy-overlay"><h3 class="item__heading"><a class="item__name" href="#css-.heavy-overlay">.heavy-overlay</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="<code>.heavy-overlay {
   background-color: scss-properties.change(--theme-bg, $alpha: $heavy-overlay);
-}</code>" data-collapsed=".heavy-overlay { ... }"><code>.heavy-overlay { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Same as <code>.overlay</code>, but with a separate control.</p></div><h3 class="item__sub-heading">Links</h3><ul class="list-unstyled"><li><a href="https://github.com/dawaltconley/scss-properties">https://github.com/dawaltconley/scss-properties</a></li></ul></section></section></section><section class="main__section"><h1 class="main__heading" id="styles-borders"><div class="container">Styles: Borders</div></h1><section class="main__sub-section" id="styles-borders-variable"><h2 class="main__heading--secondary"><div class="container">variables</div></h2><section class="main__item container item" id="styles-borders-variable-border-light"><h3 class="item__heading"><a class="item__name" href="#variable-border-light">border-light</a></h3><div class="item__code-wrapper"><pre class="item__code language-scss"><code>$border-light: 10% !default;</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Percent of text color mixed with background in the <code>.border-light</code> class.</p></div><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[css]</span> <a href="#styles-borders-css-.border-light"><code>.border-light</code></a></li></ul></section><section class="main__item container item" id="styles-borders-variable-border-x-light"><h3 class="item__heading"><a class="item__name" href="#variable-border-x-light">border-x-light</a></h3><div class="item__code-wrapper"><pre class="item__code language-scss"><code>$border-x-light: 5% !default;</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Percent of text color mixed with background in the <code>.border-x-light</code> class.</p></div><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[css]</span> <a href="#styles-borders-css-.border-x-light"><code>.border-x-light</code></a></li></ul></section></section><section class="main__sub-section" id="styles-borders-css"><h2 class="main__heading--secondary"><div class="container">css</div></h2><section class="main__item container item" id="styles-borders-css-.border-light"><h3 class="item__heading"><a class="item__name" href="#css-.border-light">.border-light</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="<code>.border-light {
-  border-color: scss-properties.mix(--theme-text, --theme-bg, $border-light);
-}</code>" data-collapsed=".border-light { ... }"><code>.border-light { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Applies a subtle color to border styles, relative to <code>--theme-text</code> and <code>--theme-bg</code>.</p></div></section><section class="main__item container item" id="styles-borders-css-.border-x-light"><h3 class="item__heading"><a class="item__name" href="#css-.border-x-light">.border-x-light</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="<code>.border-x-light {
-  border-color: scss-properties.mix(--theme-text, --theme-bg, $border-x-light);
-}</code>" data-collapsed=".border-x-light { ... }"><code>.border-x-light { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Applies an even subtler color to border styles, relative to <code>--theme-text</code> and <code>--theme-bg</code>.</p></div></section></section></section><section class="main__section"><h1 class="main__heading" id="styles-buttons"><div class="container">Styles: Buttons</div></h1><section class="main__sub-section" id="styles-buttons-variable"><h2 class="main__heading--secondary"><div class="container">variables</div></h2><section class="main__item container item" id="styles-buttons-variable-btn-hover-mix"><h3 class="item__heading"><a class="item__name" href="#variable-btn-hover-mix">btn-hover-mix</a></h3><div class="item__code-wrapper"><pre class="item__code language-scss"><code>$btn-hover-mix: 80% !default;</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Controls how much the <code>.button</code> and <code>.button-o</code> elements react on hover.</p></div><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[css]</span> <a href="#styles-buttons-css-.button"><code>.button</code></a></li></ul><h3 class="item__sub-heading">Links</h3><ul class="list-unstyled"><li><a href="https://github.com/dawaltconley/scss-properties">https://github.com/dawaltconley/scss-properties</a></li></ul></section></section><section class="main__sub-section" id="styles-buttons-css"><h2 class="main__heading--secondary"><div class="container">css</div></h2><section class="main__item container item" id="styles-buttons-css-.button"><h3 class="item__heading"><a class="item__name" href="#css-.button">.button</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="<code>.button {
+}</code>" data-collapsed=".heavy-overlay { ... }"><code>.heavy-overlay { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Same as <code>.overlay</code>, but with a separate control.</p></div><h3 class="item__sub-heading">Links</h3><ul class="list-unstyled"><li><a href="https://github.com/dawaltconley/scss-properties">https://github.com/dawaltconley/scss-properties</a></li></ul></section></section></section><section class="main__section"><h1 class="main__heading" id="styles-borders"><div class="container">Styles: Borders</div></h1><section class="main__sub-section" id="styles-borders-variable"><h2 class="main__heading--secondary"><div class="container">variables</div></h2><section class="main__item container item" id="styles-borders-variable-border-light"><h3 class="item__heading"><a class="item__name" href="#variable-border-light">border-light</a></h3><div class="item__code-wrapper"><pre class="item__code language-scss"><code>$border-light: 10% !default;</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Percent of text color mixed with background in the <code>.border-light</code> class.</p></div></section><section class="main__item container item" id="styles-borders-variable-border-x-light"><h3 class="item__heading"><a class="item__name" href="#variable-border-x-light">border-x-light</a></h3><div class="item__code-wrapper"><pre class="item__code language-scss"><code>$border-x-light: 5% !default;</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Percent of text color mixed with background in the <code>.border-x-light</code> class.</p></div></section></section><section class="main__sub-section" id="styles-borders-css"><h2 class="main__heading--secondary"><div class="container">css</div></h2><section class="main__item container item" id="styles-borders-css-&amp;-light"><h3 class="item__heading"><a class="item__name" href="#css-&amp;-light">&amp;-light</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="<code>&amp;-light {
+  border-color: scss-properties.mix(--theme-tx, --theme-bg, $border-light);
+}</code>" data-collapsed="&amp;-light { ... }"><code>&amp;-light { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Applies a subtle color to border styles, relative to <code>--theme-tx</code> and <code>--theme-bg</code>. @name .border-light @require $border-light</p></div></section><section class="main__item container item" id="styles-borders-css-&amp;-x-light"><h3 class="item__heading"><a class="item__name" href="#css-&amp;-x-light">&amp;-x-light</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="<code>&amp;-x-light {
+  border-color: scss-properties.mix(--theme-tx, --theme-bg, $border-x-light);
+}</code>" data-collapsed="&amp;-x-light { ... }"><code>&amp;-x-light { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Applies an even subtler color to border styles, relative to <code>--theme-tx</code> and <code>--theme-bg</code>. @name .border-x-light @require $border-x-light</p></div></section></section></section><section class="main__section"><h1 class="main__heading" id="styles-buttons"><div class="container">Styles: Buttons</div></h1><section class="main__sub-section" id="styles-buttons-variable"><h2 class="main__heading--secondary"><div class="container">variables</div></h2><section class="main__item container item" id="styles-buttons-variable-btn-hover-mix"><h3 class="item__heading"><a class="item__name" href="#variable-btn-hover-mix">btn-hover-mix</a></h3><div class="item__code-wrapper"><pre class="item__code language-scss"><code>$btn-hover-mix: 80% !default;</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Controls how much the <code>.button</code> and <code>.button-o</code> elements react on hover.</p></div><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[css]</span> <a href="#styles-buttons-css-.button"><code>.button</code></a></li></ul><h3 class="item__sub-heading">Links</h3><ul class="list-unstyled"><li><a href="https://github.com/dawaltconley/scss-properties">https://github.com/dawaltconley/scss-properties</a></li></ul></section></section><section class="main__sub-section" id="styles-buttons-css"><h2 class="main__heading--secondary"><div class="container">css</div></h2><section class="main__item container item" id="styles-buttons-css-.button"><h3 class="item__heading"><a class="item__name" href="#css-.button">.button</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="<code>.button {
   $root: &amp;;
-    background-color: var(--button-bg);
+  background-color: var(--button-bg);
 
-    &amp;--left, &amp;--right {
-        border-radius: 0;
-        transform-origin: bottom;
+  &amp;--left,
+  &amp;--right {
+    border-radius: 0;
+    transform-origin: bottom;
+  }
+  &amp;--left {
+    transform: skewX(-30deg);
+    #{$root}__text {
+      display: block;
+      transform: skewX(30deg);
     }
-    &amp;--left {
-        transform: skewX(-30deg);
-        #{$root}__text {
-            display: block;
-            transform: skewX(30deg);
-        }
+  }
+  &amp;--right {
+    transform: skewX(30deg);
+    #{$root}__text {
+      display: block;
+      transform: skewX(-30deg);
     }
-    &amp;--right {
-        transform: skewX(30deg);
-        #{$root}__text {
-            display: block;
-            transform: skewX(-30deg);
-        }
-    }
+  }
 
-    &amp;, &amp;:hover, &amp;:visited {
-        color: var(--button-text);
+  &amp;,
+  &amp;:hover,
+  &amp;:visited {
+    color: var(--button-text);
+  }
+
+  &amp;:hover {
+    background-color: scss-properties.mix(
+      --button-bg,
+      --button-text,
+      $btn-hover-mix
+    );
+  }
+
+  /// More subtle styling for the `.button` class
+  /// @name .button.subtle-button
+  /// @require {css} .button
+  &amp;.subtle-button {
+    color: var(--button-bg);
+    background-color: var(--button-text);
+
+    &amp;:hover {
+      background-color: scss-properties.mix(
+        --button-text,
+        --button-bg,
+        $btn-hover-mix
+      );
+    }
+  }
+
+  /// Button element with default background and branded outlines.
+  /// @name .button-o
+  &amp;-o {
+    background-color: var(--theme-bg);
+    border-color: var(--button-bg);
+
+    &amp;,
+    &amp;:visited {
+      color: var(--button-bg);
     }
 
     &amp;:hover {
-        background-color: scss-properties.mix(--button-bg, --button-text, $btn-hover-mix);
+      color: var(--button-text);
+      background-color: var(--button-bg);
+      border-color: var(--button-bg);
     }
 
-/// More subtle styling for the `.button` class
-/// @name .button.subtle-button
-/// @require {css} .button
-    &amp;.subtle-button {
-        color: var(--button-bg);
-        background-color: var(--button-text);
+    /// More subtle styling for the `.button-o` class
+    /// @name .button-o.subtle-button
+    /// @require {css} .button-o
+    &amp;.subtle-button:not(:hover) {
+      border-color: var(--theme-tx);
 
-        &amp;:hover {
-            background-color: scss-properties.mix(--button-text, --button-bg, $btn-hover-mix);
-        }
+      &amp;,
+      &amp;:visited {
+        color: var(--theme-tx);
+      }
     }
-
-/// Button element with default background and branded outlines.
-/// @name .button-o
-    &amp;-o {
-        background-color: var(--theme-bg);
-        border-color: var(--button-bg);
-
-        &amp;, &amp;:visited {
-            color: var(--button-bg);
-        }
-
-        &amp;:hover {
-            color: var(--button-text);
-            background-color: var(--button-bg);
-            border-color: var(--button-bg);
-        }
-
-/// More subtle styling for the `.button-o` class
-/// @name .button-o.subtle-button
-/// @require {css} .button-o
-        &amp;.subtle-button:not(:hover) {
-            border-color: var(--theme-text);
-
-            &amp;, &amp;:visited {
-                color: var(--theme-text);
-            }
-        }
-    }
-}</code>" data-collapsed=".button { ... }"><code>.button { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Button element with an opaque, branded background.</p></div><h3 class="item__sub-heading">Links</h3><ul class="list-unstyled"><li><a href="https://github.com/dawaltconley/scss-properties">https://github.com/dawaltconley/scss-properties</a></li></ul></section><section class="main__item container item" id="styles-buttons-css-.button.subtle-button"><h3 class="item__heading"><a class="item__name" href="#css-.button.subtle-button">.button.subtle-button</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="<code>.button.subtle-button {
+  }
+}</code>" data-collapsed=".button { ... }"><code>.button { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Button element with an opaque, branded background.</p></div><h3 class="item__sub-heading">Links</h3><ul class="list-unstyled"><li><a href="https://github.com/dawaltconley/scss-properties">https://github.com/dawaltconley/scss-properties</a></li></ul></section><section class="main__item container item" id="styles-buttons-css-&amp;.subtle-button"><h3 class="item__heading"><a class="item__name" href="#css-&amp;.subtle-button">&amp;.subtle-button</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="<code>&amp;.subtle-button {
   color: var(--button-bg);
-        background-color: var(--button-text);
+    background-color: var(--button-text);
 
-        &amp;:hover {
-            background-color: scss-properties.mix(--button-text, --button-bg, $btn-hover-mix);
-        }
-}</code>" data-collapsed=".button.subtle-button { ... }"><code>.button.subtle-button { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>More subtle styling for the <code>.button</code> class</p></div><h3 class="item__sub-heading">Links</h3><ul class="list-unstyled"><li><a href="https://github.com/dawaltconley/scss-properties">https://github.com/dawaltconley/scss-properties</a></li></ul></section><section class="main__item container item" id="styles-buttons-css-.button-o"><h3 class="item__heading"><a class="item__name" href="#css-.button-o">.button-o</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="<code>.button-o {
+    &amp;:hover {
+      background-color: scss-properties.mix(
+        --button-text,
+        --button-bg,
+        $btn-hover-mix
+      );
+    }
+}</code>" data-collapsed="&amp;.subtle-button { ... }"><code>&amp;.subtle-button { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>More subtle styling for the <code>.button</code> class @name .button.subtle-button @require {css} .button</p></div><h3 class="item__sub-heading">Links</h3><ul class="list-unstyled"><li><a href="https://github.com/dawaltconley/scss-properties">https://github.com/dawaltconley/scss-properties</a></li></ul></section><section class="main__item container item" id="styles-buttons-css-&amp;-o"><h3 class="item__heading"><a class="item__name" href="#css-&amp;-o">&amp;-o</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="<code>&amp;-o {
   background-color: var(--theme-bg);
-        border-color: var(--button-bg);
+    border-color: var(--button-bg);
 
-        &amp;, &amp;:visited {
-            color: var(--button-bg);
-        }
+    &amp;,
+    &amp;:visited {
+      color: var(--button-bg);
+    }
 
-        &amp;:hover {
-            color: var(--button-text);
-            background-color: var(--button-bg);
-            border-color: var(--button-bg);
-        }
+    &amp;:hover {
+      color: var(--button-text);
+      background-color: var(--button-bg);
+      border-color: var(--button-bg);
+    }
 
-/// More subtle styling for the `.button-o` class
-/// @name .button-o.subtle-button
-/// @require {css} .button-o
-        &amp;.subtle-button:not(:hover) {
-            border-color: var(--theme-text);
+    /// More subtle styling for the `.button-o` class
+    /// @name .button-o.subtle-button
+    /// @require {css} .button-o
+    &amp;.subtle-button:not(:hover) {
+      border-color: var(--theme-tx);
 
-            &amp;, &amp;:visited {
-                color: var(--theme-text);
-            }
-        }
-}</code>" data-collapsed=".button-o { ... }"><code>.button-o { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Button element with default background and branded outlines.</p></div><h3 class="item__sub-heading">Links</h3><ul class="list-unstyled"><li><a href="https://github.com/dawaltconley/scss-properties">https://github.com/dawaltconley/scss-properties</a></li></ul></section><section class="main__item container item" id="styles-buttons-css-.button-o.subtle-button"><h3 class="item__heading"><a class="item__name" href="#css-.button-o.subtle-button">.button-o.subtle-button</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="<code>.button-o.subtle-button {
-  border-color: var(--theme-text);
+      &amp;,
+      &amp;:visited {
+        color: var(--theme-tx);
+      }
+    }
+}</code>" data-collapsed="&amp;-o { ... }"><code>&amp;-o { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Button element with default background and branded outlines. @name .button-o</p></div><h3 class="item__sub-heading">Links</h3><ul class="list-unstyled"><li><a href="https://github.com/dawaltconley/scss-properties">https://github.com/dawaltconley/scss-properties</a></li></ul></section><section class="main__item container item" id="styles-buttons-css-&amp;.subtle-button:not(:hover)"><h3 class="item__heading"><a class="item__name" href="#css-&amp;.subtle-button:not(:hover)">&amp;.subtle-button:not(:hover)</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="<code>&amp;.subtle-button:not(:hover) {
+  border-color: var(--theme-tx);
 
-            &amp;, &amp;:visited {
-                color: var(--theme-text);
-            }
-}</code>" data-collapsed=".button-o.subtle-button { ... }"><code>.button-o.subtle-button { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>More subtle styling for the <code>.button-o</code> class</p></div><h3 class="item__sub-heading">Links</h3><ul class="list-unstyled"><li><a href="https://github.com/dawaltconley/scss-properties">https://github.com/dawaltconley/scss-properties</a></li></ul></section></section></section><section class="main__section"><h1 class="main__heading" id="styles-svg"><div class="container">Styles: SVG</div></h1><section class="main__sub-section" id="styles-svg-css"><h2 class="main__heading--secondary"><div class="container">css</div></h2><section class="main__item container item" id="styles-svg-css-.fill-color-theme"><h3 class="item__heading"><a class="item__name" href="#css-.fill-color-theme">.fill-color-theme</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="<code>.fill-color-theme {
+      &amp;,
+      &amp;:visited {
+        color: var(--theme-tx);
+      }
+}</code>" data-collapsed="&amp;.subtle-button:not(:hover) { ... }"><code>&amp;.subtle-button:not(:hover) { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>More subtle styling for the <code>.button-o</code> class @name .button-o.subtle-button @require {css} .button-o</p></div><h3 class="item__sub-heading">Links</h3><ul class="list-unstyled"><li><a href="https://github.com/dawaltconley/scss-properties">https://github.com/dawaltconley/scss-properties</a></li></ul></section></section></section><section class="main__section"><h1 class="main__heading" id="styles-svg"><div class="container">Styles: SVG</div></h1><section class="main__sub-section" id="styles-svg-css"><h2 class="main__heading--secondary"><div class="container">css</div></h2><section class="main__item container item" id="styles-svg-css-.fill-color-theme"><h3 class="item__heading"><a class="item__name" href="#css-.fill-color-theme">.fill-color-theme</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="<code>.fill-color-theme {
   &amp;-text {
-        fill: var(--theme-text);
-    }
-    &amp;-bg {
-        fill: var(--theme-bg);
-    }
-    &amp;-brand {
-        fill: var(--theme-brand);
-    }
+    fill: var(--theme-tx);
+  }
+  &amp;-bg {
+    fill: var(--theme-bg);
+  }
+  &amp;-brand {
+    fill: var(--theme-br);
+  }
 }</code>" data-collapsed=".fill-color-theme { ... }"><code>.fill-color-theme { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>SVG fill classes.</p></div></section><section class="main__item container item" id="styles-svg-css-.stroke-color-theme"><h3 class="item__heading"><a class="item__name" href="#css-.stroke-color-theme">.stroke-color-theme</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="<code>.stroke-color-theme {
   &amp;-text {
-        stroke: var(--theme-text);
-    }
-    &amp;-bg {
-        stroke: var(--theme-bg);
-    }
-    &amp;-brand {
-        stroke: var(--theme-brand);
-    }
+    stroke: var(--theme-tx);
+  }
+  &amp;-bg {
+    stroke: var(--theme-bg);
+  }
+  &amp;-brand {
+    stroke: var(--theme-br);
+  }
 }</code>" data-collapsed=".stroke-color-theme { ... }"><code>.stroke-color-theme { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>SVG stroke classes.</p></div></section></section></section><section class="main__section"><h1 class="main__heading" id="styles-text"><div class="container">Styles: Text</div></h1><section class="main__sub-section" id="styles-text-css"><h2 class="main__heading--secondary"><div class="container">css</div></h2><section class="main__item container item" id="styles-text-css-.text-light"><h3 class="item__heading"><a class="item__name" href="#css-.text-light">.text-light</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="<code>.text-light {
-  color: var(--theme-text-light);
+  color: var(--theme-tx--light);
 }</code>" data-collapsed=".text-light { ... }"><code>.text-light { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Light text, relative to background color.</p></div></section><section class="main__item container item" id="styles-text-css-.text-brand"><h3 class="item__heading"><a class="item__name" href="#css-.text-brand">.text-brand</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="<code>.text-brand {
-  color: var(--theme-brand, var(--theme-text));
+  color: var(--theme-br, var(--theme-tx));
 }</code>" data-collapsed=".text-brand { ... }"><code>.text-brand { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Applies the brand color to text.</p></div></section></section></section><section class="main__section"><h1 class="main__heading" id="utilities"><div class="container">Utilities</div></h1><section class="main__sub-section" id="utilities-function"><h2 class="main__heading--secondary"><div class="container">functions</div></h2><section class="main__item container item" id="utilities-function-if-light"><h3 class="item__heading"><a class="item__name" href="#function-if-light">if-light</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function if-light($true, $false) { 
   @return _light-or-dark(var(--theme-light), $true, $false);
  }" data-collapsed="@function if-light($true, $false) { ... }"><code>@function if-light($true, $false) { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Returns one of two values depending on whether the current theme is light or dark. The values can either be custom CSS properties produced by the <code>create</code> mixin, or any CSS value that can be multiplied in a <code>calc()</code> function.</p></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$true</code></th><td data-label="desc">&mdash;<span class="visually-hidden"> none</span></td><td data-label="type"><code>String</code> or <code>Number</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$false</code></th><td data-label="desc">&mdash;<span class="visually-hidden"> none</span></td><td data-label="type"><code>String</code> or <code>Number</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr></tbody></table><h3 class="item__sub-heading">Returns</h3><div class="item__description item__description--inline"><code>Value</code> &mdash;<p>a calc function that resolves to $true on light themes and $false on dark themes.</p></div><h3 class="item__sub-heading">Example</h3><div class="item__example example"><pre class="example__code language-scss"><code>.theme-class {
-  color: sass-themes.if-light(--theme-text, --theme-brand);
+  color: sass-themes.if-light(--theme-tx, --theme-br);
 }</code></pre></div><div class="item__example example"><pre class="example__code language-scss"><code>.theme-class {
   height: sass-themes.if-light(100px, 80em);
 }</code></pre></div></section><section class="main__item container item" id="utilities-function-if-dark"><h3 class="item__heading"><a class="item__name" href="#function-if-dark">if-dark</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function if-dark($true, $false) { 
   @return _light-or-dark(var(--theme-dark), $true, $false);
- }" data-collapsed="@function if-dark($true, $false) { ... }"><code>@function if-dark($true, $false) { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Same as <code>if-light</code> but reversed.</p></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$true</code></th><td data-label="desc">&mdash;<span class="visually-hidden"> none</span></td><td data-label="type"><code>String</code> or <code>Number</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$false</code></th><td data-label="desc">&mdash;<span class="visually-hidden"> none</span></td><td data-label="type"><code>String</code> or <code>Number</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr></tbody></table><h3 class="item__sub-heading">Returns</h3><div class="item__description item__description--inline"><code>Value</code> &mdash;<p>a calc function that resolves to $true on dark themes and $false on light themes.</p></div><h3 class="item__sub-heading">See</h3><ul class="list-unstyled"><li><span class="item__cross-type">[function]</span> <a href="#utilities-function-if-light"><code>if-light</code></a></li></ul></section></section></section><footer class="footer" role="contentinfo"><div class="container"><div class="footer__project-info project-info"><!-- Name and URL --> <a class="project-info__name" href="https://dawaltconley.github.io/sass-themes/">Sass-themes</a><!-- Version --> <span class="project-info__version">- v0.2.2</span><!-- License --> <span class="project-info__license">, under ISC</span></div><a class="footer__watermark" href="http://sassdoc.com"><img src="assets/images/logo_light_inline.svg" alt="SassDoc Logo"></a></div></footer></article><script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script><script>window.jQuery || document.write('<script src="assets/js/vendor/jquery.min.js"><\/script>')</script><script src="assets/js/main.min.js"></script></body></html>
+ }" data-collapsed="@function if-dark($true, $false) { ... }"><code>@function if-dark($true, $false) { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Same as <code>if-light</code> but reversed.</p></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$true</code></th><td data-label="desc">&mdash;<span class="visually-hidden"> none</span></td><td data-label="type"><code>String</code> or <code>Number</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$false</code></th><td data-label="desc">&mdash;<span class="visually-hidden"> none</span></td><td data-label="type"><code>String</code> or <code>Number</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr></tbody></table><h3 class="item__sub-heading">Returns</h3><div class="item__description item__description--inline"><code>Value</code> &mdash;<p>a calc function that resolves to $true on dark themes and $false on light themes.</p></div><h3 class="item__sub-heading">See</h3><ul class="list-unstyled"><li><span class="item__cross-type">[function]</span> <a href="#utilities-function-if-light"><code>if-light</code></a></li></ul></section></section></section><footer class="footer" role="contentinfo"><div class="container"><div class="footer__project-info project-info"><!-- Name and URL --> <a class="project-info__name" href="https://dawaltconley.github.io/sass-themes/">Sass-themes</a><!-- Version --> <span class="project-info__version">- v0.3.0</span><!-- License --> <span class="project-info__license">, under ISC</span></div><a class="footer__watermark" href="http://sassdoc.com"><img src="assets/images/logo_light_inline.svg" alt="SassDoc Logo"></a></div></footer></article><script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script><script>window.jQuery || document.write('<script src="assets/js/vendor/jquery.min.js"><\/script>')</script><script src="assets/js/main.min.js"></script></body></html>
