@@ -3,6 +3,7 @@ groups:
   mixins: Mixins
   utilities: Utilities
   styles-base: 'Styles: Base'
+  styles-links: 'Styles: Links'
   styles-text: 'Styles: Text'
   styles-bg: 'Styles: Backgrounds'
   styles-borders: 'Styles: Borders'

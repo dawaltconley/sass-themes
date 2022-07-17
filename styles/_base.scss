@@ -3,14 +3,7 @@
 //// @link https://github.com/dawaltconley/scss-properties
 
 @use 'theme';
-
-@use 'sass:list';
 @use 'scss-properties';
-
-/// Name of the class that applies the default theme styles for links.
-$link-selector: '.theme-link' !default;
-/// Name of the class that unsets the default theme styles for links.
-$anchor-override: '.subtle-link' !default;
 
 /// Default styles for blockquotes.
 blockquote {
@@ -48,47 +41,5 @@ textarea {
   &::placeholder {
     color: var(--theme-tx--light);
     opacity: 1;
-  }
-}
-
-/// Default styles for link elements.
-/// @require $link-selector
-:link,
-#{$link-selector}:link {
-  color: var(--theme-br);
-  text-decoration: none;
-}
-
-/// Default styles for visited links.
-/// @require $link-selector
-:visited,
-#{$link-selector}:visited {
-  color: scss-properties.scale(--theme-br, $saturation: -50%, $lightness: -25%);
-  color: scss-properties.set(
-    --theme-br,
-    $saturation: scale -40%,
-    $lightness: mix --theme-tx 80%
-  );
-}
-
-/// Default styles for darkened links.
-/// @require $link-selector
-a:hover,
-#{$link-selector}:hover {
-  color: scss-properties.set(
-    --theme-br,
-    $saturation: scale 50%,
-    $lightness: mix --theme-tx 50%
-  );
-  text-decoration: underline;
-}
-
-/// Override default link styles.
-/// @require $anchor-override
-#{list.join($anchor-override, (), 'comma', false)} {
-  &,
-  &:hover,
-  &:visited {
-    color: inherit;
   }
 }

@@ -1,0 +1,47 @@
+//// Base styles
+//// @group styles-links
+//// @link https://github.com/dawaltconley/scss-properties
+
+/// Name of the class that applies the default link styles.
+$link-selector: '.theme-links' !default;
+/// Name of the class that unsets the default link styles.
+$link-override: '.subtle-links' !default;
+
+/// Base link styles.
+:link,
+:visited {
+  color: var(--theme-link, var(--theme-text, inherit));
+  text-decoration: var(--theme-link-decoration, none);
+}
+
+/// Default styles for link elements.
+/// @require $link-selector
+#{$link-selector} {
+  --theme-link: var(--theme-brand);
+  --theme-link-decoration: underline;
+
+  & :visited,
+  &:visited {
+    --theme-link: #{prop.set(
+        --theme-brand,
+        $saturation: scale -40%,
+        $lightness: mix --theme-text 80%
+      )};
+  }
+  & :link:hover,
+  &:link:hover {
+    --theme-link: #{prop.set(
+        --theme-brand,
+        $saturation: scale 50%,
+        $lightness: mix --theme-text 50%
+      )};
+    --theme-link-decoration: underline;
+  }
+}
+
+/// Override default link styles.
+/// @require $link-override
+#{$link-override} {
+  --theme-link: initial !important;
+  --theme-link-decoration: initial !important;
+}
