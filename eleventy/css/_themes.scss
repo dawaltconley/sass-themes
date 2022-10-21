@@ -17,6 +17,7 @@ $themes: (
 );
 
 @use 'index' as sass-themes with ($accessibility: false);
+@use 'styles';
 
 @include sass-themes.build($themes);
 
