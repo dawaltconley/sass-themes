@@ -29,9 +29,9 @@ Define themes using the `create` mixin. All themes take a `$text` and
 body, .light {
   // using keyword arguments
   @include sass-themes.create(
-    $text:  #111,
-    $bg:    white,
-    $brand: royalblue
+    $tx: #111,
+    $bg: white,
+    $br: royalblue
   )
 }
 ```
@@ -48,20 +48,20 @@ output shown in comments.
 body, .light {
   --light-theme:      1;                                          // 1 if text color is darker than background, else 0
   --dark-theme:       0;                                          // opposite --light-theme
-  --theme-text:       #111;                                       // hsla(var(--theme-text-h), var(--theme-text-s), var(--theme-text-l), var(--theme-text-a));
+  --theme-tx:         #111;                                       // hsla(var(--theme-tx-h), var(--theme-tx-s), var(--theme-tx-l), var(--theme-tx-a));
   --theme-bg:         white;                                      // hsla(var(--theme-bg-h), var(--theme-bg-s), var(--theme-bg-l), var(--theme-bg-a));
-  --theme-brand:      royalblue                                   // hsla(var(--theme-brand-h), var(--theme-brand-s), var(--theme-brand-l), var(--theme-brand-a));
+  --theme-br:         royalblue                                   // hsla(var(--theme-br-h), var(--theme-br-s), var(--theme-br-l), var(--theme-br-a));
   --button-text:      if($brand and not $light-theme, $text, $bg) // hsla(var(--button-text-h), var(--button-text-s), var(--button-text-l), var(--button-text-a));
   --button-bg:        $brand or $text                             // hsla(var(--button-bg-h), var(--button-bg-s), var(--button-bg-l), var(--button-bg-a));
-  --theme-text-light: #{scss-properties.mix(                      // rgba(calc((var(--theme-text-r) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-r) * (1 - (0.58 + (0.18 * var(--theme-dark)))))),
-                        --theme-text,                             //      calc((var(--theme-text-g) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-g) * (1 - (0.58 + (0.18 * var(--theme-dark)))))),
-                        --theme-bg,                               //      calc((var(--theme-text-b) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-b) * (1 - (0.58 + (0.18 * var(--theme-dark)))))),
-                        '(0.58 + (0.18 * var(--theme-dark)))'     //      calc((var(--theme-text-a) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-a) * (1 - (0.58 + (0.18 * var(--theme-dark)))))));
+  --theme-tx--light:  #{scss-properties.mix(                      // rgba(calc((var(--theme-tx-r) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-r) * (1 - (0.58 + (0.18 * var(--theme-dark)))))),
+                        --theme-tx,                               //      calc((var(--theme-tx-g) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-g) * (1 - (0.58 + (0.18 * var(--theme-dark)))))),
+                        --theme-bg,                               //      calc((var(--theme-tx-b) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-b) * (1 - (0.58 + (0.18 * var(--theme-dark)))))),
+                        '(0.58 + (0.18 * var(--theme-dark)))'     //      calc((var(--theme-tx-a) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-a) * (1 - (0.58 + (0.18 * var(--theme-dark)))))));
                       )};
 
-  color:              var(--theme-text);
+  color:              var(--theme-tx);
   background-color:   var(--theme-bg);
-  border-color:       var(--theme-text);
+  border-color:       var(--theme-tx);
 }
 ```
 
@@ -103,9 +103,9 @@ map of keywords as the only argument.
 .dark {
   // using a map of keyword arguments
   @include sass-themes.create((
-    --theme-text:   white;
+    --theme-tx:   white;
     --theme-bg:     #111;
-    --theme-brand:  royalblue;
+    --theme-br:  royalblue;
   ));
 }
 ```
@@ -133,7 +133,7 @@ created by the `create` mixin:
 
 ```css
 .button {
-    color: var(--theme-brand);
+    color: var(--theme-br);
 }
 ```
 
@@ -166,16 +166,13 @@ markup.
 ## Style sheets
 
 Default theme subclasses are defined in the `styles` directory, and can be 
-imported with some configurable variables, all at once through 
-`styles/_index.scss` or individually. They are automatically imported if you 
-`@use` this library's root directory.
-
-If you import styles individually, you should always import the mixins first, 
-so that later styles can override theme colors.
+imported with some configurable variables, all at once or individually.
 
 ```scss
+// import all styles with optional default overrides
+@use 'sass-themes/styles' with ($btn-hover-mix: 50%);
+
 // importing individual styles
-@use 'sass-themes/mixins' as sass-themes;
 @use 'sass-themes/styles/base';
 @use 'sass-themes/styles/text';
 ```
