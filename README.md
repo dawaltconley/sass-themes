@@ -1,12 +1,17 @@
 # sass-themes
 
-This module provides functions, mixins, and style sheets for a set of classes called themes. These classes use CSS properties to define the primary colors of a website in terms of their role.
+This module provides functions, mixins, and style sheets for a set of classes 
+called themes. These classes use CSS properties to define the primary colors of 
+a website in terms of their role.
 
-For more details, refer to the [full documentation](https://dawaltconley.github.io/sass-themes/).
+For more details, refer to the [full 
+documentation](https://dawaltconley.github.io/sass-themes/).
 
 ## Installation
 
-When installing from npm, make sure to include `node_modules` in your `SASS_PATH` resolve dependencies. `sass-themes` depends on other sass libraries and needs to know where to find them.
+When installing from npm, make sure to include `node_modules` in your 
+`SASS_PATH` resolve dependencies. `sass-themes` depends on other sass libraries 
+and needs to know where to find them.
 
 ```
 npm install sass-themes
@@ -15,7 +20,8 @@ SASS_PATH=node_modules
 
 ## Themes
 
-Define themes using the `create` mixin. All themes take a `$text` and `$background` color, and optionally a `$brand` color.
+Define themes using the `create` mixin. All themes take a `$text` and 
+`$background` color, and optionally a `$brand` color.
 
 ```scss
 @use 'sass-themes';
@@ -30,9 +36,13 @@ body, .light {
 }
 ```
 
-This outputs CSS properties for use in theme classes. These properties are defined using the [scss-properties library](https://github.com/dawaltconley/scss-properties) so that they can be manipulated later.
+This outputs CSS properties for use in theme classes. These properties are 
+defined using the [scss-properties 
+library](https://github.com/dawaltconley/scss-properties) so that they can be 
+manipulated later.
 
-The following sample output is simplified for readability, with the actual output shown in comments.
+The following sample output is simplified for readability, with the actual 
+output shown in comments.
 
 ```scss
 body, .light {
@@ -57,7 +67,9 @@ body, .light {
 
 ### Accessibility
 
-The `accessibility` mixin checks the color contrast ratios against the WCAG standards. It throws a warning when the provided colors do not meet the standard.
+The `accessibility` mixin checks the color contrast ratios against the WCAG 
+standards. It throws a warning when the provided colors do not meet the 
+standard.
 
 ```scss
 @use 'sass-themes';
@@ -65,13 +77,16 @@ The `accessibility` mixin checks the color contrast ratios against the WCAG stan
 @include sass-themes.accessibility($text: #111, $bg: white, $brand: blue, $accessibility: 'AA');
 ```
 
-The `create` mixin calls this mixin automatically using your theme colors. You can set it's accessibility standard using the `accessibility` keyword for each theme. Or you can set it globally when importing this library.
+The `create` mixin calls this mixin automatically using your theme colors. You 
+can set it's accessibility standard using the `accessibility` keyword for each 
+theme. Or you can set it globally when importing this library.
 
 ```scss
 @use 'sass-themes' with ($accessibility: 'AAA');
 ```
 
-`$accessibility` can be either `'AA'`, `'AAA'`, or `false` to turn off the warnings. It defaults to `AA`.
+`$accessibility` can be either `'AA'`, `'AAA'`, or `false` to turn off the 
+warnings. It defaults to `AA`.
 
 ### Keyword aliases
 
@@ -81,7 +96,8 @@ The `$text`, `$background`, and `$brand` keywords have a number of aliases:
 - `$background`: `background`, `bg`, `background-color`, `--theme-bg`
 - `$brand`: `brand`, `brand-color`, `--theme-brand`
 
-These aliases can be used as alternate keyword arguments. You can also pass a map of keywords as the only argument.
+These aliases can be used as alternate keyword arguments. You can also pass a 
+map of keywords as the only argument.
 
 ```scss
 .dark {
@@ -94,7 +110,8 @@ These aliases can be used as alternate keyword arguments. You can also pass a ma
 }
 ```
 
-You can even pass a map that defines multiple theme class names and their colors all at once:
+You can even pass a map that defines multiple theme class names and their 
+colors all at once:
 
 ```scss
 @include sass-themes.create((
@@ -111,7 +128,8 @@ You can even pass a map that defines multiple theme class names and their colors
 
 ## Working with themes
 
-You create classes that inherit theme colors by referencing the CSS properties created by the `create` mixin:
+You create classes that inherit theme colors by referencing the CSS properties 
+created by the `create` mixin:
 
 ```css
 .button {
@@ -119,7 +137,9 @@ You create classes that inherit theme colors by referencing the CSS properties c
 }
 ```
 
-These properties are used to style the colors of an element ***and*** all of it's children. This allows an element to be styled according to a given theme by either inheritance...
+These properties are used to style the colors of an element ***and*** all of 
+it's children. This allows an element to be styled according to a given theme 
+by either inheritance...
 
 ```html
 <div class="light">
@@ -133,7 +153,8 @@ These properties are used to style the colors of an element ***and*** all of it'
 <a class="light button" href="/foo">Theme Button</a>
 ```
 
-This allows you to style elements within a theme differently without extra markup.
+This allows you to style elements within a theme differently without extra 
+markup.
 
 ```html
 <div class="light">
@@ -144,9 +165,13 @@ This allows you to style elements within a theme differently without extra marku
 
 ## Style sheets
 
-Default theme subclasses are defined in the `styles` directory, and can be imported with some configurable variables, all at once through `styles/_index.scss` or individually. They are automatically imported if you `@use` this library's root directory.
+Default theme subclasses are defined in the `styles` directory, and can be 
+imported with some configurable variables, all at once through 
+`styles/_index.scss` or individually. They are automatically imported if you 
+`@use` this library's root directory.
 
-If you import styles individually, you should always import the mixins first, so that later styles can override theme colors.
+If you import styles individually, you should always import the mixins first, 
+so that later styles can override theme colors.
 
 ```scss
 // importing individual styles
@@ -157,9 +182,15 @@ If you import styles individually, you should always import the mixins first, so
 
 ## Tailwind CSS
 
-This package exports a plugin for integrating with Tailwind CSS via `require('sass-themes/tailwind')`. This adds `theme-tx`, `theme-bg`, and `theme-br` colors to your Tailwind CSS theme, which use the corresponding CSS property.
+This package exports a plugin for integrating with Tailwind CSS via 
+`require('sass-themes/tailwind')`. This adds `theme-tx`, `theme-bg`, and 
+`theme-br` colors to your Tailwind CSS theme, which use the corresponding CSS 
+property.
 
-`sass-themes` still requires a Sass build step in order to create the theme classes that these Tailwind colors depend on. You may not want to import certain (or any) theme subclasses if using Tailwind; consider only importing the mixins and utility functions.
+`sass-themes` still requires a Sass build step in order to create the theme 
+classes that these Tailwind colors depend on. You may not want to import 
+certain (or any) theme subclasses if using Tailwind; consider only importing 
+the mixins and utility functions.
 
 ## Partials
 
