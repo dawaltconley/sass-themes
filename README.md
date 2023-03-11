@@ -10,8 +10,8 @@ documentation](https://dawaltconley.github.io/sass-themes/).
 ## Installation
 
 When installing from npm, make sure to include `node_modules` in your 
-`SASS_PATH` resolve dependencies. `sass-themes` depends on other sass libraries 
-and needs to know where to find them.
+`SASS_PATH` to resolve dependencies. `sass-themes` depends on other sass 
+libraries and needs to know where to find them.
 
 ```
 npm install sass-themes
@@ -186,7 +186,7 @@ property.
 
 `sass-themes` still requires a Sass build step in order to create the theme 
 classes that these Tailwind colors depend on. You may not want to import 
-certain (or any) theme subclasses if using Tailwind; consider only importing 
+certain (or any) theme subclasses when using Tailwind; consider only importing 
 the mixins and utility functions.
 
 ## Partials
