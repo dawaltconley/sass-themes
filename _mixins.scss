@@ -150,7 +150,7 @@ $accessibility: 'AA' !default;
     }
   } @else {
     // override $kwargs with any positional arguments
-    @each $key, $value in list.zip(('text', 'background', 'brand'), $args) {
+    @each $key, $value in list.zip(('text', 'background', 'brand', 'accessibility'), $args) {
       $kwargs: map.set($kwargs, $key, $value);
     }
   }
