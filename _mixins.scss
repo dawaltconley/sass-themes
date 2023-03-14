@@ -91,6 +91,33 @@ $accessibility: 'AA' !default;
   @extend %theme;
 }
 
+$_aliases: (
+  'text': color text-color text tx --theme-tx,
+  'bg': background-color background bg --theme-bg,
+  'brand': brand-color brand br --theme-br,
+);
+
+@function _get_alias($kwargs, $type) {
+  @each $alias in map.get($_aliases, $type) {
+    $try: map.get($kwargs, $alias);
+    @if $try {
+      @return $try;
+    }
+  }
+}
+
+@function _remove_aliases($kwargs, $type: null) {
+  $aliases: ();
+  @if map.has-key($_aliases, $type) {
+    $aliases: map.get($_aliases, $type);
+  } @else {
+    @each $set in map.values($_aliases) {
+      $aliases: list.join($aliases, $set);
+    }
+  }
+  @return map.remove($kwargs, $aliases...);
+}
+
 /// Wrapper for `_create`, which normalizes arguments and keyword aliases before creating a theme. Must define at least a text and a background color.
 ///
 /// @param {Color} $tx        - Aliases: `$text`, `$color`, `$text-color`, `$--theme-tx`
@@ -163,19 +190,9 @@ $accessibility: 'AA' !default;
       }
     }
   } @else {
-    $text: map.get($kwargs, color) or
-      map.get($kwargs, text-color) or
-      map.get($kwargs, text) or
-      map.get($kwargs, tx) or
-      map.get($kwargs, --theme-tx);
-    $bg: map.get($kwargs, background-color) or
-      map.get($kwargs, background) or
-      map.get($kwargs, bg) or
-      map.get($kwargs, --theme-bg);
-    $brand: map.get($kwargs, brand-color) or
-      map.get($kwargs, brand) or
-      map.get($kwargs, br) or
-      map.get($kwargs, --theme-br);
+    $text: _get_alias($kwargs, 'text');
+    $bg: _get_alias($kwargs, 'bg');
+    $brand: _get_alias($kwargs, 'brand');
     $accessibility: if(
       map.get($kwargs, accessibility) != null,
       map.get($kwargs, accessibility),
@@ -196,7 +213,13 @@ $accessibility: 'AA' !default;
       );
     }
 
-    @include _create($text, $bg, $brand, $accessibility);
+    @include _create(
+      $text,
+      $bg,
+      $brand,
+      $accessibility,
+      _remove_aliases($kwargs)...
+    );
   }
 }
 
