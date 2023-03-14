@@ -126,6 +126,23 @@ colors all at once:
       brand-color:      royalblue )));
 ```
 
+### Additional options
+
+The behavior of the `create` mixin can be tweaked using optional 
+flags, which cannot be passed as positional arguments; they must be 
+specified using keywords or a map argument.
+
+```scss
+body, .light {
+  @include sass-themes.create(
+    $tx: #111,
+    $bg: white,
+    $br: royalblue,
+    $styles: 'extend' // or 'include', false: controls how base styles are included
+  )
+}
+```
+
 ## Working with themes
 
 You create classes that inherit theme colors by referencing the CSS properties 
