@@ -1,5 +1,6 @@
 @use '../node_modules/sass-true/sass/true' as *;
 
+@use '../styles/theme' as styles;
 @use '../mixins' as themes with (
   $accessibility: false
 );
@@ -50,6 +51,7 @@
     --theme-light: 1;
     --theme-dark: 0;
     --theme-tx--light: rgba(calc((var(--theme-tx-r) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-r) * (1 - (0.58 + (0.18 * var(--theme-dark)))))), calc((var(--theme-tx-g) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-g) * (1 - (0.58 + (0.18 * var(--theme-dark)))))), calc((var(--theme-tx-b) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-b) * (1 - (0.58 + (0.18 * var(--theme-dark)))))), calc((var(--theme-tx-a) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-a) * (1 - (0.58 + (0.18 * var(--theme-dark)))))));
+    @content;
   }
 }
 
@@ -233,6 +235,45 @@
         }
         @include expect {
           @include result;
+        }
+      }
+    }
+    @include it('sets optional flags using a map of names and settings') {
+      @include assert {
+        @include output {
+          $themes: (
+            'light': (
+              text-color: #111,
+              background-color: white,
+              brand-color: blue,
+              styles: include,
+            ),
+          );
+          @include themes.create($themes);
+        }
+        @include expect {
+          @include result {
+            @include styles.base;
+          }
+        }
+      }
+    }
+    @include it('includes base styles rather than extending') {
+      @include assert {
+        @include output {
+          .light {
+            @include themes.create(
+              $text-color: #111,
+              $background-color: white,
+              $brand-color: blue,
+              $styles: include
+            );
+          }
+        }
+        @include expect {
+          @include result {
+            @include styles.base;
+          }
         }
       }
     }

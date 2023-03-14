@@ -35,6 +35,7 @@ $accessibility: 'AA' !default;
 /// @param {Color} $bg
 /// @param {Color} $brand [null]
 /// @param {'AAA'|'AA'|false} $accessibility [$accessibility] - The accessibility standard to check this themes colors against.
+/// @param {'extend'|'include'|false} $styles ['extend'] - Controls how base styles (setting text, background, and border colors) should be added.
 ///
 /// @output
 /// Output is simplified for readability. Actual output shown in comments.
@@ -59,7 +60,13 @@ $accessibility: 'AA' !default;
 /// }
 /// ```
 
-@mixin _create($text, $bg, $brand: null, $accessibility: $accessibility) {
+@mixin _create(
+  $text,
+  $bg,
+  $brand: null,
+  $accessibility: $accessibility,
+  $styles: extend
+) {
   $light-theme: color.lightness($text) < color.lightness($bg);
 
   $properties: (
@@ -88,7 +95,11 @@ $accessibility: 'AA' !default;
       '(0.58 + (0.18 * var(--theme-dark)))'
     )};
 
-  @extend %theme;
+  @if $styles == extend {
+    @extend %theme;
+  } @else if $styles == include {
+    @include theme.base;
+  }
 }
 
 $_aliases: (
@@ -104,6 +115,7 @@ $_aliases: (
       @return $try;
     }
   }
+  @return null;
 }
 
 @function _remove_aliases($kwargs, $type: null) {
@@ -124,6 +136,7 @@ $_aliases: (
 /// @param {Color} $bg        - Aliases: `$background`, `$background-color`, `$--theme-bg`
 /// @param {Color} $br [null] - Aliases: `$brand`, `$brand-color`, `$--theme-br`
 /// @param {'AAA'|'AA'|false} $accessibility [$accessibility] - The accessibility standard to check this themes colors against.
+/// @param {'extend'|'include'|false} $styles ['extend'] - Controls how base styles (setting text, background, and border colors) should be added.
 ///
 /// @param {Map} $keywords [null] - A map that sets multiple the parameter values if passed as the only argument.
 ///
