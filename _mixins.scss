@@ -8,7 +8,7 @@
 @use 'sass:string';
 @use 'styles/theme';
 @use 'scss-properties';
-@use 'sass-color-helpers/stylesheets/color-helpers' as ch;
+@use 'color-helpers' as ch;
 
 /// Defines the default accessibility for all mixins. Can be `AA`, `AAA`, or `false`.
 /// @example scss
@@ -71,8 +71,8 @@ $base-styles: 'extend' !default;
   $has-brand: $brand;
   $brand: $brand or $text;
 
-  $ct-br-tx: ch.ch-color-contrast($brand, $text);
-  $ct-br-bg: ch.ch-color-contrast($brand, $bg);
+  $ct-br-tx: ch.color-contrast($brand, $text);
+  $ct-br-bg: ch.color-contrast($brand, $bg);
 
   $properties: (
     --theme-tx: $text,
@@ -262,15 +262,15 @@ $_aliases: (
   $aa: string.to-upper-case($accessibility) == 'AA';
   $aaa: string.to-upper-case($accessibility) == 'AAA';
 
-  $ct-tx-bg: ch.ch-color-contrast($bg, $text);
+  $ct-tx-bg: ch.color-contrast($bg, $text);
 
   @if ($ct-tx-bg < 4.5 and $aa) or ($ct-tx-bg < 7 and $aaa) {
     @warn "The contrast ratio of the '#{$name}' theme's text (#{$text}) and background (#{$bg}) colors is #{$ct-tx-bg}, which does not meet WCAG 2.0 #{if($aaa, 'AAA standard (7)', 'AA standard (4.5)')}.";
   }
 
   @if $brand {
-    $ct-br-tx: ch.ch-color-contrast($brand, $text);
-    $ct-br-bg: ch.ch-color-contrast($brand, $bg);
+    $ct-br-tx: ch.color-contrast($brand, $text);
+    $ct-br-bg: ch.color-contrast($brand, $bg);
 
     @if $ct-br-tx < 3 and $aa {
       @warn "The contrast ratio of the '#{$name}' theme's link (#{$brand}) and text (#{$text}) colors is #{$ct-br-tx}, which does not meet WCAG 2.0 AA standard (3).";
