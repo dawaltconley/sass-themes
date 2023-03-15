@@ -277,5 +277,25 @@
         }
       }
     }
+    @include it('define accessibility and optional flags') {
+      @include assert {
+        @include output {
+          .light {
+            @include themes.create(
+              $text-color: #111,
+              $background-color: white,
+              $brand-color: blue,
+              $accessibility: false,
+              $styles: include
+            );
+          }
+        }
+        @include expect {
+          @include result {
+            @include styles.base;
+          }
+        }
+      }
+    }
   }
 }

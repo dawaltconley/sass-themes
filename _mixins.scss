@@ -40,7 +40,6 @@ $base-styles: 'extend' !default;
 /// @param {Color} $text
 /// @param {Color} $bg
 /// @param {Color} $brand [null]
-/// @param {'AAA'|'AA'|false} $accessibility [$accessibility] - The accessibility standard to check this themes colors against.
 /// @param {'extend'|'include'|false} $styles [$base-styles] - Controls how base styles (setting text, background, and border colors) should be added.
 ///
 /// @output
@@ -66,13 +65,7 @@ $base-styles: 'extend' !default;
 /// }
 /// ```
 
-@mixin _create(
-  $text,
-  $bg,
-  $brand: null,
-  $accessibility: $accessibility,
-  $styles: $base-styles
-) {
+@mixin _create($text, $bg, $brand: null, $styles: $base-styles) {
   $light-theme: color.lightness($text) < color.lightness($bg);
 
   $properties: (
@@ -235,13 +228,8 @@ $_aliases: (
       );
     }
 
-    @include _create(
-      $text,
-      $bg,
-      $brand,
-      $accessibility,
-      _remove_aliases($kwargs)...
-    );
+    $flags: map.remove(_remove_aliases($kwargs), 'accessibility');
+    @include _create($text, $bg, $brand, $flags...);
   }
 }
 
