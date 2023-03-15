@@ -48,3 +48,12 @@
 @function if-dark($true, $false) {
   @return _light-or-dark(var(--theme-dark), $true, $false);
 }
+
+/// Returns either value depending on whether the current theme has a defined brand color.
+/// @see {function} if-light
+/// @param {String|Number} $true
+/// @param {String|Number} $false
+/// @return {Value} - a calc function that resolves to $true on dark themes and $false on light themes.
+@function if-has-brand($true, $false) {
+  @return _light-or-dark(var(--theme-has-brand), $true, $false);
+}

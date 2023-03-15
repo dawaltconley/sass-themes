@@ -85,6 +85,7 @@ $base-styles: 'extend' !default;
 
   --theme-light: #{if($light-theme, 1, 0)};
   --theme-dark: #{if($light-theme, 0, 1)};
+  --theme-has-brand: #{if($has-brand, 1, 0)};
 
   @if $styles == extend {
     @extend %theme;
