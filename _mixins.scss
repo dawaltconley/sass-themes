@@ -15,6 +15,12 @@
 ///   @use 'sass-themes' with ($accessibility: 'AAA');
 $accessibility: 'AA' !default;
 
+/// Defines how base styles (setting text, background, and border colors) are included by default.
+/// Can be `extend`, `include`, or `false`. By default, styles are extended so that they can be overridden by the same specificity rules.
+/// @example scss
+///   @use 'sass-themes' with ($base-styles: false);
+$base-styles: 'extend' !default;
+
 /// Turns a string into a class name. Leaves strings formatted as selectors unmodified.
 /// @param {String} $str
 /// @return {String}
@@ -35,7 +41,7 @@ $accessibility: 'AA' !default;
 /// @param {Color} $bg
 /// @param {Color} $brand [null]
 /// @param {'AAA'|'AA'|false} $accessibility [$accessibility] - The accessibility standard to check this themes colors against.
-/// @param {'extend'|'include'|false} $styles ['extend'] - Controls how base styles (setting text, background, and border colors) should be added.
+/// @param {'extend'|'include'|false} $styles [$base-styles] - Controls how base styles (setting text, background, and border colors) should be added.
 ///
 /// @output
 /// Output is simplified for readability. Actual output shown in comments.
@@ -65,7 +71,7 @@ $accessibility: 'AA' !default;
   $bg,
   $brand: null,
   $accessibility: $accessibility,
-  $styles: extend
+  $styles: $base-styles
 ) {
   $light-theme: color.lightness($text) < color.lightness($bg);
 

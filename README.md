@@ -133,13 +133,15 @@ flags, which cannot be passed as positional arguments; they must be
 specified using keywords or a map argument.
 
 ```scss
+// controls the default value for how base styles are included
+@use 'sass-themes' with ($base-styles: false);
+
 body, .light {
   @include sass-themes.create(
     $tx: #111,
     $bg: white,
     $br: royalblue,
-    $styles: 'extend' // or 'include', false: controls how base styles are included
-  )
+    $styles: 'extend' // or 'include', false
 }
 ```
 
