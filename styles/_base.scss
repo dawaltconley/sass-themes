@@ -14,6 +14,7 @@ $anchor-override: '.subtle-link' !default;
 
 /// Default styles for blockquotes.
 blockquote {
+  @extend %text-light;
   color: var(--theme-tx--light);
   border-left-color: scss-properties.mix(--theme-tx, --theme-bg, 25%);
 }
@@ -46,6 +47,7 @@ textarea {
   border-color: scss-properties.mix(--theme-tx, --theme-bg, 25%);
 
   &::placeholder {
+    @extend %text-light;
     color: var(--theme-tx--light);
     opacity: 1;
   }

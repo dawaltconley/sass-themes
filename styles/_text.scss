@@ -5,6 +5,7 @@
 
 /// Light text, relative to background color.
 .text-light {
+  @extend %text-light;
   color: var(--theme-tx--light);
 }
 

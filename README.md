@@ -46,18 +46,12 @@ output shown in comments.
 
 ```scss
 body, .light {
-  --light-theme:      1;                                          // 1 if text color is darker than background, else 0
-  --dark-theme:       0;                                          // opposite --light-theme
-  --theme-tx:         #111;                                       // hsla(var(--theme-tx-h), var(--theme-tx-s), var(--theme-tx-l), var(--theme-tx-a));
-  --theme-bg:         white;                                      // hsla(var(--theme-bg-h), var(--theme-bg-s), var(--theme-bg-l), var(--theme-bg-a));
-  --theme-br:         royalblue                                   // hsla(var(--theme-br-h), var(--theme-br-s), var(--theme-br-l), var(--theme-br-a));
-  --button-text:      if($brand and not $light-theme, $text, $bg) // hsla(var(--button-text-h), var(--button-text-s), var(--button-text-l), var(--button-text-a));
-  --button-bg:        $brand or $text                             // hsla(var(--button-bg-h), var(--button-bg-s), var(--button-bg-l), var(--button-bg-a));
-  --theme-tx--light:  #{scss-properties.mix(                      // rgba(calc((var(--theme-tx-r) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-r) * (1 - (0.58 + (0.18 * var(--theme-dark)))))),
-                        --theme-tx,                               //      calc((var(--theme-tx-g) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-g) * (1 - (0.58 + (0.18 * var(--theme-dark)))))),
-                        --theme-bg,                               //      calc((var(--theme-tx-b) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-b) * (1 - (0.58 + (0.18 * var(--theme-dark)))))),
-                        '(0.58 + (0.18 * var(--theme-dark)))'     //      calc((var(--theme-tx-a) * (0.58 + (0.18 * var(--theme-dark)))) + (var(--theme-bg-a) * (1 - (0.58 + (0.18 * var(--theme-dark)))))));
-                      )};
+  --light-theme:        1;            // 1 if text color is darker than background, else 0
+  --dark-theme:         0;            // opposite --light-theme
+  --theme-tx:           #111;         // hsla(var(--theme-tx-h), var(--theme-tx-s), var(--theme-tx-l), var(--theme-tx-a));
+  --theme-bg:           white;        // hsla(var(--theme-bg-h), var(--theme-bg-s), var(--theme-bg-l), var(--theme-bg-a));
+  --theme-br:           royalblue     // hsla(var(--theme-br-h), var(--theme-br-s), var(--theme-br-l), var(--theme-br-a));
+  --theme-br--contrast: $text or $bg; // whichever color has a higher contrast ratio with --theme-br
 
   color:              var(--theme-tx);
   background-color:   var(--theme-bg);

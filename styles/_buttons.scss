@@ -12,7 +12,7 @@ $btn-hover-mix: 80% !default;
 /// @require $btn-hover-mix
 .button {
   $root: &;
-  background-color: var(--button-bg);
+  background-color: var(--theme-br);
 
   &--left,
   &--right {
@@ -37,13 +37,13 @@ $btn-hover-mix: 80% !default;
   &,
   &:hover,
   &:visited {
-    color: var(--button-text);
+    color: var(--theme-br--contrast);
   }
 
   &:hover {
     background-color: scss-properties.mix(
-      --button-bg,
-      --button-text,
+      --theme-br,
+      --theme-br--contrast,
       $btn-hover-mix
     );
   }
@@ -52,13 +52,13 @@ $btn-hover-mix: 80% !default;
   /// @name .button.subtle-button
   /// @require {css} .button
   &.subtle-button {
-    color: var(--button-bg);
-    background-color: var(--button-text);
+    color: var(--theme-br);
+    background-color: var(--theme-br--contrast);
 
     &:hover {
       background-color: scss-properties.mix(
-        --button-text,
-        --button-bg,
+        --theme-br--contrast,
+        --theme-br,
         $btn-hover-mix
       );
     }
@@ -68,17 +68,17 @@ $btn-hover-mix: 80% !default;
   /// @name .button-o
   &-o {
     background-color: var(--theme-bg);
-    border-color: var(--button-bg);
+    border-color: var(--theme-br);
 
     &,
     &:visited {
-      color: var(--button-bg);
+      color: var(--theme-br);
     }
 
     &:hover {
-      color: var(--button-text);
-      background-color: var(--button-bg);
-      border-color: var(--button-bg);
+      color: var(--theme-br--contrast);
+      background-color: var(--theme-br);
+      border-color: var(--theme-br);
     }
 
     /// More subtle styling for the `.button-o` class

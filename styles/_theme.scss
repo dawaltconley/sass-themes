@@ -1,6 +1,8 @@
 /// The styles applied to all theme classes after their properties have been defined.
 /// @group mixins
 
+@use 'scss-properties';
+
 @mixin base {
   color: var(--theme-tx);
   background-color: var(--theme-bg);
@@ -9,4 +11,12 @@
 
 %theme {
   @include base;
+}
+
+%text-light {
+  --theme-tx--light: #{scss-properties.mix(
+      --theme-tx,
+      --theme-bg,
+      '(0.58 + (0.18 * var(--theme-dark)))'
+    )};
 }
