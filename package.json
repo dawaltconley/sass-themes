@@ -1,6 +1,6 @@
 {
   "name": "sass-themes",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "Sass library for managing the primary colors of a website based on their role.",
   "main": "tailwind.js",
   "files": [
